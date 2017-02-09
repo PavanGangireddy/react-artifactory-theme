@@ -1,0 +1,26 @@
+.hide{
+	display:none;
+}
+.display{
+	display:block;
+}
+
+.accordion{
+	margin:20px 0;
+	padding:10px 2%;
+	section h3{
+		margin:0px;
+		font-family:'SapientSansBold';
+		cursor:pointer;
+	}
+}
+
+.accordion-header{
+	padding:10px 5px;
+	border-bottom:1px solid #fff;
+}
+
+.accordion-content{
+	padding:10px;
+	font-family:'SapientSansRegular';
+}

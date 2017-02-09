@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Logo from './../Logo';
-import SearchBar from './../SearchBar';
-import UserDetails from './../UserDetails';
-
+import SearchBarContainer from './../../containers/search-bar-container';
+import StepsButton from './../StepsButton';
+import {Link} from 'react-router';
 import './header.scss';
 
 export default class Header extends Component{
@@ -10,14 +10,14 @@ export default class Header extends Component{
 		return(
 			<div>
 				<div className = 'nav-bar'>
-					<span>Home</span>
+					<span><Link to='/'>Home</Link></span>
 					<span>Docs</span>
 					<span>Help</span>
 				</div>
 				<div className = 'header'>
 						<Logo/>
-						<SearchBar/>
-						<UserDetails/>
+						<SearchBarContainer/>
+						<StepsButton/>
 				</div>
 			</div>
 		)

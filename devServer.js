@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const config = require('./webpack.config.dev');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 
+
+
 const app = express();
 const compiler = webpack(config);
 compiler.apply(new DashboardPlugin());
