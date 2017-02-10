@@ -3,53 +3,46 @@ import {Link} from 'react-router';
 import './search-results.scss';
 import PopularCategories from './../../containers/popular-categories';
 import FrequentPackagesContainer from './../../containers/frequent-packages-container';
+import PackageCards from './../PackageCards';
+import SearchResultList from './../SearchResultList';
 export default class SearchResult extends Component{
 	componentWillMount() {
 		this.props.fetchResults();
 	}
-	getResults(){
-		if(this.props.searchResult.results){
-			return (this.props.searchResult.results.map((data,index)=>{
-					return (<li className='result-list' key = {index}>
-								<div className='search-logo-container'>
-									<img src={data.logo} className='search-package-logo' alt='package logo'/>
-								</div>
-								<h3 className='search-result-title'>
-									<Link to='/details' className='title'>{data.title}</Link>
-									<a className='search-publisher'> {data.publisher}</a>
-								</h3>
-								<p className='result-description'>{data.description}</p>
-								<span className='result-version'>v{data.version}</span>
-							</li>
-					);
-				})
-			);
+	getView(){
+		if(this.props.view){
+			return(<PackageCards data={this.props.searchResult.results}/>);
 		}
 		else{
-			return (<div></div>)
+			return(<SearchResultList data={this.props.searchResult.results}/>);
 		}
-		
+	}
+	changeView(value){
+		this.props.changeView(value);
 	}
 	render(){
-		let results = this.getResults();
 		if(this.props.searchResult.inprogress){
 			return <div className='loader'>Loading...</div>
 		}
 		else{
+			let view=this.getView();
 			return(
 				<div className='clearfix'>
-					<div className='col-md-3'>
+					<div className='col-md-2'>
 						<PopularCategories />
 						<FrequentPackagesContainer />
 					</div>
-					<div className='col-md-9 search-result'>
-						<h4>3 PACKAGES FOUND</h4>
-						<div>for <b>'ieadexa'</b></div>
-						<ul className='results'>
-							{results}
-						</ul>
-					</div>
-					
+					<div className='col-md-10 search-result'>
+						<div className='result-header'>
+							<h4>{this.props.searchResult.results.length} PACKAGES FOUND</h4>
+							<div>for <b>'ieadexa'</b></div>
+						</div>
+						<div className='switch-view'>
+							<span className='list-view-icon' onClick = {this.changeView.bind(this,0)}><img src='src/components/SearchResult/list.png' /></span>
+							<span className='grid-view-icon' onClick = {this.changeView.bind(this,1)}><img src='src/components/SearchResult/grid.png' /></span>
+						</div>
+						{view}
+					</div>					
 				</div>
 			)
 		}

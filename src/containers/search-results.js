@@ -3,17 +3,19 @@ import { bindActionCreators } from 'redux';
 //components
 import SearchResult from '../components/SearchResult';
 //actions
-import {fetchResults} from '../actions/search-result-action.js';
+import {fetchResults, changeView} from '../actions/search-result-action.js';
 
 const mapStateToProps = (state)=> {
 	return {
-		searchResult:state.searchResults.results
+		searchResult:state.searchResults.results,
+		view:state.searchResults.view
 	};
  }
 const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
-								fetchResults
+								fetchResults,
+								changeView
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(SearchResult);

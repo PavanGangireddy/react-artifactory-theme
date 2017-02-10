@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Accordion from './../Accordion';
+import Accordion from './../../containers/accordion';
 export default class StepsToPublish extends Component{
 	render(){
 		return(

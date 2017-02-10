@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW} from '../constants/action-types';
 
 export function fetchResults(){
 		//AJAX call to fetch project list data
 	return function(dispatch){
-		axios.get('https://api.myjson.com/bins/m9fv9')
+		axios.get('https://api.myjson.com/bins/k47b9')
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({
@@ -74,7 +74,6 @@ export function fetchProjectDescription(){
 		
 		axios.get(url)
 		.then(function (response) {	
-			console.log(response);
 		    // Dispatch the success action with the payload
     		dispatch({
 		        type: Description_SUCCESS,
@@ -89,4 +88,11 @@ export function fetchProjectDescription(){
 		    });
     	});
 	};
+}
+
+export function changeView(value){
+	return({
+		type: Change_VIEW,
+		payload:value
+	})
 }

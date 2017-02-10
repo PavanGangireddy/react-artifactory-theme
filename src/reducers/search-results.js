@@ -1,4 +1,4 @@
-import { Result_SUCCESS, Result_FAIL,Search_SUCCESS,Search_FAIL, Handle_FOCUS,Update_INPUT_VALUE,Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL,Search_SUCCESS,Search_FAIL, Handle_FOCUS,Update_INPUT_VALUE,Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Change_VIEW} from '../constants/action-types';
 
 export default function searchResultsReducer(state = {
 	results:[],
@@ -8,6 +8,7 @@ export default function searchResultsReducer(state = {
 	activeIndex: -1,
 	defaultInput:'',
 	details:{},
+	view:0,
 	detailsInprogress:true,
 	descInprogress:true,
 	SearchInprogress:true
@@ -62,6 +63,10 @@ export default function searchResultsReducer(state = {
 	    	dataError:true,
 	    	error:action.error
 	    });
+	    case Change_VIEW:
+    	return Object.assign({},state,{
+    		view:action.payload	
+    	});
 	  default:
 	    return state;
   }
