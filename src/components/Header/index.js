@@ -9,15 +9,18 @@ export default class Header extends Component{
 	render(){
 		return(
 			<div>
-				<div className = 'nav-bar'>
+				{/*<div className = 'nav-bar'>
 					<span><Link to='/'>Home</Link></span>
 					<span>Docs</span>
 					<span>Help</span>
-				</div>
+				</div>*/}
 				<div className = 'header'>
-						<Logo/>
-						<SearchBarContainer/>
-						<StepsButton/>
+						<div className='col-md-3'> <Logo /> </div>
+						<div className='col-md-7'><SearchBarContainer /> </div>
+						<div className='col-md-2'> <StepsButton /></div>
+						
+						
+						
 				</div>
 			</div>
 		)
