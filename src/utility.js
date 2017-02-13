@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { browserHistory} from 'react-router';
+import {validateActiveSession} from './actions/integration'
 export default function getCookie(key) {
     let cookieKey = key + '=';
     let cookieData = document.cookie.split(';');
@@ -16,14 +16,21 @@ export default function getCookie(key) {
 }
 
 export const authTransition = function authTransition() {
-	console.log('a');
+
+
+  // validateActiveSession.then(function(result){
+  //   if(!result){
+  //
+  //   }
+  // })
+
 	// browserHistory.push('landing-page');
 
     /*const token = getCookie('x-access-token');
-   
+
     axios.post('', null, {headers:{'x-access-token': token}}).then(function (response){
     	if(response.data.isValid){
-    		
+
     	}
     	else{
         	browserHistory.push('/');

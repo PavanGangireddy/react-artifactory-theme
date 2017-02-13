@@ -2,7 +2,7 @@
 
 var axios = require('axios');
 
-var Artifactory = require('./apiStubs').artifactory;
+var Artifactory = require('./api-stubs').artifactory;
 
 var artApis = new Artifactory();
 

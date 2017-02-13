@@ -11,14 +11,14 @@ import { authTransition } from './utility';
 const allRoutes = () => {
   return (
   	<Router history={browserHistory} >
-  	<Route path="/" component={LoginContainer} onEnter={authTransition}/>
-	    <Route path="/landing-page" component={LandingPageContainer}>
-	      <IndexRoute component={LandingPageBodyContainer}/>
-	      <Route path='/results' component={SearchResultContainer} />
-	      <Route path= '/details' component= {DescriptionPageBody}  />
-	      <Route path= '/steps-to-publish' component= {StepsPageBody} /> 
-	    </Route>
-        </Router>
+      <Route path="/login" component={LoginContainer}></Route>
+  	   <Route path="/" component={LandingPageContainer} onEnter={authTransition}>
+	         <IndexRoute component={LandingPageBodyContainer}/>
+	         <Route path='/results' component={SearchResultContainer} />
+	         <Route path= '/details' component= {DescriptionPageBody}  />
+	        <Route path= '/steps-to-publish' component= {StepsPageBody} />
+	     </Route>
+    </Router>
   );
 };
 
