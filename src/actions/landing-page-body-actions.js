@@ -8,7 +8,7 @@ export function fetchPackageCards(){
 		    // Dispatch the success action with the payload
     		dispatch({
 		        type: Card_SUCCESS,
-		        payload: response.data.packageCards,
+		        payload: response.data.featuredPackages,
         	});
     	}.bind(this))
 	  	.catch(function (error) {
