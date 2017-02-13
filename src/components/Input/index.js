@@ -24,7 +24,6 @@ export default class Input extends React.Component {
 	change(e) {
 		this.setState({value:e.target.value}, validateData);
 		function validateData(){
-		console.log("entered")	
 			if(this.props.data=='text'){
 				let regex = /^[0-9 a-z]{5,6}$/;
 				if(regex.test(this.state.value)){

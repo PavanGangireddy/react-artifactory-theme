@@ -8,7 +8,6 @@ import rootReducer from '../reducers';
 import LoginContainer from '../components/Login';
 
 function mapStateToProps(state) {
-    console.log('sss')
     return {
         validUserData: state.loginReducer.validUserData,
         validPassData: state.loginReducer.validPassData,

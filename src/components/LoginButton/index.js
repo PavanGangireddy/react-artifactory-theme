@@ -1,6 +1,7 @@
 import React from 'react';
 import './login-button.scss';
 import {browserHistory} from 'react-router';
+import {login} from '../../actions/integration';
 import axios from 'axios';
 
 export default class LoginButton extends React.Component {
@@ -21,18 +22,13 @@ export default class LoginButton extends React.Component {
     submitForm(e) {
         let buttonContext = this;
         e.preventDefault();
-        console.log( );
-        axios.post('', {
-            username: this.props.userIdData,
-            password: this.props.passwordData
-        })
+        login(this.props.userIdData, this.props.passwordData)
         .then(function (response) {
-            if(!response.data.success){
+            console.log(response.body.error);
+            if(response.body.error){
                buttonContext.setState({showError : true});
            }
            else{
-            //    var token = response.data.token;
-            //    document.cookie = 'x-access-token=' + token;
             browserHistory.goBack()
            }
 

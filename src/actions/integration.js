@@ -64,7 +64,7 @@ export function validateActiveSession() {
 }
 
 export function login(user,password) {
-	artApis.postAuthLogin({
+	return artApis.postAuthLogin({
 		'body': {
 			'user':user,
 			'password':password
