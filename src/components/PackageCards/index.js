@@ -13,7 +13,6 @@ export default class PackageCards extends Component{
 					}
 					return (<Link to='/details' key={index}><Card header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
-				    <p>{detail.org}</p>
 				    <p>{detail.version}</p>
 				</Card></Link>);
 			})
