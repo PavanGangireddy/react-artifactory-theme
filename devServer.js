@@ -11,8 +11,11 @@ const app = express();
 const compiler = webpack(config);
 compiler.apply(new DashboardPlugin());
 
-app.use('/artifactory', proxy('delvmpwappexch.sapient.com',{
-  preserveHostHdr: true
+app.use('/artifactory/*', proxy('delvmpwappexch.sapient.com',{
+  preserveHostHdr: true,
+  forwardPath: function (req, res) {
+    return require('url').parse(req.baseUrl).path;
+  }
 }));
 
 // app.use(express.static(path.join(__dirname, 'static')));
