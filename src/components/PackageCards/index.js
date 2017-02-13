@@ -8,12 +8,13 @@ export default class PackageCards extends Component{
 	generateCards(){
 		return(
 			this.props.data.map((detail,index)=>{
-					if(detail.icon === ''|| detail.icon === undefined){
-						detail.icon = logo;
+					if(detail.image === ''|| detail.image === undefined){
+						detail.image = logo;
 					}
-					return (<Link to='/details' key={index}><Card header={<CardTitle image={detail.icon} waves='light'/>}
-				    title={detail.title}>
-				    <p>{detail.publisher}</p>
+					return (<Link to='/details' key={index}><Card header={<CardTitle image={detail.image} waves='light'/>}
+				    title={detail.name}>
+				    <p>{detail.org}</p>
+				    <p>{detail.version}</p>
 				</Card></Link>);
 			})
 		);
