@@ -1,8 +1,8 @@
 //http://delvmpwappexch.sapient.com/artifactory/content/data/tags.json
 
-import axios from 'axios';
+var axios = require('axios');
 
-var Artifactory = require('./api-stubs').artifactory;
+var Artifactory = require('./apiStubs').artifactory;
 
 var artApis = new Artifactory();
 
@@ -44,4 +44,21 @@ export function fetchPackageDetailsData(){
 export function fetchPackageReadMe(){
 	let url = 'http://delvmpwappexch.sapient.com/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
 	return fetchCall(url);
+}
+
+export function validateActiveSession() {
+	artApis.getAuthCurrent()
+	.then(function(result){
+
+	  if(result.body.name === 'anonymous') {
+	    console.log('false');
+	    return false;
+	  } else {
+	    console.log('true');
+	    return true;
+	  }
+	}).catch(function (error) {
+	  console.log(error);
+	  return false;
+	});
 }
