@@ -5,6 +5,7 @@ import PopularCategories from './../../containers/popular-categories';
 import FrequentPackagesContainer from './../../containers/frequent-packages-container';
 import PackageCards from './../PackageCards';
 import SearchResultList from './../SearchResultList';
+
 export default class SearchResult extends Component{
 	componentWillMount() {
 		this.props.fetchSearchResults();

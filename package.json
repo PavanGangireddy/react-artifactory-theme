@@ -5,10 +5,11 @@
     "scripts": {
         "clean": "rimraf dist",
         "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-        "build": "npm run clean && npm run build:webpack",
+        "build": "npm run clean && npm run build:webpack && npm run server",
         "dev": "cross-env NODE_ENV=development npm start",
         "start": "node devServer.js",
-        "lint": "eslint src"
+        "lint": "eslint src",
+        "server": "node server.js"
     },
     "devDependencies": {
         "autoprefixer": "^6.3.1",

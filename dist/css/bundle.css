@@ -88,6 +88,9 @@
       font-size: 16px;
       line-height: 0; }
 
+.card .card-image img {
+  min-height: 130px; }
+
 .card .card-title {
   font-size: 16px;
   font-weight: 600; }
