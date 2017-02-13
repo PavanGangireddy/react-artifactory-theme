@@ -1,3 +1,4 @@
+@import './../../styles/_variables.scss';
 .disable-suggestions{
 	display:none;
 }
@@ -6,9 +7,9 @@
 	display: block;
 	position: relative;
 	z-index: 1;
-	border:1px solid #000;
+	border:1px solid $black;
 	.a{
-			color:#716f6f;
+			color:$gray-dark;
 			text-decoration: none;
 
 	}

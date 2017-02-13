@@ -1,8 +1,9 @@
+@import './../../styles/_variables.scss';
 .package-description{
 	font-family:'SapientSansRegular';
 	.code{
 		background-clip: padding-box;
-	    border: 1px solid #ccc;
+	    border: 1px solid $gray-light;
 	    display: inline-block;
 	    line-height: 20px;
 	    margin: 0 2px -1px;

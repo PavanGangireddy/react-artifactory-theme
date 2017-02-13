@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 //components
 import LandingPage from '../components/LandingPage';
 //actions
-import fetchPopularData from '../actions/fetch-frequentl-searched-packages.js';
+import {fetchLandingPopularData} from '../actions/landing-page-body-actions';
 
 const mapStateToProps = (state)=> {
 	return {
@@ -13,7 +13,7 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
-								fetchPopularData
+								fetchLandingPopularData
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(LandingPage);

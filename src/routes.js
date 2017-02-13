@@ -5,11 +5,11 @@ import DescriptionPageBody from './components/DescriptionPageBody';
 import StepsPageBody from './components/StepsPageBody';
 import LandingPageContainer from './containers/landing-page-container';
 import MostInstalledContainer from './containers/most-installed-container';
-import LandingPageBody from './components/LandingPageBody';
+import LandingPageBodyContainer from './containers/landing-page-body';
 const allRoutes = () => {
   return (
     <Route path="/" component={LandingPageContainer}>
-      <IndexRoute component={LandingPageBody}/>
+      <IndexRoute component={LandingPageBodyContainer}/>
       <Route path='/results' component={SearchResultContainer} />
       <Route path= '/details' component= {DescriptionPageBody}  />
       <Route path= '/steps-to-publish' component= {StepsPageBody} /> 

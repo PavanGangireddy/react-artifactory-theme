@@ -4,7 +4,7 @@ import Header from './../Header';
 import PageFooter from './../PageFooter';
 export default class LandingPage extends Component{
 	componentWillMount(){
-		this.props.fetchPopularData();
+		this.props.fetchLandingPopularData();
 	}
 	render(){
 		if(this.props.inprogress){

@@ -14,13 +14,11 @@ export default class FrequentPackages extends Component{
 			let packages= this.packageComponent();
 			return (
 				<section className='popular-tag-container col-md-12'>
-						<h3 className='popular-tags-header'>Popular Tags</h3>
+						<h4 className='popular-tags-header'>Popular Keywords</h4>
 						<div className='popular-tags'>
 						{packages}
 						</div>	
 				</section>);
-	
-		
 	}
 }
 

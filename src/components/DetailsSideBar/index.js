@@ -20,7 +20,7 @@ export default class DetailsSideBar extends Component{
 			<aside className='col-md-4 package-details-side'>
 				<ul className='details-list'>
 					<li>Current Version : {version}</li>
-					<li className='github-repo-link'><a href={repoLink}>{this.props.packageDetails.github}</a></li>
+					<li className='github-repo-link'><a target="_blank" href={repoLink}>{this.props.packageDetails.github}</a></li>
 					<li>{this.props.packageDetails.license}</li>
 				</ul>
 				<div className='details'>
