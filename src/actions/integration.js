@@ -47,7 +47,7 @@ export function fetchPackageReadMe(){
 }
 
 export function validateActiveSession() {
-	artApis.getAuthCurrent()
+	return artApis.getAuthCurrent()
 	.then(function(result){
 
 	  if(result.body.name === 'anonymous') {

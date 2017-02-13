@@ -18,11 +18,11 @@ export default function getCookie(key) {
 export const authTransition = function authTransition() {
 
 
-  // validateActiveSession.then(function(result){
-  //   if(!result){
-  //
-  //   }
-  // })
+  const result = validateActiveSession().then(function(result){
+    if(!result){
+        browserHistory.push('/login');
+    }
+  })
 
 	// browserHistory.push('landing-page');
 

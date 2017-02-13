@@ -21,6 +21,7 @@ export default class LoginButton extends React.Component {
     submitForm(e) {
         let buttonContext = this;
         e.preventDefault();
+        console.log( );
         axios.post('', {
             username: this.props.userIdData,
             password: this.props.passwordData
@@ -30,9 +31,9 @@ export default class LoginButton extends React.Component {
                buttonContext.setState({showError : true});
            }
            else{
-               var token = response.data.token;
-               document.cookie = 'x-access-token=' + token;
-               browserHistory.push('/Dashboard');
+            //    var token = response.data.token;
+            //    document.cookie = 'x-access-token=' + token;
+            browserHistory.goBack()
            }
 
        });
