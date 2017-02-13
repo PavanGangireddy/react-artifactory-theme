@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL} from '../constants/action-types';
-
-export function fetchResults(){
-		//AJAX call to fetch project list data
+import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW} from '../constants/action-types';
+import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './integration'
+export function fetchSearchResults(){
 	return function(dispatch){
-		axios.get('https://api.myjson.com/bins/m9fv9')
+		fetchSearchResultsData()
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({
@@ -49,7 +48,7 @@ export function fetchSearchSuggestions(searchKey){
 
 export function fetchPackageDetails(){
 	return function(dispatch){
-		axios.get('https://api.myjson.com/bins/vu825')
+		fetchPackageDetailsData()
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({
@@ -68,13 +67,10 @@ export function fetchPackageDetails(){
 
 }
 
-export function fetchProjectDescription(){
+export function fetchReadMe(){
 	return function(dispatch){
-		let url = 'http://10.207.16.108:8081/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
-		
-		axios.get(url)
+		fetchPackageReadMe()
 		.then(function (response) {	
-			console.log(response);
 		    // Dispatch the success action with the payload
     		dispatch({
 		        type: Description_SUCCESS,
@@ -89,4 +85,11 @@ export function fetchProjectDescription(){
 		    });
     	});
 	};
+}
+
+export function changeView(value){
+	return({
+		type: Change_VIEW,
+		payload:value
+	})
 }

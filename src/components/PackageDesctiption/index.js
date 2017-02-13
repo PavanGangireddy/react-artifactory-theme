@@ -5,7 +5,7 @@ md = new MarkdownIt();
 
 export default class PackageDesctiption extends Component{
 	componentWillMount(){
-		this.props.fetchProjectDescription();
+		this.props.fetchReadMe();
 	}
 	render(){
 		let result ="<div class='loader'>Loading...</div>";

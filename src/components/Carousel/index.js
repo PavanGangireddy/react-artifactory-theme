@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './carousel.scss';
-export default class Carousel extends Component{
-	render(){
-	    let settings = {
+const settings = {
       slidesToShow: 2,
     }
-    return (
+const Carousel=()=>(
     	<div className='carousel-container'>
       	<Slider {...settings}>
         	<div><img src='./src/components/Carousel/img1.jpg'/></div>
@@ -15,6 +13,5 @@ export default class Carousel extends Component{
           <div><img src='./src/components/Carousel/img1.jpg'/></div>
         </Slider>
       </div>
-    );
-	}
-}
+)
+export default Carousel;

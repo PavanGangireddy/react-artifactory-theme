@@ -9,7 +9,7 @@ export default class SearchBar extends Component{
 	constructor(props){
 		super(props)
 		this.searchInputTitle = null;
-		this.searchFunction = debounce(this.searchFunction.bind(this),200);
+		this.searchFunction = debounce(this.searchFunction.bind(this),500);
 	}
 	searchFunction(value){
 		let input = this.searchInputTitle.value;
@@ -41,6 +41,7 @@ export default class SearchBar extends Component{
 	}
 	handleKeyDown(e,value){
 		let numOptions = this.props.searchResults.length;
+		
 		switch(e.keyCode){
 
 	      case 38: // up arrow
@@ -56,8 +57,8 @@ export default class SearchBar extends Component{
 	        this.props.handleDownArrow(activeIndex,this.props.searchResults[activeIndex].value);
 	        break;
 	      case 13:
+	      	this.searchFunction(false);
 	        browserHistory.push('/details')
-	        this.props.searchSuggestion(false);
 	        break;
 	    }
 	}

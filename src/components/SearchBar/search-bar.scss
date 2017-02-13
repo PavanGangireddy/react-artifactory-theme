@@ -1,3 +1,4 @@
+@import './../../styles/_variables.scss';
 .search-bar{
     width: 95%;
     height: 50px;
@@ -6,14 +7,14 @@
  
     vertical-align: middle;
     .search-input{
-        color:#eee;
+        color:$whitish-gray;
     background:transparent;
     height: 40px;
     width: 90%;
     padding-left: 10px;
     color: white;
     border: 0;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid $gray-medium;
     outline: none;
     font-size:1.5em;
     &::-webkit-input-placeholder {
@@ -29,7 +30,7 @@
 }
 
 .search-icon{
-	width: 50px;
+    width: 50px;
     height: 50px;
     display: inline;
     padding: 10px;

@@ -1,9 +1,10 @@
+@import './../../styles/_variables.scss';
 .popular-tag-container{
 	font-family: 'SapientSansMedium';
     word-wrap: break-word;
     text-align: center;
-    border: 1px solid black;
-    margin: 25px 0 10px 0;
+    border: 1px solid $gray-medium;
+    margin: 20px 0 10px 0;
     padding: 0;
 	.popular-tags{
 		cursor:pointer;

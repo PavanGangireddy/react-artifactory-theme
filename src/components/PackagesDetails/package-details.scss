@@ -1,3 +1,4 @@
+@import './../../styles/_variables.scss';
 .logo-container{
 	width:115px;
 	height: 80px;
@@ -20,11 +21,11 @@
 		  text-overflow: ellipsis;
 	}
 	.package-name a{
-		color:black;
+		color:$black;
 		cursor:pointer;
 	}
 	.package-version a{
-		color: black;
+		color: $black;
 		cursor:pointer;
 	}
 }

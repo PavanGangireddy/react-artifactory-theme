@@ -1,0 +1,38 @@
+@import './../../styles/_variables.scss';
+	.results{
+		list-style: none;
+	}
+	.result-list{
+		padding:20px 0 20px 0;
+		border-bottom: 1px solid $gray-light;
+	}
+	.search-publisher{
+		font-family:'SapientSansMedium';
+		cursor:pointer;
+		color:$gray-light;
+		font-size: 16px;
+	}
+	.result-description , .result-version {
+		font-family:'SapientSansRegular';
+		padding:0 0 0 5%;
+	}
+	.result-version{
+		color:$gray-medium;
+	}
+	.search-result-title{
+		font-family:'SapientSansMedium';
+		cursor:pointer;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.search-logo-container{
+		width:55px;
+		height: 50px;
+		text-align:left; 
+		display: inline-block;
+		vertical-align: bottom;
+		.search-package-logo{
+			max-width:90%;
+			height: 3em;
+		}
+	}

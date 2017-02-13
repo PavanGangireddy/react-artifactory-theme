@@ -1,7 +1,8 @@
+@import './../../styles/_variables.scss';
 .carousel-container{
   margin: 15px auto 0 0;
   width: 100%;
-  color: #333;
+  color: $gray-dark;
 }
 
 .slick-prev {
@@ -17,5 +18,5 @@
 .slick-slide img {
     display: block;
     width: 100%;
-    height:325px;
+    height:250px;
 }
