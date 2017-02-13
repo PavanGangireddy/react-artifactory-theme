@@ -35037,7 +35037,6 @@
 		}).then(function (result) {
 			return {};
 		}).catch(function (error) {
-			console.log(error);
 			return error;
 		});
 	}
@@ -52880,12 +52879,13 @@
 	            var buttonContext = this;
 	            e.preventDefault();
 	            (0, _integration.login)(this.props.userIdData, this.props.passwordData).then(function (response) {
-	                console.log(response.body.error);
 	                if (response.body.error) {
 	                    buttonContext.setState({ showError: true });
 	                } else {
 	                    _reactRouter.browserHistory.goBack();
 	                }
+	            }).catch(function (error) {
+	                console.log("Call to login failed");
 	            });
 	        }
 	    }, {

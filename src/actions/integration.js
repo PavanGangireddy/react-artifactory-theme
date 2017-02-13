@@ -74,7 +74,6 @@ export function login(user,password) {
 		return {};
 
 	}).catch(function (error) {
-	  console.log(error);
 	  return error;
 	});
 }

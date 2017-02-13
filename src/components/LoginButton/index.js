@@ -24,15 +24,17 @@ export default class LoginButton extends React.Component {
         e.preventDefault();
         login(this.props.userIdData, this.props.passwordData)
         .then(function (response) {
-            console.log(response.body.error);
-            if(response.body.error){
+            if(response.body.error) {
                buttonContext.setState({showError : true});
            }
-           else{
-            browserHistory.goBack()
+           else {
+            browserHistory.goBack();
            }
 
-       });
+       })
+       .catch(function (error) {
+	        console.log("Call to login failed");
+	    });
     }
     componentDidMount(){
       this.resetStates();
