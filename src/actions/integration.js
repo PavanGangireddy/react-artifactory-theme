@@ -62,3 +62,19 @@ export function validateActiveSession() {
 	  return false;
 	});
 }
+
+export function login(user,password) {
+	artApis.postAuthLogin({
+		'body': {
+			'user':user,
+			'password':password
+		}
+	})
+	.then(function(result){
+		return {};
+
+	}).catch(function (error) {
+	  console.log(error);
+	  return error;
+	});
+}
