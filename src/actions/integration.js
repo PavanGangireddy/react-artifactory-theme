@@ -26,8 +26,8 @@ export function fetchCardsData(){
 	return getData(url);
 }
 
-export function fetchSearchResultsData(){
-	let url = 'https://api.myjson.com/bins/k47b9';
+export function fetchSearchResultsData(keyword){
+	let url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword='+keyword;
 	return getData(url);
 }
 
