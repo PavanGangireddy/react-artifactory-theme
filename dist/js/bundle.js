@@ -26536,7 +26536,8 @@
 		return {
 			searchResult: state.searchResults.results,
 			view: state.searchResults.view,
-			inprogress: state.searchResults.inprogress
+			inprogress: state.searchResults.inprogress,
+			keyword: state.searchResults.keyword
 		};
 	};
 	//components
@@ -28293,7 +28294,11 @@
 									'div',
 									null,
 									'for ',
-									_react2.default.createElement('b', null)
+									_react2.default.createElement(
+										'b',
+										null,
+										this.props.keyword
+									)
 								)
 							),
 							_react2.default.createElement(
@@ -48626,6 +48631,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(179);
+	
 	__webpack_require__(455);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48636,7 +48643,11 @@
 		return _react2.default.createElement(
 			'div',
 			{ className: 'logo' },
-			_react2.default.createElement('img', { src: logo, alt: '', className: 'logo-img' })
+			_react2.default.createElement(
+				_reactRouter.Link,
+				{ to: '/' },
+				_react2.default.createElement('img', { src: logo, alt: '', className: 'logo-img' })
+			)
 		);
 	};
 	exports.default = Logo;
@@ -48758,8 +48769,8 @@
 	        key: 'searchFunction',
 	        value: function searchFunction(value) {
 	            var input = this.searchInputTitle.value;
-	            this.props.setKeyword(input);
 	            this.props.fetchSearchResults(input);
+	            this.props.setKeyword(input);
 	        }
 	    }, {
 	        key: 'onClickOut',
@@ -52315,7 +52326,8 @@
 			view: 0,
 			detailsInprogress: true,
 			descInprogress: true,
-			searchInprogress: true
+			searchInprogress: true,
+			keyword: ''
 		};
 		var action = arguments[1];
 	
@@ -52372,6 +52384,10 @@
 			case _actionTypes.Change_VIEW:
 				return Object.assign({}, state, {
 					view: action.payload
+				});
+			case _actionTypes.Set_KEY:
+				return Object.assign({}, state, {
+					keyword: action.payload
 				});
 			default:
 				return state;

@@ -37,7 +37,7 @@ export default class SearchResult extends Component{
 					<div className='col-md-10 search-result'>
 						<div className='result-header'>
 							<h4>{this.props.searchResult.results.length} PACKAGES FOUND</h4>
-							<div>for <b></b></div>
+							<div>for <b>{this.props.keyword}</b></div>
 						</div>
 						<div className='switch-view'>
 							<span className='list-view-icon' onClick = {this.changeView.bind(this,0)}><img src={list} /></span>

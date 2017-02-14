@@ -1,4 +1,4 @@
-import { Result_SUCCESS, Result_FAIL,Search_SUCCESS,Search_FAIL, Handle_FOCUS,Update_INPUT_VALUE,Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Change_VIEW} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL,Search_SUCCESS,Search_FAIL, Handle_FOCUS,Update_INPUT_VALUE,Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Change_VIEW, Set_KEY} from '../constants/action-types';
 
 export default function searchResultsReducer(state = {
 	results:[],
@@ -11,7 +11,8 @@ export default function searchResultsReducer(state = {
 	view:0,
 	detailsInprogress:true,
 	descInprogress:true,
-	searchInprogress:true
+	searchInprogress:true,
+	keyword:''
 }, action) {
   switch (action.type) {
 	  case Result_SUCCESS:
@@ -66,6 +67,10 @@ export default function searchResultsReducer(state = {
 	    case Change_VIEW:
     	return Object.assign({},state,{
     		view:action.payload	
+    	});
+    	case Set_KEY:
+    	return Object.assign({},state,{
+    		keyword:action.payload	
     	});
 	  default:
 	    return state;

@@ -9,7 +9,8 @@ const mapStateToProps = (state)=> {
 	return {
 		searchResult:state.searchResults.results,
 		view:state.searchResults.view,
-		inprogress:state.searchResults.inprogress
+		inprogress:state.searchResults.inprogress,
+		keyword:state.searchResults.keyword
 	};
  }
 const mapDispatchToProps = (dispatch) =>{
