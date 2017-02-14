@@ -48770,7 +48770,6 @@
 	        value: function searchFunction(value) {
 	            var input = this.searchInputTitle.value;
 	            this.props.fetchSearchResults(input);
-	            this.props.setKeyword(input);
 	        }
 	    }, {
 	        key: 'onClickOut',
