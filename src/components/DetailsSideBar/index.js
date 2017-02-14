@@ -15,7 +15,9 @@ export default class DetailsSideBar extends Component{
 			return <div className='loader'>Loading...</div>
 		}
 		else{
-			
+
+			let contributors = this.props.packageDetails.collaborators;
+			contributors = typeof(contributors)  === "object" ? contributors : [contributors]; 
 			return(
 			<aside className='col-md-4 package-details-side'>
 				<ul className='details-list'>
@@ -28,7 +30,7 @@ export default class DetailsSideBar extends Component{
 				<div className='details'>
 					<h4>Collaborators:</h4>
 
-					{this.props.packageDetails.collaborators.map((src,index)=>{
+					{contributors.map((src,index)=>{
 						return(
 						<figure key={index} className = 'details-logo-container'>
 							<img className = 'publisher-logo' src={src} alt ={this.props.packageDetails.publisher}/>

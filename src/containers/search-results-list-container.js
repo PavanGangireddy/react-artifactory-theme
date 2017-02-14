@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) =>{
 								setModuleName
 						 	 },dispatch);
 }
-export default connect(mapDispatchToProps)(SearchResultList);
+export default connect(null, mapDispatchToProps)(SearchResultList);

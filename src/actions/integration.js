@@ -38,12 +38,13 @@ export function fetchPopularData(){
 
 export function fetchPackageDetailsData(moduleName){
 	let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;
-	return fetchCall(url);
+	// let url = 'https://api.myjson.com/bins/1bn52t';
+	return getData(url);
 }
 
 export function fetchPackageReadMe(){
-	let url = 'http://delvmpwappexch.sapient.com/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
-	return fetchCall(url);
+	let url = '/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
+	return getData(url);
 }
 
 export function validateActiveSession() {
