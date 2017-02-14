@@ -8,7 +8,8 @@ const mapStateToProps = (state)=> {
 	
 	return {
 		inprogress:state.searchResults.descInprogress,
-		data:state.searchResults.descriptionData
+		data:state.searchResults.descriptionData,
+		moduleName:state.linkReducer.moduleName
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

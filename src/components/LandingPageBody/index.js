@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PopularCategories from './../../containers/popular-categories';
 import Carousel from './../Carousel';
-import PackageCards from './../PackageCards';
+import PackageCards from './../../containers/package-cards-container';
 import FrequentPackagesContainer from './../../containers/frequent-packages-container';
 import './landing-page-body.scss';
 export default class LandingPageBody extends Component{
@@ -22,7 +22,7 @@ export default class LandingPageBody extends Component{
 					<div className='col-md-10 landing-page-content'>
 						<Carousel />
 						<div className='col-md-12'>
-							<h3 className='most-installed-header'>Most Featured Packages</h3>
+							<h3 className='most-installed-header'>Featured Packages</h3>
 						</div>
 						<PackageCards data={this.props.cardData}/>
 					</div>

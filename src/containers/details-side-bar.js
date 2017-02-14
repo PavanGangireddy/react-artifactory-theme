@@ -7,7 +7,8 @@ import {fetchPackageDetails} from './../actions/search-result-action';
 const mapStateToProps = (state)=> {
 	return {
 		inprogress:state.searchResults.detailsInprogress,
-		packageDetails:state.searchResults.details
+		packageDetails:state.searchResults.details,
+		moduleName:state.linkReducer.moduleName
 	};
  }
 

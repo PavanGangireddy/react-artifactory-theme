@@ -59,7 +59,7 @@ export default class SearchDropDown extends Component{
 							let classes = cx({active: activeIndex===index});
 							if(value != ''){
 								return (
-								<Link to='/details' key={index} className='a'>
+								<Link to='/module' key={index} className='a'>
 								 	<div className = {classes} >
 									{this.displaySearchResults(result.value,value)}
 									</div>

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import SearchResult from '../components/SearchResult';
 //actions
 import {fetchSearchResults, changeView} from '../actions/search-result-action.js';
-
+import { setModuleName } from '../actions/link-action.js'
 const mapStateToProps = (state)=> {
 	return {
 		searchResult:state.searchResults.results,
@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
 								fetchSearchResults,
-								changeView
+								changeView,
+								setModuleName
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(SearchResult);

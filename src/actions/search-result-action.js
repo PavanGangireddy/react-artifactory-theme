@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
 import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './integration'
 export function fetchSearchResults(keyword){
 	return function(dispatch){
@@ -46,14 +46,14 @@ export function fetchSearchSuggestions(searchKey){
 
 }
 
-export function fetchPackageDetails(){
+export function fetchPackageDetails(moduleName){
 	return function(dispatch){
-		fetchPackageDetailsData()
+		fetchPackageDetailsData(moduleName)
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({
 		        type: Details_SUCCESS,
-		        payload: response.data.packagedetails,
+		        payload: response.data.details,
         	});
     	}.bind(this))
 	  	.catch(function (error) {
@@ -67,9 +67,9 @@ export function fetchPackageDetails(){
 
 }
 
-export function fetchReadMe(){
+export function fetchReadMe(moduleName){
 	return function(dispatch){
-		fetchPackageReadMe()
+		fetchPackageReadMe(moduleName)
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({
@@ -91,5 +91,12 @@ export function changeView(value){
 	return({
 		type: Change_VIEW,
 		payload:value
+	})
+}
+
+export function setKeyword(keyword){
+	return({
+		type: Set_KEY,
+		payload:keyword
 	})
 }

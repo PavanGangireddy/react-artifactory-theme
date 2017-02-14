@@ -12,7 +12,7 @@ export default class SearchBar extends Component {
     }
     searchFunction(value) {
         let input = this.searchInputTitle.value;
-        console.log(input)
+        this.props.setKeyword(input);
         this.props.fetchSearchResults(input);
     }
     onClickOut() {

@@ -23,3 +23,5 @@ export const DATA_VALIDATED = 'DATA_VALIDATED';
 export const VALID_USER_ID = 'VALID_USER_ID';
 export const VALID_PASSWORD = 'VALID_PASSWORD';
 export const RESET = 'RESET';
+export const Set_KEY = 'Set_KEY';
+export const Set_MODULE = 'Set_MODULE';
