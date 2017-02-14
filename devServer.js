@@ -3,12 +3,20 @@ const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config.dev');
 const DashboardPlugin = require('webpack-dashboard/plugin');
+const proxy = require('express-http-proxy');
 
 
 
 const app = express();
 const compiler = webpack(config);
 compiler.apply(new DashboardPlugin());
+
+app.use('/artifactory/*', proxy('delvmpwappexch.sapient.com',{
+  preserveHostHdr: true,
+  forwardPath: function (req, res) {
+    return require('url').parse(req.baseUrl).path;
+  }
+}));
 
 // app.use(express.static(path.join(__dirname, 'static')));
 app.use('/', express.static(__dirname));
@@ -20,6 +28,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

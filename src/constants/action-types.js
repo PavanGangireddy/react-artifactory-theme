@@ -19,3 +19,7 @@ export const Card_FAIL = 'Card_FAIL';
 export const Change_VIEW = 'Change_VIEW';
 export const Steps_SUCCESS = 'Steps_SUCCESS';
 export const Steps_FAIL = 'Steps_FAIL';
+export const DATA_VALIDATED = 'DATA_VALIDATED';
+export const VALID_USER_ID = 'VALID_USER_ID';
+export const VALID_PASSWORD = 'VALID_PASSWORD';
+export const RESET = 'RESET';
