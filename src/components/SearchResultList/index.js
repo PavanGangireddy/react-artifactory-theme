@@ -11,13 +11,11 @@ export default class SearchResult extends Component{
 					}
 					return (<li className='result-list' key = {index}>
 								<div className='search-logo-container'>
-									<img src={data.icon} className='search-package-logo' alt='package logo'/>
+									<img src={data.image} className='search-package-logo' alt='package logo'/>
 								</div>
 								<h3 className='search-result-title'>
-									<Link to='/details' className='title'>{data.title}</Link>
-									<a className='search-publisher'> {data.publisher}</a>
+									<Link to='/details' className='title'>{data.name}</Link>
 								</h3>
-								<p className='result-description'>{data.description}</p>
 								<span className='result-version'>v{data.version}</span>
 							</li>
 					);

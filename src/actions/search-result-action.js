@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW} from '../constants/action-types';
 import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './integration'
-export function fetchSearchResults(){
+export function fetchSearchResults(keyword){
 	return function(dispatch){
-		fetchSearchResultsData()
+		fetchSearchResultsData(keyword)
 		.then(function (response) {	
 		    // Dispatch the success action with the payload
     		dispatch({

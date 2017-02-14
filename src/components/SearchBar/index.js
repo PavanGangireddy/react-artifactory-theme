@@ -8,32 +8,12 @@ export default class SearchBar extends Component {
     constructor(props) {
         super(props)
         this.searchInputTitle = null;
-        this.searchFunction = debounce(this.searchFunction.bind(this), 500);
+        /*this.searchFunction = debounce(this.searchFunction.bind(this), 500);*/
     }
     searchFunction(value) {
         let input = this.searchInputTitle.value;
-        /*if(value){
-        	this.props.searchSuggestion(true);
-        	this.props.updateSearchValue(value);
-        	
-        }*/
-        /*var username = "shafeeq",
-			password = "password",
-			auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
-		  // config object is used by the Request class
-		  aql.config({
-		        uri: "http://10.207.16.108:8081/artifactory/api/search/aql",
-		        headers: {
-		           Authorization: auth
-		        }
-		     });
-
-		  var aqlQuery = aql.items.find({"name":{"$eq":input}});
-    		aql.query(aqlQuery).then((data) => {
-        	console.log(data);
-    		});*/
-
-
+        console.log(input)
+        this.props.fetchSearchResults(input);
     }
     onClickOut() {
         this.props.searchSuggestion(false);
@@ -43,7 +23,7 @@ export default class SearchBar extends Component {
 
         switch (e.keyCode) {
 
-            case 38: // up arrow
+            /*case 38: // up arrow
                 if (this.props.activeIndex > 0) {
                     this.props.handleDownArrow(this.props.activeIndex - 1, this.props.searchResults[this.props.activeIndex].value);
                 } else {
@@ -54,10 +34,9 @@ export default class SearchBar extends Component {
             case 40: // down arrow
                 let activeIndex = (this.props.activeIndex + 1) % numOptions;
                 this.props.handleDownArrow(activeIndex, this.props.searchResults[activeIndex].value);
-                break;
+                break;*/
             case 13:
-                this.searchFunction(false);
-                browserHistory.push('/details')
+                this.searchFunction();
                 break;
         }
     }
@@ -69,13 +48,12 @@ export default class SearchBar extends Component {
             placeholder = 'Search'
             ref = {
                 (el) => { this.searchInputTitle = el; } }
-            onClick = { this.searchFunction.bind(this) }
             onKeyDown = { this.handleKeyDown.bind(this) }
             /> <
             Link to = '/results'
             className = 'search-router' >
             <
-            span className = 'search-icon fa fa-search' > < /span> <
+            span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> <
             /Link>	 <
             /div>
         )
