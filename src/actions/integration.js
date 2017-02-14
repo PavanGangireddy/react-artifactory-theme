@@ -36,8 +36,8 @@ export function fetchPopularData(){
 	return getData(url);
 }
 
-export function fetchPackageDetailsData(){
-	let url = 'https://api.myjson.com/bins/vu825';
+export function fetchPackageDetailsData(moduleName){
+	let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;
 	return fetchCall(url);
 }
 
