@@ -1,15 +1,16 @@
+@import './../../styles/_variables.scss';
 .login-button{
   box-sizing:border-box;
   color:white;
   font-weight:bold;
-  background-color: #1daeea;
+  background-color: $blue-light;
   width: 220px;
   height: 40px;
   border: none;
   margin-top: 10px;
   opacity:0.5; 
   &:focus {
-    background-color: #1a9cd2;
+    background-color: $blue;
   } 
 }
 .button-enable{

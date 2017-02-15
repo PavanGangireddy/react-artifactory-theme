@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
 import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './integration'
-export function fetchSearchResults(keyword){
+export const fetchSearchResults = (keyword) =>{
 	return function(dispatch){
 		fetchSearchResultsData(keyword)
 		.then(function (response) {	
@@ -23,7 +23,7 @@ export function fetchSearchResults(keyword){
 
 }
 
-export function fetchSearchSuggestions(searchKey){
+export const  fetchSearchSuggestions = (searchKey) =>{
 	/*return function(dispatch){*/
 		/*let url = 'https://ac.cnstrc.com/autocomplete/'+searchKey+'?autocomplete_key=CD06z4gVeqSXRiDL2ZNK&query='+searchKey;
 		axios.get(url)
@@ -46,7 +46,7 @@ export function fetchSearchSuggestions(searchKey){
 
 }
 
-export function fetchPackageDetails(moduleName){
+export const  fetchPackageDetails = (moduleName) =>{
 	return function(dispatch){
 		fetchPackageDetailsData(moduleName)
 		.then(function (response) {	
@@ -67,7 +67,7 @@ export function fetchPackageDetails(moduleName){
 
 }
 
-export function fetchReadMe(moduleName){
+export const fetchReadMe = (moduleName) =>{
 	return function(dispatch){
 		fetchPackageReadMe(moduleName)
 		.then(function (response) {	
@@ -87,14 +87,14 @@ export function fetchReadMe(moduleName){
 	};
 }
 
-export function changeView(value){
+export const changeView = (value) =>{
 	return({
 		type: Change_VIEW,
 		payload:value
 	})
 }
 
-export function setKeyword(keyword){
+export const setKeyword = (keyword) =>{
 	return({
 		type: Set_KEY,
 		payload:keyword

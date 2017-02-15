@@ -24,7 +24,7 @@ export default class DetailsSideBar extends Component{
 					<li>Publisher : {publisher}</li>
 					<li>Current Version : {version}</li>
 					<li>Last Modified On : {lastModifiedOn}</li>
-					<li className='github-repo-link'><a target="_blank" href={repoLink}>{this.props.packageDetails.github}</a></li>
+					<li className='github-repo-link'><a target="_blank" href={repoLink}>{repoLink}</a></li>
 					<li>{this.props.packageDetails.license}</li>
 				</ul>
 				<div className='details'>

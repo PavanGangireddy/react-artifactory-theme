@@ -36,25 +36,18 @@ export default class SearchBar extends Component {
                 break;*/
             case 13:
                 this.searchFunction();
+                browserHistory.push('/results');
                 break;
         }
     }
     render() {
-        return ( <
-            div className = 'search-bar' >
-            <
-            input className = 'search-input'
-            placeholder = 'Search'
-            ref = {
-                (el) => { this.searchInputTitle = el; } }
-            onKeyDown = { this.handleKeyDown.bind(this) }
-            /> <
-            Link to = '/results'
-            className = 'search-router' >
-            <
-            span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> <
-            /Link>	 <
-            /div>
+        return ( 
+            <div className = 'search-bar'>
+                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } onKeyDown = { this.handleKeyDown.bind(this) } /> 
+                <Link to = '/results' className = 'search-router' >
+                    <span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> 
+                </Link>	 
+            </div>
         )
     }
 }

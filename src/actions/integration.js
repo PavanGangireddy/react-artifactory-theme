@@ -6,7 +6,7 @@ var Artifactory = require('./api-stubs').artifactory;
 
 var artApis = new Artifactory();
 
-export function getData(url){
+export const getData = (url) =>{
 		return axios.get(url)
 		.then(function (response) {
     		return response;
@@ -16,38 +16,38 @@ export function getData(url){
     	});
 }
 
-export function fetchStepsToPublish(){
+export const fetchStepsToPublish = () =>{
 	let url = 'https://api.myjson.com/bins/pywyl';
 	return getData(url);
 };
 
-export function fetchCardsData(){
+export const fetchCardsData = () =>{
 	let url = '/artifactory/content/data/featured.json';
 	return getData(url);
 }
 
-export function fetchSearchResultsData(keyword){
+export const fetchSearchResultsData = (keyword) =>{
 	let url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword='+keyword;
 	return getData(url);
 }
 
-export function fetchPopularData(){
+export const fetchPopularData = () =>{
 	let url = '/artifactory/content/data/tags.json';
 	return getData(url);
 }
 
-export function fetchPackageDetailsData(moduleName){
+export const fetchPackageDetailsData = (moduleName) =>{
 	let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;
 	// let url = 'https://api.myjson.com/bins/1bn52t';
 	return getData(url);
 }
 
-export function fetchPackageReadMe(){
+export const fetchPackageReadMe = () =>{
 	let url = '/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
 	return getData(url);
 }
 
-export function validateActiveSession() {
+export const validateActiveSession = () =>{
 	return artApis.getAuthCurrent()
 	.then(function(result){
 
@@ -64,7 +64,7 @@ export function validateActiveSession() {
 	});
 }
 
-export function login(user,password) {
+export const login = (user,password)=>{
 	return artApis.postAuthLogin({
 		'body': {
 			'user':user,

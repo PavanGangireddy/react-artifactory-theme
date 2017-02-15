@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PopularCategories from './../components/PopularCategories'
-function mapStateToProps(state) {
+const mapStateToProps = (state)=> {
     return{
        popularCategories:state.frqPackages.details.popularCategories,
     };

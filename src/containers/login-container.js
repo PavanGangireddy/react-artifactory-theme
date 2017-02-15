@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 /* Importing Login component. */
 import LoginContainer from '../components/Login';
 
-function mapStateToProps(state) {
+const mapStateToProps = (state)=> {
     return {
         validUserData: state.loginReducer.validUserData,
         validPassData: state.loginReducer.validPassData,
@@ -17,7 +17,7 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         actions: bindActionCreators(FormActions, dispatch)
     };

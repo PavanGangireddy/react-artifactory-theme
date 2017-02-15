@@ -1,12 +1,12 @@
 import { DATA_VALIDATED, VALID_USER_ID, VALID_PASSWORD, RESET} from '../constants/action-types';
-export function dataValidated(errorfree) {
+export const dataValidated = (errorfree) =>{
 	return {
 		type: DATA_VALIDATED,
 		errorfree:errorfree	
 	};
 }
 
-export function validUserId(validUserData,userIdData){
+export const validUserId = (validUserData,userIdData) =>{
 	return{
 		type: VALID_USER_ID,
 		validUserData:validUserData,
@@ -14,7 +14,7 @@ export function validUserId(validUserData,userIdData){
 	};
 }
 
-export function validPassword(validPassData,passwordData){
+export const validPassword = (validPassData,passwordData) =>{
 	return{
 		type: VALID_PASSWORD,
 		validPassData:validPassData,
@@ -22,7 +22,7 @@ export function validPassword(validPassData,passwordData){
 	};
 }
 
-export function resetState(){
+export const resetState = () =>{
 	return {
 		type: RESET
 	};
