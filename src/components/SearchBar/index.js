@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import './search-bar.scss';
+import './styles/index.scss';
 import debounce from 'lodash.debounce';
 import SearchDropDown from './../../containers/search-drop-down-container';
 export default class SearchBar extends Component {
@@ -12,7 +12,13 @@ export default class SearchBar extends Component {
     }
     searchFunction(value) {
         let input = this.searchInputTitle.value;
-        this.props.fetchSearchResults(input);
+        /*this.props.fetchSearchResults(input);*/
+        if(input== null ||input==''){
+              input = ' ';  
+        }
+        this.props.setKeyword(input)
+        browserHistory.push('/results/keyword='+input);
+        
     }
     onClickOut() {
         this.props.searchSuggestion(false);
@@ -36,17 +42,14 @@ export default class SearchBar extends Component {
                 break;*/
             case 13:
                 this.searchFunction();
-                browserHistory.push('/results');
                 break;
         }
     }
     render() {
         return ( 
             <div className = 'search-bar'>
-                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } onKeyDown = { this.handleKeyDown.bind(this) } /> 
-                <Link to = '/results' className = 'search-router' >
-                    <span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> 
-                </Link>	 
+                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } defaultValue={this.props.query}onKeyDown = { this.handleKeyDown.bind(this) } /> 
+                <span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> 
             </div>
         )
     }

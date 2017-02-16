@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Button, Icon } from 'react-materialize';
-import './steps-button.scss'
+import './styles/index.scss';
 export default class StepsButton extends Component{
 	render(){
 		return(

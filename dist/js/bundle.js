@@ -24808,9 +24808,9 @@
 		switch (opts.arrayFormat) {
 			case 'index':
 				return function (key, value, accumulator) {
-					result = /\[(\d*)]$/.exec(key);
+					result = /\[(\d*)\]$/.exec(key);
 	
-					key = key.replace(/\[\d*]$/, '');
+					key = key.replace(/\[\d*\]$/, '');
 	
 					if (!result) {
 						accumulator[key] = value;
@@ -24826,9 +24826,9 @@
 	
 			case 'bracket':
 				return function (key, value, accumulator) {
-					result = /(\[])$/.exec(key);
+					result = /(\[\])$/.exec(key);
 	
-					key = key.replace(/\[]$/, '');
+					key = key.replace(/\[\]$/, '');
 	
 					if (!result || accumulator[key] === undefined) {
 						accumulator[key] = value;
@@ -26610,7 +26610,7 @@
 	      _reactRouter.Route,
 	      { path: '/', component: _landingPageContainer2.default, onEnter: _utility.authTransition },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _landingPageBody2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/results', component: _searchResults2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/results/keyword=:query', component: _searchResults2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/module/:moduleName', component: _DescriptionPageBody2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/steps-to-publish', component: _StepsPageBody2.default })
 	    )
@@ -26644,12 +26644,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//actions
-	var mapStateToProps = function mapStateToProps(state) {
+	var mapStateToProps = function mapStateToProps(state, ownprops) {
 		return {
 			searchResult: state.searchResults.results,
 			view: state.searchResults.view,
 			inprogress: state.searchResults.inprogress,
-			keyword: state.searchResults.keyword
+			keyword: state.searchResults.keyword,
+			query: ownprops.params.query
 		};
 	};
 	//components
@@ -28356,16 +28357,25 @@
 		_createClass(SearchResult, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.fetchSearchResults();
+				this.triggersearch();
 			}
 		}, {
-			key: 'getView',
-			value: function getView() {
-				if (this.props.view) {
-					return _react2.default.createElement(_packageCardsContainer2.default, { data: this.props.searchResult.results });
-				} else {
-					return _react2.default.createElement(_searchResultsListContainer2.default, { data: this.props.searchResult.results });
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevState) {
+				if (prevState.keyword != this.props.keyword) {
+					this.triggersearch();
 				}
+			}
+		}, {
+			key: 'triggersearch',
+			value: function triggersearch() {
+				var query = '';
+				if (this.props.keyword) {
+					query = this.props.keyword;
+				} else {
+					query = this.props.query;
+				}
+				this.props.fetchSearchResults(query);
 			}
 		}, {
 			key: 'changeView',
@@ -28382,7 +28392,7 @@
 						'Loading...'
 					);
 				} else {
-					var view = this.getView();
+	
 					return _react2.default.createElement(
 						'div',
 						{ className: 'clearfix' },
@@ -28411,7 +28421,7 @@
 									_react2.default.createElement(
 										'b',
 										null,
-										this.props.keyword
+										this.props.query
 									)
 								)
 							),
@@ -28429,7 +28439,7 @@
 									_react2.default.createElement('img', { src: grid })
 								)
 							),
-							view
+							_react2.default.createElement(_packageCardsContainer2.default, { className: this.props.view ? "card" : "list", data: this.props.searchResult.results })
 						)
 					);
 				}
@@ -28470,11 +28480,11 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function mapStateToProps(state) {
+	var mapStateToProps = function mapStateToProps(state) {
 	   return {
 	      popularCategories: state.frqPackages.details.popularCategories
 	   };
-	}
+	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(_PopularCategories2.default);
 
@@ -28753,7 +28763,7 @@
 						{ to: '/module/' + moduleName, key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
 						_react2.default.createElement(
 							_reactMaterialize.Card,
-							{ header: _react2.default.createElement(_reactMaterialize.CardTitle, { image: detail.image, waves: 'light' }),
+							{ className: _this2.props.className, header: _react2.default.createElement(_reactMaterialize.CardTitle, { image: detail.image, waves: 'light' }),
 								title: detail.name },
 							_react2.default.createElement(
 								'p',
@@ -33255,16 +33265,16 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.setModuleName = setModuleName;
+	exports.setModuleName = undefined;
 	
 	var _actionTypes = __webpack_require__(328);
 	
-	function setModuleName(moduleName) {
+	var setModuleName = exports.setModuleName = function setModuleName(moduleName) {
 		return {
 			type: _actionTypes.Set_MODULE,
 			payload: moduleName
 		};
-	}
+	};
 
 /***/ },
 /* 328 */
@@ -33404,7 +33414,7 @@
 								{ className: 'search-result-title' },
 								_react2.default.createElement(
 									_reactRouter.Link,
-									{ to: '/module' + moduleName, className: 'title', onClick: _this2.setModule.bind(_this2, moduleName) },
+									{ to: '/module/' + moduleName, className: 'title', onClick: _this2.setModule.bind(_this2, moduleName) },
 									data.name
 								)
 							),
@@ -33471,12 +33481,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.fetchSearchResults = fetchSearchResults;
-	exports.fetchSearchSuggestions = fetchSearchSuggestions;
-	exports.fetchPackageDetails = fetchPackageDetails;
-	exports.fetchReadMe = fetchReadMe;
-	exports.changeView = changeView;
-	exports.setKeyword = setKeyword;
+	exports.setKeyword = exports.changeView = exports.fetchReadMe = exports.fetchPackageDetails = exports.fetchSearchSuggestions = exports.fetchSearchResults = undefined;
 	
 	var _axios = __webpack_require__(337);
 	
@@ -33488,7 +33493,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function fetchSearchResults(keyword) {
+	var fetchSearchResults = exports.fetchSearchResults = function fetchSearchResults(keyword) {
 		return function (dispatch) {
 			(0, _integration.fetchSearchResultsData)(keyword).then(function (response) {
 				// Dispatch the success action with the payload
@@ -33504,9 +33509,9 @@
 				});
 			});
 		};
-	}
+	};
 	
-	function fetchSearchSuggestions(searchKey) {
+	var fetchSearchSuggestions = exports.fetchSearchSuggestions = function fetchSearchSuggestions(searchKey) {
 		/*return function(dispatch){*/
 		/*let url = 'https://ac.cnstrc.com/autocomplete/'+searchKey+'?autocomplete_key=CD06z4gVeqSXRiDL2ZNK&query='+searchKey;
 	 axios.get(url)
@@ -33527,9 +33532,9 @@
 	
 		/*};*/
 	
-	}
+	};
 	
-	function fetchPackageDetails(moduleName) {
+	var fetchPackageDetails = exports.fetchPackageDetails = function fetchPackageDetails(moduleName) {
 		return function (dispatch) {
 			(0, _integration.fetchPackageDetailsData)(moduleName).then(function (response) {
 				// Dispatch the success action with the payload
@@ -33545,9 +33550,9 @@
 				});
 			});
 		};
-	}
+	};
 	
-	function fetchReadMe(moduleName) {
+	var fetchReadMe = exports.fetchReadMe = function fetchReadMe(moduleName) {
 		return function (dispatch) {
 			(0, _integration.fetchPackageReadMe)(moduleName).then(function (response) {
 				// Dispatch the success action with the payload
@@ -33563,21 +33568,21 @@
 				});
 			});
 		};
-	}
+	};
 	
-	function changeView(value) {
+	var changeView = exports.changeView = function changeView(value) {
 		return {
 			type: _actionTypes.Change_VIEW,
 			payload: value
 		};
-	}
+	};
 	
-	function setKeyword(keyword) {
+	var setKeyword = exports.setKeyword = function setKeyword(keyword) {
 		return {
 			type: _actionTypes.Set_KEY,
 			payload: keyword
 		};
-	}
+	};
 
 /***/ },
 /* 337 */
@@ -35077,15 +35082,6 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.getData = getData;
-	exports.fetchStepsToPublish = fetchStepsToPublish;
-	exports.fetchCardsData = fetchCardsData;
-	exports.fetchSearchResultsData = fetchSearchResultsData;
-	exports.fetchPopularData = fetchPopularData;
-	exports.fetchPackageDetailsData = fetchPackageDetailsData;
-	exports.fetchPackageReadMe = fetchPackageReadMe;
-	exports.validateActiveSession = validateActiveSession;
-	exports.login = login;
 	//http://delvmpwappexch.sapient.com/artifactory/content/data/tags.json
 	
 	var axios = __webpack_require__(337);
@@ -35094,46 +35090,51 @@
 	
 	var artApis = new Artifactory();
 	
-	function getData(url) {
+	var getData = exports.getData = function getData(url) {
 		return axios.get(url).then(function (response) {
 			return response;
 		}).catch(function (error) {
 			return error;
 		});
-	}
+	};
 	
-	function fetchStepsToPublish() {
+	var fetchStepsToPublish = exports.fetchStepsToPublish = function fetchStepsToPublish() {
 		var url = 'https://api.myjson.com/bins/pywyl';
 		return getData(url);
 	};
 	
-	function fetchCardsData() {
+	var fetchCardsData = exports.fetchCardsData = function fetchCardsData() {
 		var url = '/artifactory/content/data/featured.json';
 		return getData(url);
-	}
+	};
 	
-	function fetchSearchResultsData(keyword) {
-		var url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword=' + keyword;
-		return getData(url);
-	}
+	var fetchSearchResultsData = exports.fetchSearchResultsData = function fetchSearchResultsData(keyword) {
+		/*let url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword='+keyword;*/
+		if (keyword.toLowerCase() == 'sample') {
+			var url = 'https://api.myjson.com/bins/1df3jp';
+			return getData(url);
+		} else {
+			return getData('https://api.myjson.com/bins/1cgsz9');
+		}
+	};
 	
-	function fetchPopularData() {
+	var fetchPopularData = exports.fetchPopularData = function fetchPopularData() {
 		var url = '/artifactory/content/data/tags.json';
 		return getData(url);
-	}
+	};
 	
-	function fetchPackageDetailsData(moduleName) {
+	var fetchPackageDetailsData = exports.fetchPackageDetailsData = function fetchPackageDetailsData(moduleName) {
 		var url = '/artifactory/api/plugins/execute/moduledetails?params=module=' + moduleName;
 		// let url = 'https://api.myjson.com/bins/1bn52t';
 		return getData(url);
-	}
+	};
 	
-	function fetchPackageReadMe() {
+	var fetchPackageReadMe = exports.fetchPackageReadMe = function fetchPackageReadMe() {
 		var url = '/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
 		return getData(url);
-	}
+	};
 	
-	function validateActiveSession() {
+	var validateActiveSession = exports.validateActiveSession = function validateActiveSession() {
 		return artApis.getAuthCurrent().then(function (result) {
 	
 			if (result.body.name === 'anonymous') {
@@ -35147,9 +35148,9 @@
 			console.log(error);
 			return false;
 		});
-	}
+	};
 	
-	function login(user, password) {
+	var login = exports.login = function login(user, password) {
 		return artApis.postAuthLogin({
 			'body': {
 				'user': user,
@@ -35160,7 +35161,7 @@
 		}).catch(function (error) {
 			return error;
 		});
-	}
+	};
 
 /***/ },
 /* 363 */
@@ -35193,7 +35194,7 @@
 	
 	    /**
 	     * Gets current `UserProfile` object.
-	      * @method
+	       * @method
 	     * @name artifactory#getAuthCurrent
 	     *
 	     */
@@ -48174,7 +48175,7 @@
 								_react2.default.createElement(
 									'a',
 									{ target: '_blank', href: repoLink },
-									this.props.packageDetails.github
+									repoLink
 								)
 							),
 							_react2.default.createElement(
@@ -48401,11 +48402,6 @@
 		}
 	
 		_createClass(Accordion, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				this.props.fetchSteps();
-			}
-		}, {
 			key: 'toggle',
 			value: function toggle(x) {
 				if (x === 1) {
@@ -48421,8 +48417,78 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var codeItem = JSON.stringify(this.props.steps.codeItem, null, 4);
-	
+				var mvnDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
+				var npmDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
+				var mvnCodeItem = JSON.stringify({
+					"name": "artifact-connect",
+					"version": "1.0.0",
+					"description": "Connects multiple module repositories for a onestop platfom.",
+					"scripts": {
+						"clean": "rimraf dist",
+						"build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+						"build": "npm run clean && npm run build:webpack",
+						"dev": "cross-env NODE_ENV=development npm start",
+						"start": "node devServer.js",
+						"lint": "eslint src"
+					},
+					"devDependencies": {
+						"autoprefixer": "^6.3.1",
+						"axios": "^0.15.3",
+						"babel-core": "^6.3.15",
+						"babel-eslint": "^5.0.0-beta4",
+						"babel-loader": "^6.2.0",
+						"babel-preset-es2015": "^6.3.13",
+						"babel-preset-react": "^6.3.13",
+						"babel-preset-react-hmre": "^1.0.0",
+						"classnames": "^2.2.5",
+						"webpack-dev-middleware": "^1.4.0",
+						"webpack-hot-middleware": "^2.6.0"
+					},
+					"dependencies": {
+						"react": "^0.14.3",
+						"react-dom": "^0.14.3",
+						"react-redux": "^4.1.1",
+						"react-router": "^3.0.0",
+						"redux": "^3.6.0",
+						"redux-thunk": "^1.0.3",
+						"webpack-dashboard": "^0.2.0"
+					}
+				}, null, 4);
+				var npmCodeItem = JSON.stringify({
+					"name": "artifact-connect",
+					"version": "1.0.0",
+					"description": "Connects multiple module repositories for a onestop platfom.",
+					"scripts": {
+						"clean": "rimraf dist",
+						"build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+						"build": "npm run clean && npm run build:webpack",
+						"dev": "cross-env NODE_ENV=development npm start",
+						"start": "node devServer.js",
+						"lint": "eslint src"
+					},
+					"devDependencies": {
+						"autoprefixer": "^6.3.1",
+						"axios": "^0.15.3",
+						"babel-core": "^6.3.15",
+						"babel-eslint": "^5.0.0-beta4",
+						"babel-loader": "^6.2.0",
+						"babel-preset-es2015": "^6.3.13",
+						"babel-preset-react": "^6.3.13",
+						"babel-preset-react-hmre": "^1.0.0",
+						"classnames": "^2.2.5",
+						"webpack-dev-middleware": "^1.4.0",
+						"webpack-hot-middleware": "^2.6.0"
+					},
+					"dependencies": {
+						"react": "^0.14.3",
+						"react-dom": "^0.14.3",
+						"react-redux": "^4.1.1",
+						"react-router": "^3.0.0",
+						"redux": "^3.6.0",
+						"redux-thunk": "^1.0.3",
+						"webpack-dashboard": "^0.2.0"
+					}
+				}, null, 4);
 				return _react2.default.createElement(
 					'div',
 					{ className: 'accordion' },
@@ -48440,7 +48506,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								this.props.steps.description
+								mvnDescription
 							),
 							_react2.default.createElement(
 								'pre',
@@ -48448,7 +48514,7 @@
 								_react2.default.createElement(
 									'code',
 									null,
-									codeItem
+									mvnCodeItem
 								)
 							)
 						)
@@ -48467,7 +48533,7 @@
 							_react2.default.createElement(
 								'p',
 								null,
-								this.props.steps.description
+								npmDescription
 							),
 							_react2.default.createElement(
 								'pre',
@@ -48475,7 +48541,7 @@
 								_react2.default.createElement(
 									'code',
 									null,
-									codeItem
+									npmCodeItem
 								)
 							)
 						)
@@ -48505,7 +48571,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.fetchSteps = fetchSteps;
+	exports.fetchSteps = undefined;
 	
 	var _axios = __webpack_require__(337);
 	
@@ -48517,7 +48583,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function fetchSteps() {
+	var fetchSteps = exports.fetchSteps = function fetchSteps() {
 		return function (dispatch) {
 			(0, _integration.fetchStepsToPublish)().then(function (response) {
 				// Dispatch the success action with the payload
@@ -48533,7 +48599,7 @@
 				});
 			});
 		};
-	}
+	};
 
 /***/ },
 /* 451 */
@@ -48829,7 +48895,8 @@
 	        updateSearchValue: _searchSuggestionActions.updateSearchValue,
 	        fetchSearchSuggestions: _searchResultAction.fetchSearchSuggestions,
 	        handleDownArrow: _searchSuggestionActions.handleDownArrow,
-	        fetchSearchResults: _searchResultAction2.fetchSearchResults
+	        fetchSearchResults: _searchResultAction2.fetchSearchResults,
+	        setKeyword: _searchResultAction2.setKeyword
 	    }, dispatch);
 	};
 	
@@ -48888,7 +48955,12 @@
 	        key: 'searchFunction',
 	        value: function searchFunction(value) {
 	            var input = this.searchInputTitle.value;
-	            this.props.fetchSearchResults(input);
+	            /*this.props.fetchSearchResults(input);*/
+	            if (input == null || input == '') {
+	                input = ' ';
+	            }
+	            this.props.setKeyword(input);
+	            _reactRouter.browserHistory.push('/results/keyword=' + input);
 	        }
 	    }, {
 	        key: 'onClickOut',
@@ -48926,26 +48998,14 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'search-bar' },
-	                _react2.default.createElement('input', { className: 'search-input',
-	                    placeholder: 'Search',
-	                    ref: function ref(el) {
+	                _react2.default.createElement('input', { className: 'search-input', placeholder: 'Search', ref: function ref(el) {
 	                        _this2.searchInputTitle = el;
-	                    },
-	                    onKeyDown: this.handleKeyDown.bind(this)
-	                }),
-	                ' ',
+	                    }, defaultValue: this.props.query, onKeyDown: this.handleKeyDown.bind(this) }),
 	                _react2.default.createElement(
-	                    _reactRouter.Link,
-	                    { to: '/results',
-	                        className: 'search-router' },
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'search-icon fa fa-search', onClick: this.searchFunction.bind(this) },
-	                        ' '
-	                    ),
+	                    'span',
+	                    { className: 'search-icon fa fa-search', onClick: this.searchFunction.bind(this) },
 	                    ' '
-	                ),
-	                '  '
+	                )
 	            );
 	        }
 	    }]);
@@ -49808,8 +49868,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.fetchPackageCards = fetchPackageCards;
-	exports.fetchLandingPopularData = fetchLandingPopularData;
+	exports.fetchLandingPopularData = exports.fetchPackageCards = undefined;
 	
 	var _axios = __webpack_require__(337);
 	
@@ -49821,7 +49880,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function fetchPackageCards() {
+	var fetchPackageCards = exports.fetchPackageCards = function fetchPackageCards() {
 		return function (dispatch) {
 			(0, _integration.fetchCardsData)().then(function (response) {
 				// Dispatch the success action with the payload
@@ -49837,9 +49896,9 @@
 				});
 			});
 		};
-	}
+	};
 	
-	function fetchLandingPopularData() {
+	var fetchLandingPopularData = exports.fetchLandingPopularData = function fetchLandingPopularData() {
 		//AJAX call to fetch project list data
 		return function (dispatch) {
 			(0, _integration.fetchPopularData)().then(function (response) {
@@ -49856,7 +49915,7 @@
 				});
 			});
 		};
-	}
+	};
 
 /***/ },
 /* 477 */
@@ -52248,7 +52307,7 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	/* Importing reducers */
-	function mapStateToProps(state) {
+	var mapStateToProps = function mapStateToProps(state) {
 	    return {
 	        validUserData: state.loginReducer.validUserData,
 	        validPassData: state.loginReducer.validPassData,
@@ -52256,17 +52315,17 @@
 	        userIdData: state.loginReducer.userIdData,
 	        errorfree: state.loginReducer.errorfree
 	    };
-	}
+	};
 	/* Importing Login component. */
 	
 	/*  Importing actions */
 	
 	
-	function mapDispatchToProps(dispatch) {
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	    return {
 	        actions: (0, _redux.bindActionCreators)(FormActions, dispatch)
 	    };
-	}
+	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Login2.default);
 
@@ -52279,41 +52338,38 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.dataValidated = dataValidated;
-	exports.validUserId = validUserId;
-	exports.validPassword = validPassword;
-	exports.resetState = resetState;
+	exports.resetState = exports.validPassword = exports.validUserId = exports.dataValidated = undefined;
 	
 	var _actionTypes = __webpack_require__(328);
 	
-	function dataValidated(errorfree) {
+	var dataValidated = exports.dataValidated = function dataValidated(errorfree) {
 		return {
 			type: _actionTypes.DATA_VALIDATED,
 			errorfree: errorfree
 		};
-	}
+	};
 	
-	function validUserId(validUserData, userIdData) {
+	var validUserId = exports.validUserId = function validUserId(validUserData, userIdData) {
 		return {
 			type: _actionTypes.VALID_USER_ID,
 			validUserData: validUserData,
 			userIdData: userIdData
 		};
-	}
+	};
 	
-	function validPassword(validPassData, passwordData) {
+	var validPassword = exports.validPassword = function validPassword(validPassData, passwordData) {
 		return {
 			type: _actionTypes.VALID_PASSWORD,
 			validPassData: validPassData,
 			passwordData: passwordData
 		};
-	}
+	};
 	
-	function resetState() {
+	var resetState = exports.resetState = function resetState() {
 		return {
 			type: _actionTypes.RESET
 		};
-	}
+	};
 
 /***/ },
 /* 512 */
@@ -52719,12 +52775,12 @@
 	            var propData = {
 	                text: 'text',
 	                password: 'password',
-	                phn: 'Sapient NT ID',
+	                phn: 'Login ID',
 	                phpw: 'Password',
 	                title1: 'project ',
 	                title2: 'Tracker',
-	                icon1: 'ion-person',
-	                icon2: 'ion-locked',
+	                icon1: 'fa fa-user',
+	                icon2: 'fa fa-lock',
 	                nid: 'nt-id',
 	                npassword: 'nt-password',
 	                inputClass: 'user-id',
@@ -52826,7 +52882,7 @@
 			var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this, props));
 	
 			_this.change = _this.change.bind(_this);
-			_this.state = { value: null };
+			_this.state = { value: '' };
 			_this.classNameInput = _this.classNameInput.bind(_this);
 			return _this;
 		}
@@ -53053,48 +53109,21 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.authTransition = undefined;
-	exports.default = getCookie;
 	
 	var _reactRouter = __webpack_require__(179);
 	
 	var _integration = __webpack_require__(362);
 	
-	function getCookie(key) {
-	    var cookieKey = key + '=';
-	    var cookieData = document.cookie.split(';');
-	    for (var i = 0; i < cookieData.length; i++) {
-	        var c = cookieData[i];
-	        while (c.charAt(0) == ' ') {
-	            c = c.substring(1);
-	        }
-	        if (c.indexOf(cookieKey) == 0) {
-	            return c.substring(cookieKey.length, c.length);
-	        }
-	    }
-	    return '';
-	}
-	
 	var authTransition = exports.authTransition = function authTransition() {
 	
-	    var result = (0, _integration.validateActiveSession)().then(function (result) {
-	        if (!result) {
-	            _reactRouter.browserHistory.push('/login');
-	        }
-	    });
-	
-	    // browserHistory.push('landing-page');
-	
-	    /*const token = getCookie('x-access-token');
-	     axios.post('', null, {headers:{'x-access-token': token}}).then(function (response){
-	    	if(response.data.isValid){
-	     	}
-	    	else{
-	        	browserHistory.push('/');
-	    	}
-	    });*/
+	  var result = (0, _integration.validateActiveSession)().then(function (result) {
+	    if (result) {
+	      _reactRouter.browserHistory.push('/login');
+	    }
+	  });
 	};
 
 /***/ },

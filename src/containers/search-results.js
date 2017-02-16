@@ -5,12 +5,13 @@ import SearchResult from '../components/SearchResult';
 //actions
 import {fetchSearchResults, changeView} from '../actions/search-result-action.js';
 import { setModuleName } from '../actions/link-action.js'
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state,ownprops)=> {
 	return {
 		searchResult:state.searchResults.results,
 		view:state.searchResults.view,
 		inprogress:state.searchResults.inprogress,
-		keyword:state.searchResults.keyword
+		keyword:state.searchResults.keyword,
+		query:ownprops.params.query
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

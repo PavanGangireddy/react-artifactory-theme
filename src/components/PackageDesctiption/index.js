@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import './package-description.scss';
+import './styles/index.scss';
 var MarkdownIt  = require('markdown-it'),
 md = new MarkdownIt();
 

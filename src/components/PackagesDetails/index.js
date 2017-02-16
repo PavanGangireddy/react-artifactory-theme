@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import './package-details.scss'
+import './styles/index.scss';
 export default class PackageDetails extends Component{
 	
 	render(){

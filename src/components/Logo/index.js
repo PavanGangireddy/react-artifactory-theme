@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import './logo.scss';
+import './styles/index.scss';
 
-const logo = require('./logo.png');
+const logo = require('./assets/logo.png');
 
 const Logo=()=>(
 	<div className = 'logo'>

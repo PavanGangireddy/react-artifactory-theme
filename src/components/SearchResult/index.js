@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import './search-results.scss';
+import './styles/index.scss';
 import PopularCategories from './../../containers/popular-categories';
 import FrequentPackagesContainer from './../../containers/frequent-packages-container';
 import PackageCards from './../../containers/package-cards-container';
 import SearchResultList from './../../containers/search-results-list-container';
-const list = require('./list.png'),
-		grid = require('./grid.png');
+const list = require('./assets/list.png'),
+		grid = require('./assets/grid.png');
 export default class SearchResult extends Component{
-	componentWillMount() {
-		this.props.fetchSearchResults();
+	componentWillMount(){
+		this.triggersearch()
 	}
-	getView(){
-		if(this.props.view){
-			return(<PackageCards data={this.props.searchResult.results}/>);
+	componentDidUpdate(prevState){
+		console.log(prevState.keyword,this.props.keyword)
+		if(prevState.keyword!=this.props.keyword){
+			this.triggersearch()
 		}
-		else{
-			return(<SearchResultList data={this.props.searchResult.results}/>);
-		}
+	}
+	triggersearch(){
+			let query='';
+			if(this.props.keyword){
+				query=this.props.keyword
+			}
+			else{
+				query=this.props.query
+			}
+			this.props.fetchSearchResults(query);
 	}
 	changeView(value){
 		this.props.changeView(value);
@@ -27,8 +35,8 @@ export default class SearchResult extends Component{
 			return <div className='loader'>Loading...</div>
 		}
 		else{
-			let view=this.getView();
-			return(
+			
+				return(
 				<div className='clearfix'>
 					<div className='col-md-2'>
 						<PopularCategories />
@@ -37,16 +45,16 @@ export default class SearchResult extends Component{
 					<div className='col-md-10 search-result'>
 						<div className='result-header'>
 							<h4>{this.props.searchResult.results.length} PACKAGES FOUND</h4>
-							<div>for <b>{this.props.keyword}</b></div>
+							<div>for <b>{this.props.query}</b></div>
 						</div>
 						<div className='switch-view'>
 							<span className='list-view-icon' onClick = {this.changeView.bind(this,0)}><img src={list} /></span>
 							<span className='grid-view-icon' onClick = {this.changeView.bind(this,1)}><img src={grid} /></span>
 						</div>
-						{view}
+							<PackageCards className={this.props.view ? "card" : "list"} data={this.props.searchResult.results}/>
 					</div>					
-				</div>
-			)
+				</div>			
+				)
 		}
 	}
 }

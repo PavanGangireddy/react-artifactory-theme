@@ -1,11 +1,11 @@
 import React from 'react';
-import './styles.scss';
+import './styles/index.scss';
 
 export default class Input extends React.Component {  
 	constructor(props){
 		super(props);		
 		this.change = this.change.bind(this);
-		this.state ={value: null};
+		this.state ={value: ''};
 		this.classNameInput = this.classNameInput.bind(this); 
 	}
 	componentDidUpdate() {

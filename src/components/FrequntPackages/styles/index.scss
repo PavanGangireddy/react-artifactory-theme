@@ -1,0 +1,35 @@
+@import './../../../styles/_variables.scss';
+.popular-tag-container{
+	font-family: 'SapientSansMedium';
+    word-wrap: break-word;
+    text-align: center;
+    border: 1px solid $gray-medium;
+    margin: 20px 0 10px 0;
+    padding: 0;
+	.popular-tags{
+		cursor:pointer;
+		padding:10px 0 0 0;
+		.text-size-1{
+			font-size: 12px;
+		}
+		.text-size-2{
+			font-size: 13px;
+		}
+		.text-size-3{
+			font-size: 14px;
+		}
+		.text-size-4{
+			font-size: 16px;
+		}
+		.text-size-5{
+			font-size:18px;
+		}
+	}
+	.tag-icon-container{
+		width:50px;
+		height:50px;
+		.tag-icon{
+			width:50px;
+		}
+	}
+}

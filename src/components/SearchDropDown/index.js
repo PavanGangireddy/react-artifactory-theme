@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import './search-drop-down.scss';
+import './styles/index.scss';
 var cx = require('classnames');
 export default class SearchDropDown extends Component{
 	

@@ -196,7 +196,7 @@
   display: inline-block;
   width: 16%;
   height: 50px;
-  padding: 10px 1% 0 0;
+  padding: 10px 1% 0 10px;
   text-align: center; }
 .search-bar {
   width: 95%;
@@ -269,10 +269,6 @@
     vertical-align: -webkit-baseline-middle; }
     .nav-bar span a:focus, .nav-bar span a:hover {
       text-decoration: none; }
-.git-logo {
-  width: 5%;
-  float: right; }
-
 footer.page-footer {
   position: absolute;
   bottom: 0;
@@ -337,15 +333,16 @@ footer.page-footer {
   left: 50%;
   margin-top: -160px;
   margin-left: -110px; }
-.login-input {
+input.login-input {
   box-sizing: border-box;
   margin-top: 20px;
   width: 219px;
   padding-left: 35px;
   height: 40px;
   border: none;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); }
-  .login-input:focus {
+  font-size: 16px;
+  box-shadow: 2px 2px 2px #bbb; }
+  input.login-input:focus {
     outline: none; }
 
 .login-icon {

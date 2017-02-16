@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './popular-categories.scss'
+import './styles/index.scss'
 export default class PopularCategories extends Component{
 	render(){
 		return(

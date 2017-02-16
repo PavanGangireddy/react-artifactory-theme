@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Table } from 'react-materialize';
-import './details-side-bar.scss';
+import './styles/index.scss';
 export default class DetailsSideBar extends Component{
 	componentWillMount(){
 		this.props.fetchPackageDetails(this.props.moduleName);

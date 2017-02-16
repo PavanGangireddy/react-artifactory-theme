@@ -3,7 +3,7 @@ import Logo from './../Logo';
 import SearchBarContainer from './../../containers/search-bar-container';
 import StepsButton from './../StepsButton';
 import {Link} from 'react-router';
-import './header.scss';
+import './styles/index.scss';
 
 export default class Header extends Component{
 	render(){

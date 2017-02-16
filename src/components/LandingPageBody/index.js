@@ -3,7 +3,7 @@ import PopularCategories from './../../containers/popular-categories';
 import Carousel from './../Carousel';
 import PackageCards from './../../containers/package-cards-container';
 import FrequentPackagesContainer from './../../containers/frequent-packages-container';
-import './landing-page-body.scss';
+import './styles/index.scss';
 export default class LandingPageBody extends Component{
 	componentWillMount(){
 		this.props.fetchPackageCards();

@@ -4,7 +4,7 @@ import SearchBar from './../components/SearchBar';
 
 import { searchSuggestion,selectedSearch,updateSearchValue,handleDownArrow } from './../actions/search-suggestion-actions';
 import {fetchSearchSuggestions} from './../actions/search-result-action'
-import {fetchSearchResults} from '../actions/search-result-action.js';
+import {fetchSearchResults, setKeyword} from '../actions/search-result-action.js';
 const mapStateToProps = (state)=>  {
     return{
        enable:state.frqPackages.enable,
@@ -24,7 +24,8 @@ const mapDispatchToProps = (dispatch) => {
       updateSearchValue:updateSearchValue,
       fetchSearchSuggestions:fetchSearchSuggestions,
       handleDownArrow:handleDownArrow,
-      fetchSearchResults
+      fetchSearchResults,
+      setKeyword
     },dispatch);
 }
 

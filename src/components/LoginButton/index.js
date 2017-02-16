@@ -1,5 +1,5 @@
 import React from 'react';
-import './login-button.scss';
+import './styles/index.scss';
 import {browserHistory} from 'react-router';
 import {login} from '../../actions/integration';
 import axios from 'axios';

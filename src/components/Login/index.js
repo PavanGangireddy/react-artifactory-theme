@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react';
 /* Importing styles */
-import './styles.scss';
+import './styles/index.scss';
 
 /*  Importing components */
 import Logo from '../Logo';
 import Input from '../Input';
 import LoginButton from '../LoginButton';
 
-const logo = require('./logo.png');
+const logo = require('./assets/logo.png');
 
 /* Container for login form */
 export default class LoginContainer extends React.Component {

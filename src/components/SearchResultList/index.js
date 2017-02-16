@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import './search-result-list.scss';
-const logo = require('./iea-logo.jpg');
+import './styles/index.scss';
+const logo = require('./assets/iea-logo.jpg');
 export default class SearchResult extends Component{
 	setModule(moduleName){
 		this.props.setModuleName(moduleName);
@@ -19,7 +19,7 @@ export default class SearchResult extends Component{
 									<img src={data.image} className='search-package-logo' alt='package logo'/>
 								</div>
 								<h3 className='search-result-title'>
-									<Link to={'/module'+moduleName} className='title' onClick={this.setModule.bind(this,moduleName)}>{data.name}</Link>
+									<Link to={'/module/'+moduleName} className='title' onClick={this.setModule.bind(this,moduleName)}>{data.name}</Link>
 								</h3>
 								<span className='result-version'>v{data.version}</span>
 							</li>

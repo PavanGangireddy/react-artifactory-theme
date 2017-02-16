@@ -1,0 +1,35 @@
+.search-result{
+
+	margin: 10px 0 0 0;
+	padding:0 2% 0 5%;
+
+}
+.list-view-icon{
+	width:20px;
+	height:20px;
+	cursor:pointer;
+	padding: 0 5px 0 5px;
+	img{
+		width:20px;
+	}
+}
+
+.grid-view-icon{
+	width:20px;
+	height:20px;
+	cursor:pointer;
+	padding: 0 5px 0 5px;
+	img{
+		width:20px;
+	}	
+}
+
+.result-header{
+	display: inline-block;
+    width: 90%;
+}
+
+.switch-view{
+	display: inline-block;
+    vertical-align: super;
+}

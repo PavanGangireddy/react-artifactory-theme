@@ -14,7 +14,7 @@ const allRoutes = () => {
       <Route path="/login" component={LoginContainer}></Route>
   	   <Route path="/" component={LandingPageContainer} onEnter={authTransition}>
 	         <IndexRoute component={LandingPageBodyContainer}/>
-	         <Route path='/results' component={SearchResultContainer} />
+	         <Route path='/results/keyword=:query' component={SearchResultContainer} />
 	         <Route path= '/module/:moduleName' component= {DescriptionPageBody}  />
 	        <Route path= '/steps-to-publish' component= {StepsPageBody} />
 	     </Route>

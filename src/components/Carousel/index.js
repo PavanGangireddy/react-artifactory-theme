@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import './carousel.scss';
-const carousel_img_1 = require('./img1.jpg'),
-      carousel_img_2 = require('./img2.jpg'),
-      carousel_img_3 = require('./img3.jpg')
+import './styles/index.scss';
+const carousel_img_1 = require('./assets/img1.jpg'),
+      carousel_img_2 = require('./assets/img2.jpg'),
+      carousel_img_3 = require('./assets/img3.jpg')
 const settings = {
       slidesToShow: 2,
     }

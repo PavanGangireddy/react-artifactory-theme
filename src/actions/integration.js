@@ -27,8 +27,15 @@ export const fetchCardsData = () =>{
 }
 
 export const fetchSearchResultsData = (keyword) =>{
-	let url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword='+keyword;
-	return getData(url);
+	/*let url = '/artifactory/api/plugins/execute/searchbykeyword?params=keyword='+keyword;*/
+	if(keyword.toLowerCase() == 'sample'){
+		let url = 'https://api.myjson.com/bins/1df3jp';
+		return getData(url);
+	}
+	else{
+		return getData('https://api.myjson.com/bins/1cgsz9');
+	}
+	
 }
 
 export const fetchPopularData = () =>{

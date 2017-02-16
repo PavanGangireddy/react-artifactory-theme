@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Card,CardTitle,Row } from 'react-materialize';
-import './package-cards.scss';
-const logo = require('./iea-logo.jpg');
+import './styles/index.scss';
+const logo = require('./assets/iea-logo.jpg');
 export default class PackageCards extends Component{
 	setModule(moduleName){
 		this.props.setModuleName(moduleName);
@@ -15,7 +15,7 @@ export default class PackageCards extends Component{
 						detail.image = logo;
 					}
 					moduleName = detail.name;
-					return (<Link to={'/module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card header={<CardTitle image={detail.image} waves='light'/>}
+					return (<Link to={'/module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className} header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
 				    <p>{detail.version}</p>
 				</Card></Link>);

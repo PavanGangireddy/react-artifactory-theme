@@ -5,7 +5,6 @@ import {fetchReadMe} from '../actions/search-result-action.js'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
 const mapStateToProps = (state)=> {
-	
 	return {
 		inprogress:state.searchResults.descInprogress,
 		data:state.searchResults.descriptionData,
