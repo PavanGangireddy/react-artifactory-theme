@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PopularCategories from './../../containers/popular-categories';
 import Carousel from './../Carousel';
 import PackageCards from './../../containers/package-cards-container';
-import FrequentPackagesContainer from './../../containers/frequent-packages-container';
+import PopularKeywords from './../../containers/popular-keywords-container';
 import './styles/index.scss';
 export default class LandingPageBody extends Component{
 	componentWillMount(){
@@ -17,7 +17,7 @@ export default class LandingPageBody extends Component{
 				<div className="clearfix">
 					<div className='col-md-2'>
 						<PopularCategories />
-						<FrequentPackagesContainer />
+						<PopularKeywords />
 					</div>
 					<div className='col-md-10 landing-page-content'>
 						<Carousel />

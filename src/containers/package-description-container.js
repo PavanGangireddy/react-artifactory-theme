@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import {fetchReadMe} from '../actions/search-result-action.js'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state,ownprops)=> {
+	console.log(ownprops);
 	return {
 		inprogress:state.searchResults.descInprogress,
 		data:state.searchResults.descriptionData,

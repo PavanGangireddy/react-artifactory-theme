@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 import './styles/index.scss';
 import PopularCategories from './../../containers/popular-categories';
-import FrequentPackagesContainer from './../../containers/frequent-packages-container';
+import PopularKeywords from './../../containers/popular-keywords-container';
 import PackageCards from './../../containers/package-cards-container';
 import SearchResultList from './../../containers/search-results-list-container';
 const list = require('./assets/list.png'),
@@ -40,7 +40,7 @@ export default class SearchResult extends Component{
 				<div className='clearfix'>
 					<div className='col-md-2'>
 						<PopularCategories />
-						<FrequentPackagesContainer />
+						<PopularKeywords />
 					</div>
 					<div className='col-md-10 search-result'>
 						<div className='result-header'>

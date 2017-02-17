@@ -35,5 +35,32 @@
 }
 
 .list{
-	
+	display: -webkit-box;
+    border-bottom: 1px solid $gray-light;
+    width: 90%;
+    padding: 15px;
+    margin: 10px 20px 0 10px;
+    transition: box-shadow .25s;
+    height: 100px;
+    background:transparent;
+    box-shadow:none;
+    border-radius: 0px;
+    text-align:left;
+    .card-image{
+	    width: 60px;
+	    height: 60px;
+	    border-radius: 10px;
+	    img {
+    		min-height: 0px;
+		}
+	}
+	.card-content{
+		padding:15px 20px;
+	}
+	&:hover{
+		box-shadow:none;
+	}
+	.card-content .card-title{
+		padding:0 0 5px 0;
+	}
 }

@@ -20,7 +20,7 @@
     &::-webkit-input-placeholder {
         font-size: 20px;
     }
-    &::-moz-placeholder {  /* Firefox 19+ */
+    &::-moz-placeholder {
         font-size: 20px;
     }
     &:-ms-input-placeholder {
@@ -35,6 +35,7 @@
     display: inline;
     padding: 10px;
     font-size: 1.4em;
+    cursor:pointer;
 }
 .search-router{
   outline: none;

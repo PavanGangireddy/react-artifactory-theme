@@ -48,7 +48,7 @@ export default class SearchBar extends Component {
     render() {
         return ( 
             <div className = 'search-bar'>
-                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } defaultValue={this.props.query}onKeyDown = { this.handleKeyDown.bind(this) } /> 
+                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } defaultValue={this.props.query} onKeyDown = { this.handleKeyDown.bind(this) } /> 
                 <span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> 
             </div>
         )
