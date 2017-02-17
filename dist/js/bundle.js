@@ -53116,7 +53116,7 @@
 	var authTransition = exports.authTransition = function authTransition() {
 	
 	  var result = (0, _integration.validateActiveSession)().then(function (result) {
-	    if (result) {
+	    if (!result) {
 	      _reactRouter.browserHistory.push('/login');
 	    }
 	  });
