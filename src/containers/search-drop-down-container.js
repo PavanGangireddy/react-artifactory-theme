@@ -6,10 +6,10 @@ import { selectedSearch,handleDownArrow } from './../actions/search-suggestion-a
 import {fetchSearchSuggestions} from './../actions/search-result-action'
 const mapStateToProps = (state)=>  {
     return{
-       enable:state.frqPackages.enable,
-       searchSelected:state.frqPackages.searchSelected,
+       enable:state.popularKeywords.enable,
+       searchSelected:state.popularKeywords.searchSelected,
        searchResults:state.searchResults.searchResults,
-       searchValue:state.frqPackages.searchValue,
+       searchValue:state.popularKeywords.searchValue,
        inprogress:state.searchResults.SearchInprogress,
        activeIndex:state.searchResults.activeIndex
     };

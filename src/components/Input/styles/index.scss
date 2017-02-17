@@ -19,9 +19,6 @@ input.login-input{
 	margin-left: 10px;
 }
 
-/* 
-	Red color border for invalid input
- */
 .invalid-input {
-	border:1px red solid;
+	border:1px solid $red;
 }

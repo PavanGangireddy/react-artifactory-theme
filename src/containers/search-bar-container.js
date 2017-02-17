@@ -7,10 +7,10 @@ import {fetchSearchSuggestions} from './../actions/search-result-action'
 import {fetchSearchResults, setKeyword} from '../actions/search-result-action.js';
 const mapStateToProps = (state)=>  {
     return{
-       enable:state.frqPackages.enable,
-       searchSelected:state.frqPackages.searchSelected,
+       enable:state.popularKeywords.enable,
+       searchSelected:state.popularKeywords.searchSelected,
        searchResults:state.searchResults.searchResults,
-       searchValue:state.frqPackages.searchValue,
+       searchValue:state.popularKeywords.searchValue,
        inprogress:state.searchResults.inprogress,
        activeIndex:state.searchResults.activeIndex,
        defaultInput:state.searchResults.defaultInput

@@ -7,7 +7,7 @@ import {fetchLandingPopularData} from '../actions/landing-page-body-actions';
 
 const mapStateToProps = (state)=> {
 	return {
-		inprogress:state.frqPackages.inprogress
+		inprogress:state.popularKeywords.inprogress
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

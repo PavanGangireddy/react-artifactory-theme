@@ -6,7 +6,7 @@ import PopularKeywords from '../components/PopularKeywords';
 
 const mapStateToProps = (state)=> {
 	return {
-		frequent:state.frqPackages.details.frequentlySearched
+		popularKeywords:state.popularKeywords.details.frequentlySearched
 	};
  }
 

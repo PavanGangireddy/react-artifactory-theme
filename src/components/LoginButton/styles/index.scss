@@ -1,17 +1,12 @@
 @import './../../../styles/_variables.scss';
 .login-button{
   box-sizing:border-box;
-  color:white;
   font-weight:bold;
-  background-color: $blue-light;
   width: 220px;
   height: 40px;
   border: none;
   margin-top: 10px;
   opacity:0.5; 
-  &:focus {
-    background-color: $blue;
-  } 
 }
 .button-enable{
 	cursor:pointer;

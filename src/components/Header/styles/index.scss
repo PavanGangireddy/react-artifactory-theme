@@ -1,12 +1,10 @@
 @import './../../../styles/_variables.scss';
 .header{
-	background:$black-light;
 	height:75px;
 	padding:15px 20px;
 }
 .nav-bar{
 	height:50px;
-	background:$black-light;
 	span{
 		padding: 0 5%;
 		display: inline-block;

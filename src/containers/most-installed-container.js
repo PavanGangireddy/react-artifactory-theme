@@ -7,7 +7,7 @@ import MostIntsalledPackages from '../components/MostInstalledPackages';
 
 const mapStateToProps = (state)=> {
 	return {
-		details:state.frqPackages.details.pacakges
+		details:state.popularKeywords.details.pacakges
 	};
  }
 

@@ -4,29 +4,26 @@
     height: 50px;
     display: inline-block;
     padding: 10px;
- 
     vertical-align: middle;
     .search-input{
-        color:$whitish-gray;
-    background:transparent;
-    height: 40px;
-    width: 90%;
-    padding-left: 10px;
-    color: white;
-    border: 0;
-    border-bottom: 2px solid $gray-medium;
-    outline: none;
-    font-size:1.5em;
-    &::-webkit-input-placeholder {
-        font-size: 20px;
+        background:transparent;
+        height: 40px;
+        width: 90%;
+        padding-left: 10px;
+        border: 0;
+        border-bottom: 2px solid $gray-medium;
+        outline: none;
+        font-size:1.5em;
+        &::-webkit-input-placeholder {
+            font-size: 20px;
+        }
+        &::-moz-placeholder {
+            font-size: 20px;
+        }
+        &:-ms-input-placeholder {
+            font-size: 20px;
+        }
     }
-    &::-moz-placeholder {
-        font-size: 20px;
-    }
-    &:-ms-input-placeholder {
-        font-size: 20px;
-    }
-}
 }
 
 .search-icon{
