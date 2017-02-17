@@ -7,7 +7,6 @@ import Logo from '../Logo';
 import Input from '../Input';
 import LoginButton from '../LoginButton';
 
-const logo = require('./assets/logo.png');
 
 /* Container for login form */
 export default class LoginContainer extends React.Component {
