@@ -17,10 +17,7 @@ export default class Input extends React.Component {
 		}
 	}
 
-/*
-  *	Event Handler for validation of userId and password.
-  * @param {object} e - It triggers when the target value changes. 
-*/
+
 	change(e) {
 		this.setState({value:e.target.value}, validateData);
 		function validateData(){
@@ -45,9 +42,6 @@ export default class Input extends React.Component {
 
 	}
 
-/*
-  *	Adding class for displaying invalid input format.
-*/
 	classNameInput() {
 		if(this.props.class=='user-id'){
 			if(this.props.validUserData || this.props.validUserData==undefined ){

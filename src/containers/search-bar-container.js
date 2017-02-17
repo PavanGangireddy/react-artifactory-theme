@@ -13,7 +13,7 @@ const mapStateToProps = (state)=>  {
        searchValue:state.popularKeywords.searchValue,
        inprogress:state.searchResults.inprogress,
        activeIndex:state.searchResults.activeIndex,
-       defaultInput:state.searchResults.defaultInput
+       defaultInput:state.searchResults.defaultInput,   
     };
 }
 

@@ -6,7 +6,7 @@ export default class StepsButton extends Component{
 	render(){
 		return(
 			<Link to='/steps-to-publish'>
-				<Button className='steps-button' waves='light'>Steps to Publish<Icon left>info</Icon></Button>
+				<Button className='steps-button' waves='light'>HELP<Icon left>info</Icon></Button>
 			</Link>	
 		)
 	}

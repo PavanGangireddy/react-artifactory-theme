@@ -28,6 +28,21 @@
     }
 }
 
+.accordion{
+	background:$whitish-gray;
+	section h3{
+		color:white;
+	}
+}
+
+.accordion-header{
+	background:$gray-medium;
+}
+
+.accordion-content{
+	background:$white;
+}
+
 .login-button{
   color:white;
   background-color: $blue-light;

@@ -6,7 +6,6 @@ import SearchResult from '../components/SearchResult';
 import {fetchSearchResults, changeView} from '../actions/search-result-action.js';
 import { setModuleName } from '../actions/link-action.js'
 const mapStateToProps = (state,ownprops)=> {
-	console.log(ownprops);
 	return {
 		searchResult:state.searchResults.results,
 		view:state.searchResults.view,

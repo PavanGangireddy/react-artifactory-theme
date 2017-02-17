@@ -6243,6 +6243,17 @@ button.close {
 .search-bar .search-input {
   color: #fff; }
 
+.accordion {
+  background: #eee; }
+  .accordion section h3 {
+    color: white; }
+
+.accordion-header {
+  background: #bbb; }
+
+.accordion-content {
+  background: #fff; }
+
 .login-button {
   color: white;
   background-color: #1daeea; }
