@@ -1,22 +1,66 @@
-.search-result {
-  margin: 10px 0 0 0;
-  padding: 0 2% 0 5%; }
+.package-description {
+  font-family: 'SapientSansRegular'; }
+  .package-description .code {
+    background-clip: padding-box;
+    border: 1px solid #d6d6d6;
+    display: inline-block;
+    line-height: 20px;
+    margin: 0 2px -1px;
+    padding: 0px 3px;
+    vertical-align: baseline;
+    border-radius: 4px; }
+.package-details-side {
+  font-family: 'SapientSansRegular'; }
+  .package-details-side .details-list {
+    margin: 20px 0 0 0;
+    list-style: none; }
+    .package-details-side .details-list li {
+      margin: 10px 15% 0 5%;
+      padding: 5px 0;
+      border-bottom: 1px solid #d6d6d6; }
+    .package-details-side .details-list .github-repo-link {
+      cursor: pointer; }
+  .package-details-side .details-logo-container {
+    width: 50px;
+    height: 50px;
+    text-align: left;
+    padding: 0 2% 0 0;
+    display: inline; }
+  .package-details-side .publisher-logo {
+    width: 50px; }
+  .package-details-side .details {
+    margin: 30px 15% 0 5%; }
+    .package-details-side .details .version-history {
+      width: 60%;
+      margin: 0 15% 20px 0; }
+      .package-details-side .details .version-history th, .package-details-side .details .version-history td {
+        padding: 0 2% 0 6%; }
+      .package-details-side .details .version-history td {
+        text-align: center;
+        padding: 5px 0px;
+        border-bottom: 1px solid #d6d6d6; }
+.display {
+  display: block; }
 
-.list-view-icon, .grid-view-icon {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  padding: 0 5px 0 5px; }
-  .list-view-icon img, .grid-view-icon img {
-    width: 20px; }
+.accordion {
+  margin: 20px 0;
+  padding: 10px 2%; }
+  .accordion section h3 {
+    margin: 0px;
+    font-family: 'SapientSansBold';
+    cursor: pointer; }
 
-.result-header {
-  display: inline-block;
-  width: 90%; }
+.accordion-header {
+  padding: 10px 5px;
+  border-bottom: 1px solid #fff; }
 
-.switch-view {
-  display: inline-block;
-  vertical-align: super; }
+.accordion-content {
+  padding: 10px;
+  font-family: 'SapientSansRegular';
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -ms-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out; }
 .popular-categories-container {
   font-family: 'SapientSansMedium';
   margin: 15px 0 0 0;
@@ -143,69 +187,25 @@
   .search-logo-container .search-package-logo {
     max-width: 90%;
     height: 3em; }
-.package-description {
-  font-family: 'SapientSansRegular'; }
-  .package-description .code {
-    background-clip: padding-box;
-    border: 1px solid #d6d6d6;
-    display: inline-block;
-    line-height: 20px;
-    margin: 0 2px -1px;
-    padding: 0px 3px;
-    vertical-align: baseline;
-    border-radius: 4px; }
-.package-details-side {
-  font-family: 'SapientSansRegular'; }
-  .package-details-side .details-list {
-    margin: 20px 0 0 0;
-    list-style: none; }
-    .package-details-side .details-list li {
-      margin: 10px 15% 0 5%;
-      padding: 5px 0;
-      border-bottom: 1px solid #d6d6d6; }
-    .package-details-side .details-list .github-repo-link {
-      cursor: pointer; }
-  .package-details-side .details-logo-container {
-    width: 50px;
-    height: 50px;
-    text-align: left;
-    padding: 0 2% 0 0;
-    display: inline; }
-  .package-details-side .publisher-logo {
-    width: 50px; }
-  .package-details-side .details {
-    margin: 30px 15% 0 5%; }
-    .package-details-side .details .version-history {
-      width: 60%;
-      margin: 0 15% 20px 0; }
-      .package-details-side .details .version-history th, .package-details-side .details .version-history td {
-        padding: 0 2% 0 6%; }
-      .package-details-side .details .version-history td {
-        text-align: center;
-        padding: 5px 0px;
-        border-bottom: 1px solid #d6d6d6; }
-.display {
-  display: block; }
+.search-result {
+  margin: 10px 0 0 0;
+  padding: 0 2% 0 5%; }
 
-.accordion {
-  margin: 20px 0;
-  padding: 10px 2%; }
-  .accordion section h3 {
-    margin: 0px;
-    font-family: 'SapientSansBold';
-    cursor: pointer; }
+.list-view-icon, .grid-view-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 0 5px 0 5px; }
+  .list-view-icon img, .grid-view-icon img {
+    width: 20px; }
 
-.accordion-header {
-  padding: 10px 5px;
-  border-bottom: 1px solid #fff; }
+.result-header {
+  display: inline-block;
+  width: 90%; }
 
-.accordion-content {
-  padding: 10px;
-  font-family: 'SapientSansRegular';
-  -webkit-transition: all 2s ease-in-out;
-  -moz-transition: all 2s ease-in-out;
-  -ms-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out; }
+.switch-view {
+  display: inline-block;
+  vertical-align: super; }
 .logo {
   background: url(/images/logo.png) no-repeat;
   width: 100%;
@@ -213,6 +213,28 @@
   margin: 10px 0 0 0;
   padding: 10px 1% 0 10px;
   text-align: center; }
+.btn.steps-button {
+  margin: 5px 0 0 0; }
+.disable-suggestions {
+  display: none; }
+
+.display-suggestions {
+  width: 93%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #000; }
+  .display-suggestions .a {
+    color: #666;
+    text-decoration: none; }
+  .display-suggestions div {
+    font-family: 'SapientSansRegular';
+    padding-left: 2%;
+    padding-top: 15px;
+    height: 50px; }
+    .display-suggestions div .sub-string {
+      font-weight: bold;
+      font-size: 1.2em; }
 .search-bar {
   width: 95%;
   height: 50px;
@@ -248,26 +270,6 @@
   margin-left: -30px; }
   .search-router:hover {
     text-decoration: none; }
-.disable-suggestions {
-  display: none; }
-
-.display-suggestions {
-  width: 93%;
-  display: block;
-  position: relative;
-  z-index: 1;
-  border: 1px solid #000; }
-  .display-suggestions .a {
-    color: #666;
-    text-decoration: none; }
-  .display-suggestions div {
-    font-family: 'SapientSansRegular';
-    padding-left: 2%;
-    padding-top: 15px;
-    height: 50px; }
-    .display-suggestions div .sub-string {
-      font-weight: bold;
-      font-size: 1.2em; }
 .header {
   height: 75px;
   padding: 15px 20px; }
@@ -6293,7 +6295,7 @@ body {
   margin: 100px auto;
   text-align: center;
   font-size: 32px;
-  color: #9C9C9C;
+  color: #d6d6d6;
   font-weight: bold; }
 
 /*# sourceMappingURL=bundle.css.map*/
