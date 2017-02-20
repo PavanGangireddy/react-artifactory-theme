@@ -53066,10 +53066,10 @@
 	            var buttonContext = this;
 	            e.preventDefault();
 	            (0, _integration.login)(this.props.userIdData, this.props.passwordData).then(function (response) {
-	                if (response.body.error) {
-	                    buttonContext.setState({ showError: true });
-	                } else {
+	                if (typeof response.body.error === "undefined") {
 	                    _reactRouter.browserHistory.goBack();
+	                } else {
+	                    buttonContext.setState({ showError: true });
 	                }
 	            }).catch(function (error) {
 	                console.log("Call to login failed");
