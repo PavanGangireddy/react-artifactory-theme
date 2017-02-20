@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
-
-import DescriptionPageBody from './components/DescriptionPageBody';
 import StepsPageBody from './components/StepsPageBody';
 
 import SearchResultContainer from './containers/search-results';
+import DescriptionPageBody from './containers/description-page';
 import LandingPageContainer from './containers/landing-page';
 import LandingPageBodyContainer from './containers/landing-page-body';
 import LoginContainer from './containers/login';
