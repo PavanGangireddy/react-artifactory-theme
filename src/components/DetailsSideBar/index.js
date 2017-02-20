@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Table } from 'react-materialize';
+import moment from 'moment';
 /* Importing styles */
 import './styles/index.scss';
 
@@ -8,14 +9,20 @@ import './styles/index.scss';
 export default class DetailsSideBar extends Component{
 	
 	componentWillMount(){
-		this.props.fetchPackageDetails(this.props.moduleName);
+		if(this.props.moduleName){
+			this.props.fetchPackageDetails(this.props.moduleName);
+		}else{
+			this.props.fetchPackageDetails(this.props.module);
+		}
+		
 	}
 	setReadmePath(readmePath){
 		this.props.setReadme(readmePath);
 	}
 	render(){
+		 
 		let publisher = this.props.packageDetails.publisher;
-		let lastModifiedOn = this.props.packageDetails.lastModifiedOn;
+		let lastModifiedOn = moment(this.props.packageDetails.lastModifiedOn).format('DD-MMM-YYYY');
 		let version = this.props.packageDetails.version
 		let repoLink = this.props.packageDetails.scm;
 		this.setReadmePath(this.props.packageDetails.readme);

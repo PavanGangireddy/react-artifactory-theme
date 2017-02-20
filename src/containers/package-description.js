@@ -9,7 +9,8 @@ const mapStateToProps = (state)=> {
 		inprogress:state.packageDetails.descInprogress,
 		data:state.packageDetails.descriptionData,
 		moduleName:state.linkReducer.moduleName,
-		readMePath:state.detailsSideBar.readMePath
+		readMePath:state.detailsSideBar.readMePath,
+		
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

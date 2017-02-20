@@ -47,7 +47,7 @@ export const fetchPackageDetailsData = (moduleName) =>{
 
 export const fetchPackageReadMe = (readMePath) =>{
 	let url = '/artifactory/'+readMePath;
-	return getData(readMePath);
+	return getData(url);
 }
 
 export const validateActiveSession = () =>{

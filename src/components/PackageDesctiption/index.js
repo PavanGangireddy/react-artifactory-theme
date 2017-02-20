@@ -8,7 +8,9 @@ let md = new MarkdownIt();
 /*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
 	componentWillMount(){
-		this.props.fetchReadMe(this.props.readMePath);
+		if(this.props.readMePath){
+			this.props.fetchReadMe(this.props.readMePath);
+		}
 	}
 	render(){
 		let result ="<div class='loader'>Loading...</div>";

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Card,CardTitle,Row } from 'react-materialize';
-
+import { browserHistory } from 'react-router';
 /*Import Styles*/
 import './styles/index.scss';
 
@@ -11,6 +11,7 @@ const logo = require('./assets/iea-logo.jpg');
 export default class PackageCards extends Component{
 	setModule(moduleName){
 		this.props.setModuleName(moduleName);
+		browserHistory.push('module/'+moduleName)
 	}
 	/*
 	*	Function to generate the Card using the Card from react-materialize
@@ -23,10 +24,10 @@ export default class PackageCards extends Component{
 						detail.image = logo;
 					}
 					moduleName = detail.name;
-					return (<Link to={'/module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
+					return (<a key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
 				    <p>{detail.version}</p>
-				</Card></Link>);
+				</Card></a>);
 			})
 		);
 	}
