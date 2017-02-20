@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './styles/index.scss';
 
 var userName, avatar = require('./assets/default.png');
+
 export default class SearchBar extends Component{
 	render(){
 		if(this.props.user){

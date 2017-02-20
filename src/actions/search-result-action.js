@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
-import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './integration'
+
+import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './../lib/integration'
+
 export const fetchSearchResults = (keyword) =>{
 	return function(dispatch){
 		fetchSearchResultsData(keyword)
@@ -20,29 +21,6 @@ export const fetchSearchResults = (keyword) =>{
     	});
 	};
 
-
-}
-
-export const  fetchSearchSuggestions = (searchKey) =>{
-	/*return function(dispatch){*/
-		/*let url = 'https://ac.cnstrc.com/autocomplete/'+searchKey+'?autocomplete_key=CD06z4gVeqSXRiDL2ZNK&query='+searchKey;
-		axios.get(url)
-		.then(function (response) {	
-		    // Dispatch the success action with the payload
-    		dispatch({
-		        type: Search_SUCCESS,
-		        payload: response.data.sections.packages,
-        	});
-    	}.bind(this))
-	  	.catch(function (error) {
-	    // Dispatch the error action with error information
-		    dispatch({
-		        type: Search_FAIL,
-		        error: error
-		    });
-    	});*/
-    	
-	/*};*/
 
 }
 

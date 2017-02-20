@@ -1,8 +1,10 @@
 import React from 'react';
-import './styles/index.scss';
-import {browserHistory} from 'react-router';
-import {login} from '../../actions/integration';
 import axios from 'axios';
+import {browserHistory} from 'react-router';
+
+import {login} from '../../lib/integration';
+
+import './styles/index.scss';
 
 export default class LoginButton extends React.Component {
 	constructor(props){
@@ -30,7 +32,6 @@ export default class LoginButton extends React.Component {
            else {
               buttonContext.setState({showError : true});
            }
-
        })
        .catch(function (error) {
 	        console.log("Call to login failed");

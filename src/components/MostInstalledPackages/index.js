@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import PackageDetails from './../PackagesDetails';
+
 import './styles/index.scss';
 
 export default class MostIntsalledPackages extends Component{

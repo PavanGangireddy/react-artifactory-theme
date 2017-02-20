@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Button, Icon } from 'react-materialize';
+
 import './styles/index.scss';
-export default class StepsButton extends Component{
-	render(){
-		return(
-			<Link to='/steps-to-publish'>
-				<Button className='steps-button' waves='light'>HELP<Icon left>info</Icon></Button>
-			</Link>	
-		)
-	}
-}
+
+const StepsButton = ()=>(
+	<Link to='/steps-to-publish'>
+		<Button className='steps-button' waves='light'>HELP<Icon left>info</Icon></Button>
+	</Link>
+)
+
+export default StepsButton;

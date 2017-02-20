@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
+import MarkdownIt  from 'markdown-it';
+
 import './styles/index.scss';
-var MarkdownIt  = require('markdown-it'),
-md = new MarkdownIt();
+
+let md = new MarkdownIt();
 
 export default class PackageDesctiption extends Component{
 	componentWillMount(){

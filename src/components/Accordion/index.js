@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+
 import './styles/index.scss';
+
 export default class Accordion extends Component{
 	constructor(props){
 		super(props)
@@ -18,15 +20,14 @@ export default class Accordion extends Component{
 			this.setState({
 				active:[false,!this.state.active[1]]
 			})
-		}
-		
+		}	
 	}
 
 	
 	render(){
 		let mvnDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
-	let npmDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
-	let mvnCodeItem = JSON.stringify({
+		let npmDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
+		let mvnCodeItem = JSON.stringify({
 				"name": "artifact-connect",
 				"version": "1.0.0",
 				"description": "Connects multiple module repositories for a onestop platfom.",
@@ -61,7 +62,7 @@ export default class Accordion extends Component{
 				"webpack-dashboard": "^0.2.0"
 				}
 			}, null, 4);
-	let npmCodeItem = JSON.stringify({
+		let npmCodeItem = JSON.stringify({
 				"name": "artifact-connect",
 				"version": "1.0.0",
 				"description": "Connects multiple module repositories for a onestop platfom.",

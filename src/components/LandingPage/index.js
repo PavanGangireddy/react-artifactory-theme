@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import PopularCategories from './../../containers/popular-categories';
+
 import Header from './../Header';
 import PageFooter from './../PageFooter';
+
+import PopularCategories from './../../containers/popular-categories';
+
 export default class LandingPage extends Component{
 	componentWillMount(){
 		this.props.fetchLandingPopularData();

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, IndexRoute} from 'react-router';
-import routes from './routes';
-import './styles/main.scss';
-import LandingPageContainer from './containers/landing-page-container'
 import {Provider} from 'react-redux';
+
+import routes from './routes';
+
+import LandingPageContainer from './containers/landing-page'
+
 import { configureStore } from './store/configureStore';
+
+import './styles/main.scss';
+
 const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>
-		
-			{routes()}
-		
+		{routes()}
 	</Provider>,document.getElementById('root')
 );

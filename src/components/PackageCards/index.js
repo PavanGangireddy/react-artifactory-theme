@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Card,CardTitle,Row } from 'react-materialize';
+
 import './styles/index.scss';
+
 const logo = require('./assets/iea-logo.jpg');
+
 export default class PackageCards extends Component{
 	setModule(moduleName){
 		this.props.setModuleName(moduleName);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+
 import './styles/index.scss';
+
 export default class PopularKeywords extends Component{
 	makeQuery(e){
 		let keyword = e.target.text;

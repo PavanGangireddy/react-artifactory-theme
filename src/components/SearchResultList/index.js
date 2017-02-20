@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
+
 import './styles/index.scss';
+
 const logo = require('./assets/iea-logo.jpg');
+
 export default class SearchResult extends Component{
 	setModule(moduleName){
 		this.props.setModuleName(moduleName);

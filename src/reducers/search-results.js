@@ -5,22 +5,16 @@ export default function searchResultsReducer(state = {
 	inprogress:true,
 	dataError:false,
 	searchResults:[],
-	activeIndex: -1,
-	defaultInput:'',
-	details:{},
 	view:0,
-	detailsInprogress:true,
-	descInprogress:true,
-	searchInprogress:true,
 	keyword:''
 }, action) {
   switch (action.type) {
-	  case Result_SUCCESS:
+	  	case Result_SUCCESS:
 	    return Object.assign({},state,{
 	    	inprogress:false,
 	    	results:action.payload
 	    });
-	  case Result_FAIL:
+	  	case Result_FAIL:
 	    return Object.assign({},state,{
 	    	inprogress:false,
 	    	dataError:true,
@@ -34,33 +28,6 @@ export default function searchResultsReducer(state = {
 	    case Search_FAIL:
 	    return Object.assign({},state,{
 	    	searchInprogress:false,
-	    	dataError:true,
-	    	error:action.error
-	    });
-	    case Handle_FOCUS:
-	    return Object.assign({},state,{
-	    	activeIndex:action.activeIndex,
-	    	defaultInput:action.defaultInput
-	    });
-	    case Details_SUCCESS:
-	    return Object.assign({},state,{
-	    	detailsInprogress:false,
-	    	details:action.payload
-	    });
-	    case Details_FAIL:
-	    return Object.assign({},state,{
-	    	detailsInprogress:false,
-	    	dataError:true,
-	    	error:action.error
-	    });
-	     case Description_SUCCESS:
-	    return Object.assign({},state,{
-	    	descInprogress:false,
-	    	descriptionData:action.payload
-	    });
-	    case Description_FAIL:
-	    return Object.assign({},state,{
-	    	descInprogress:false,
 	    	dataError:true,
 	    	error:action.error
 	    });

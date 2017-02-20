@@ -1,4 +1,5 @@
 import { DATA_VALIDATED, VALID_USER_ID, VALID_PASSWORD, RESET} from '../constants/action-types';
+
 export const dataValidated = (errorfree) =>{
 	return {
 		type: DATA_VALIDATED,

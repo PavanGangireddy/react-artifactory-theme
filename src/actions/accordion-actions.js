@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { Steps_SUCCESS, Steps_FAIL} from './../constants/action-types';
-import { fetchStepsToPublish } from './integration';
+
+import { fetchStepsToPublish } from './../lib/integration';
+
 export const fetchSteps = () =>{
 	return function(dispatch){
 		fetchStepsToPublish()

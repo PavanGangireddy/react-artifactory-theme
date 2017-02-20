@@ -1,6 +1,7 @@
-import axios from 'axios';
 import {Card_SUCCESS, Card_FAIL, Request_FULFILLED_FREQ, Request_REJECTED_FREQ} from './../constants/action-types';
-import { fetchCardsData, fetchPopularData } from './integration';
+
+import { fetchCardsData, fetchPopularData } from './../lib/integration';
+
 export const fetchPackageCards = () =>{
 	return function(dispatch){
 		fetchCardsData()

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import SearchResultContainer from './containers/search-results';
+
+
 import DescriptionPageBody from './components/DescriptionPageBody';
 import StepsPageBody from './components/StepsPageBody';
-import LandingPageContainer from './containers/landing-page-container';
-import MostInstalledContainer from './containers/most-installed-container';
+
+import SearchResultContainer from './containers/search-results';
+import LandingPageContainer from './containers/landing-page';
+import MostInstalledContainer from './containers/most-installed';
 import LandingPageBodyContainer from './containers/landing-page-body';
-import LoginContainer from './containers/login-container';
+import LoginContainer from './containers/login';
+
 import { authTransition } from './utility';
+
 const allRoutes = () => {
   return (
   	<Router history={browserHistory} >

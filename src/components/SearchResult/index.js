@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-import './styles/index.scss';
+
 import PopularCategories from './../../containers/popular-categories';
-import PopularKeywords from './../../containers/popular-keywords-container';
-import PackageCards from './../../containers/package-cards-container';
-import SearchResultList from './../../containers/search-results-list-container';
+import PopularKeywords from './../../containers/popular-keywords';
+import PackageCards from './../../containers/package-cards';
+import SearchResultList from './../../containers/search-results-list';
+
+import './styles/index.scss';
+
 const list = require('./assets/list.png'),
 		grid = require('./assets/grid.png');
+
 export default class SearchResult extends Component{
 	componentWillMount(){
 		this.triggersearch()

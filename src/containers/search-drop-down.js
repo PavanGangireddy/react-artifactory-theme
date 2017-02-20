@@ -11,7 +11,6 @@ const mapStateToProps = (state)=>  {
        searchResults:state.searchResults.searchResults,
        searchValue:state.popularKeywords.searchValue,
        inprogress:state.searchResults.SearchInprogress,
-       activeIndex:state.searchResults.activeIndex
     };
 }
 
