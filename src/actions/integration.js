@@ -84,5 +84,5 @@ export const login = (user,password)=>{
 
 	}).catch(function (error) {
 	  return error;
-	});
+	});	
 }
