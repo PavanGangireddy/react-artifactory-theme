@@ -5,6 +5,7 @@ import landingPageBodyReducer from './landing-page-body';
 import accordionReducer from './accordion';
 import loginReducer from './login';
 import linkReducer from './link';
+import detailsSideBarReducer from './details-side-bar';
 import packageDetailsReducer from './package-details';
 const rootReducer = combineReducers({
   popularKeywords:popularKeywordsReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   landingPage:landingPageBodyReducer,
   accordion:accordionReducer,
   packageDetails:packageDetailsReducer,
+  detailsSideBar:detailsSideBarReducer,
   loginReducer,
   linkReducer
 });

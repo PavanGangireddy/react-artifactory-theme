@@ -1,4 +1,4 @@
-import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Details_SUCCESS, Details_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
 
 import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './../lib/integration'
 
@@ -21,27 +21,6 @@ export const fetchSearchResults = (keyword) =>{
     	});
 	};
 
-
-}
-
-export const  fetchPackageDetails = (moduleName) =>{
-	return function(dispatch){
-		fetchPackageDetailsData(moduleName)
-		.then(function (response) {	
-		    // Dispatch the success action with the payload
-    		dispatch({
-		        type: Details_SUCCESS,
-		        payload: response.data.details,
-        	});
-    	}.bind(this))
-	  	.catch(function (error) {
-	    // Dispatch the error action with error information
-		    dispatch({
-		        type: Details_FAIL,
-		        error: error
-		    });
-    	});
-	};
 
 }
 

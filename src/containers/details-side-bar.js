@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 //components
 import DetailsSideBar from './../components/DetailsSideBar';
-import {fetchPackageDetails} from './../actions/search-result-actions';
+import {fetchPackageDetails, setReadme} from './../actions/details-side-bar-actions';
 
 const mapStateToProps = (state)=> {
 	return {
@@ -15,7 +15,8 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
-								fetchPackageDetails
+								fetchPackageDetails,
+								setReadme
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(DetailsSideBar);
