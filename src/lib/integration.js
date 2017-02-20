@@ -40,14 +40,15 @@ export const fetchPopularData = () =>{
 }
 
 export const fetchPackageDetailsData = (moduleName) =>{
-	let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;
-	/*let url = 'https://api.myjson.com/bins/v8qix';*/
+	/*let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;*/
+	let url = 'https://api.myjson.com/bins/sikkp';
 	return getData(url);
 }
 
 export const fetchPackageReadMe = (readMePath) =>{
-	let url = '/artifactory/'+readMePath;
-	return getData(url);
+	/*let url = '/artifactory/'+readMePath;
+	return getData(url);*/
+	return getData(readMePath)
 }
 
 export const validateActiveSession = () =>{

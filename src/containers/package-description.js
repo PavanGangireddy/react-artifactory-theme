@@ -10,7 +10,7 @@ const mapStateToProps = (state)=> {
 		data:state.packageDetails.descriptionData,
 		moduleName:state.linkReducer.moduleName,
 		readMePath:state.detailsSideBar.readMePath,
-		
+		packageDetails:state.packageDetails.details
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

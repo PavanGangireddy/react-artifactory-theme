@@ -7,10 +7,14 @@ import './styles/index.scss';
 let md = new MarkdownIt();
 /*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
-	componentWillMount(){
-		if(this.props.readMePath){
-			this.props.fetchReadMe(this.props.readMePath);
+	componentWillReceiveProps(nextProps){
+		console.log(nextProps);
+		if(nextProps.readMePath !== ""){
+			nextProps.fetchReadMe(nextProps.readMePath);
 		}
+	}
+	shouldComponentUpdate(nextProps, nextState){
+		return this.props.readMePath !== nextProps.readMePath
 	}
 	render(){
 		let result ="<div class='loader'>Loading...</div>";

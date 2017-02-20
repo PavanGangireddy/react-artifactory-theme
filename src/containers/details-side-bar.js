@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import DetailsSideBar from './../components/DetailsSideBar';
 import {fetchPackageDetails, setReadme} from './../actions/details-side-bar-actions';
 
-const mapStateToProps = (state,ownprops)=> {
+const mapStateToProps = (state)=> {
 	return {
 		inprogress:state.packageDetails.detailsInprogress,
 		packageDetails:state.packageDetails.details,
-		moduleName:state.linkReducer.moduleName,
+		moduleName:state.linkReducer.moduleName
 	};
  }
 
