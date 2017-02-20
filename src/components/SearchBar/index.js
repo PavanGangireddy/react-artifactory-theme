@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import debounce from 'lodash.debounce';
 
+/*Import Styles*/
 import './styles/index.scss';
 
+/*Search Bar Component*/
 export default class SearchBar extends Component {
     constructor(props) {
         super(props)
         this.searchInputTitle = null;
     }
+    /*
+    * Function to trigger search action
+    * @param {value} - the keyword eneterd by the user 
+    */
     searchFunction(value) {
         let input = this.searchInputTitle.value;
         if(input== null ||input==''){
@@ -19,9 +24,9 @@ export default class SearchBar extends Component {
         browserHistory.push('/results/keyword='+input);
         
     }
-    onClickOut() {
-        this.props.searchSuggestion(false);
-    }
+    /*
+    * Function to handle enter key on the search bar
+    */
     handleKeyDown(e, value) {
         let numOptions = this.props.searchResults.length;
 

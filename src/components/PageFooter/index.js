@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Footer } from 'react-materialize';
-
+/*Import Styles*/
 import './styles/index.scss'
-
+/*Footer Component*/
 export default class PageFooter extends Component {
   render() {
     return (

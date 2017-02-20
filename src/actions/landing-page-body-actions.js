@@ -23,7 +23,6 @@ export const fetchPackageCards = () =>{
 }
 
 export const fetchLandingPopularData = () =>{
-		//AJAX call to fetch project list data
 	return function(dispatch){
 		fetchPopularData()
 		.then(function (response) {	

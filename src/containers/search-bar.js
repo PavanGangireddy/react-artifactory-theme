@@ -12,17 +12,12 @@ const mapStateToProps = (state)=>  {
        searchResults:state.searchResults.searchResults,
        searchValue:state.popularKeywords.searchValue,
        inprogress:state.searchResults.inprogress,
-       activeIndex:state.searchResults.activeIndex,
        defaultInput:state.searchResults.defaultInput,   
     };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-      searchSuggestion:searchSuggestion,
-      selectedSearch:selectedSearch,
-      updateSearchValue:updateSearchValue,
-      fetchSearchSuggestions:fetchSearchSuggestions,
       handleDownArrow:handleDownArrow,
       fetchSearchResults,
       setKeyword

@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
+import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
+
 
 import {login} from '../../lib/integration';
 
 import './styles/index.scss';
 
-export default class LoginButton extends React.Component {
+export default class LoginButton extends Component {
 	constructor(props){
 		super(props);
         // Handle Function
@@ -17,10 +17,11 @@ export default class LoginButton extends React.Component {
     resetStates(){
         this.props.actions.resetState();
     }
-/*
-  *  Authentication of user on login Button, setting x-access-token and rerouting to Dashboard.
-  *  @params {Object} e - Event triggered on click of Login button.
-*/
+
+    /*
+    *  Authentication of user on login Button, setting x-access-token and rerouting to Dashboard.
+    *  @params {Object} e - Event triggered on click of Login button.
+    */
     submitForm(e) {
         let buttonContext = this;
         e.preventDefault();

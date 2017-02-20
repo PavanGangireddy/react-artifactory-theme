@@ -5,7 +5,6 @@ import {fetchReadMe} from '../actions/search-result-actions'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
 const mapStateToProps = (state,ownprops)=> {
-	console.log(ownprops);
 	return {
 		inprogress:state.packageDetails.descInprogress,
 		data:state.packageDetails.descriptionData,

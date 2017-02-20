@@ -5,7 +5,7 @@ import * as FormActions from '../actions/login-actions';
 /* Importing reducers */
 import rootReducer from '../reducers';
 /* Importing Login component. */
-import LoginContainer from '../components/Login';
+import Login from '../components/Login';
 
 const mapStateToProps = (state)=> {
     return {
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

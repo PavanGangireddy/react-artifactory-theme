@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import MarkdownIt  from 'markdown-it';
-
+/*Import Styles*/
 import './styles/index.scss';
 
+/*Create an instance of Markdown*/
 let md = new MarkdownIt();
-
+/*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
 	componentWillMount(){
 		this.props.fetchReadMe(this.props.moduleName);

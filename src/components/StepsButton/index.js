@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Button, Icon } from 'react-materialize';
-
+/*Import Styles*/
 import './styles/index.scss';
 
 const StepsButton = ()=>(

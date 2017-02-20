@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Table } from 'react-materialize';
-
+/* Importing styles */
 import './styles/index.scss';
 
+/*Details Side Bar Components of the Description Page*/
 export default class DetailsSideBar extends Component{
+	
 	componentWillMount(){
 		this.props.fetchPackageDetails(this.props.moduleName);
 	}
@@ -13,6 +15,7 @@ export default class DetailsSideBar extends Component{
 		let lastModifiedOn = this.props.packageDetails.lastModifiedOn;
 		let version = this.props.packageDetails.version
 		let repoLink = this.props.packageDetails.scm;
+		/*check for the data availability*/
 		if(this.props.inprogress){
 			return <div className='loader'>Loading...</div>
 		}

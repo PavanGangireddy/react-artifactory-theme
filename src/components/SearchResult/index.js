@@ -4,22 +4,25 @@ import {Link} from 'react-router';
 import PopularCategories from './../../containers/popular-categories';
 import PopularKeywords from './../../containers/popular-keywords';
 import PackageCards from './../../containers/package-cards';
-
+/*Import Styles*/
 import './styles/index.scss';
 
 const list = require('./assets/list.png'),
 		grid = require('./assets/grid.png');
 
+/*Search Result Component*/
 export default class SearchResult extends Component{
 	componentWillMount(){
 		this.triggersearch()
 	}
 	componentDidUpdate(prevState){
-		console.log(prevState.keyword,this.props.keyword)
-		if(prevState.keyword!=this.props.keyword){
+		if(prevState.keyword!=this.props.keyword){ //check for state update
 			this.triggersearch()
 		}
 	}
+	/*
+	* Function to trigger a search action
+	*/
 	triggersearch(){
 			let query='';
 			if(this.props.keyword){
@@ -30,6 +33,10 @@ export default class SearchResult extends Component{
 			}
 			this.props.fetchSearchResults(query);
 	}
+	/*
+	* Function to change view
+	* @param {value} - boolean to toggle between list and grid view
+	*/
 	changeView(value){
 		this.props.changeView(value);
 	}

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
-
+/*Import Styles*/
 import './styles/index.scss';
-
+/*Package Details Component*/
 export default class PackageDetails extends Component{
 	
 	render(){
 		let detail=this.props.detail;
 		return(
-
 			<section className='col-md-6'>
 				<div className='logo-container'>
 				<img src={detail.logo} className='package-logo' alt='package logo'/>

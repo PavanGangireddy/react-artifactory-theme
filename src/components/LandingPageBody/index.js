@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-
+/*Import Components*/
 import Carousel from './../Carousel';
-
+/*Import Containers*/
 import PopularCategories from './../../containers/popular-categories';
 import PackageCards from './../../containers/package-cards';
 import PopularKeywords from './../../containers/popular-keywords';
-
+/*Import Styles*/
 import './styles/index.scss';
 
+/*Landing Page Body Component*/
 export default class LandingPageBody extends Component{
 	componentWillMount(){
 		this.props.fetchPackageCards();

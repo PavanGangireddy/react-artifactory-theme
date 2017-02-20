@@ -255,13 +255,6 @@ footer.page-footer {
 
 .most-installed-header {
   margin-top: 15px; }
-.login-container {
-  width: 220px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -160px;
-  margin-left: -110px; }
 input.login-input {
   box-sizing: border-box;
   margin-top: 20px;
@@ -305,6 +298,13 @@ input.login-input {
 .button-container {
   margin-top: 10px;
   text-align: center; }
+.login-container {
+  width: 220px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -160px;
+  margin-left: -110px; }
 @charset "UTF-8";
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)

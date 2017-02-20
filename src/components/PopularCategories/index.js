@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-
+/*Import Styles*/
 import './styles/index.scss'
-
+/*Popular Categories component*/
 export default class PopularCategories extends Component{
+	/*
+	* Function to handle click event and trigger an action
+	*/
 	selectCategory(e){
 		let keyword = e.target.text.toLowerCase();
 		this.props.setKeyword(keyword);
