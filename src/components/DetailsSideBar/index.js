@@ -10,9 +10,11 @@ export default class DetailsSideBar extends Component{
 	
 	componentWillMount(){
 		if(this.props.moduleName){
-			this.props.fetchPackageDetails(this.props.moduleName);
+			this.props.fetchPackageDetails(this.props.moduleName).then(function(response){
+				this.setReadmePath(this.props.packageDetails.readme);
+			})
 		}else{
-			this.props.fetchPackageDetails(this.props.module);
+			this.props.fetchPackageDetails(this.props.query);
 		}
 		
 	}
@@ -25,7 +27,7 @@ export default class DetailsSideBar extends Component{
 		let lastModifiedOn = moment(this.props.packageDetails.lastModifiedOn).format('DD-MMM-YYYY');
 		let version = this.props.packageDetails.version
 		let repoLink = this.props.packageDetails.scm;
-		this.setReadmePath(this.props.packageDetails.readme);
+		
 		/*check for the data availability*/
 
 		if(this.props.inprogress){

@@ -9,7 +9,6 @@ const mapStateToProps = (state,ownprops)=> {
 		inprogress:state.packageDetails.detailsInprogress,
 		packageDetails:state.packageDetails.details,
 		moduleName:state.linkReducer.moduleName,
-		module:ownprops.params.query
 	};
  }
 

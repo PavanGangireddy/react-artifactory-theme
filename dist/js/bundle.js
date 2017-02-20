@@ -48260,8 +48260,7 @@
 		return {
 			inprogress: state.packageDetails.detailsInprogress,
 			packageDetails: state.packageDetails.details,
-			moduleName: state.linkReducer.moduleName,
-			module: ownprops.params.query
+			moduleName: state.linkReducer.moduleName
 		};
 	};
 	
@@ -48326,9 +48325,11 @@
 			key: 'componentWillMount',
 			value: function componentWillMount() {
 				if (this.props.moduleName) {
-					this.props.fetchPackageDetails(this.props.moduleName);
+					this.props.fetchPackageDetails(this.props.moduleName).then(function (response) {
+						this.setReadmePath(this.props.packageDetails.readme);
+					});
 				} else {
-					this.props.fetchPackageDetails(this.props.module);
+					this.props.fetchPackageDetails(this.props.query);
 				}
 			}
 		}, {
@@ -48345,7 +48346,7 @@
 				var lastModifiedOn = (0, _moment2.default)(this.props.packageDetails.lastModifiedOn).format('DD-MMM-YYYY');
 				var version = this.props.packageDetails.version;
 				var repoLink = this.props.packageDetails.scm;
-				this.setReadmePath(this.props.packageDetails.readme);
+	
 				/*check for the data availability*/
 	
 				if (this.props.inprogress) {
@@ -66981,13 +66982,13 @@
 	            var buttonContext = this;
 	            e.preventDefault();
 	            (0, _integration.login)(this.props.userIdData, this.props.passwordData).then(function (response) {
-	                if (typeof response.body === "undefined") {
-	                    _reactRouter.browserHistory.goBack();
-	                } else {
+	                if (response && response.body && response.body.error) {
 	                    buttonContext.setState({ showError: true });
+	                } else {
+	                    _reactRouter.browserHistory.goBack();
 	                }
 	            }).catch(function (error) {
-	                console.log("Call to login failed");
+	                console.log(error, "Call to login failed");
 	            });
 	        }
 	    }, {
