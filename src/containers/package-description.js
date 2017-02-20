@@ -4,11 +4,12 @@ import { bindActionCreators } from 'redux';
 import {fetchReadMe} from '../actions/search-result-actions'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
-const mapStateToProps = (state,ownprops)=> {
+const mapStateToProps = (state)=> {
 	return {
 		inprogress:state.packageDetails.descInprogress,
 		data:state.packageDetails.descriptionData,
-		moduleName:state.linkReducer.moduleName
+		moduleName:state.linkReducer.moduleName,
+		readMePath:state.detailsSideBar.readMePath
 	};
  }
 const mapDispatchToProps = (dispatch) =>{

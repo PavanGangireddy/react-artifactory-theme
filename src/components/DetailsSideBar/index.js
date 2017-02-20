@@ -10,12 +10,17 @@ export default class DetailsSideBar extends Component{
 	componentWillMount(){
 		this.props.fetchPackageDetails(this.props.moduleName);
 	}
+	setReadmePath(readmePath){
+		this.props.setReadme(readmePath);
+	}
 	render(){
 		let publisher = this.props.packageDetails.publisher;
 		let lastModifiedOn = this.props.packageDetails.lastModifiedOn;
 		let version = this.props.packageDetails.version
 		let repoLink = this.props.packageDetails.scm;
+		this.setReadmePath(this.props.packageDetails.readme);
 		/*check for the data availability*/
+
 		if(this.props.inprogress){
 			return <div className='loader'>Loading...</div>
 		}

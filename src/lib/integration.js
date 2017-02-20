@@ -41,13 +41,13 @@ export const fetchPopularData = () =>{
 
 export const fetchPackageDetailsData = (moduleName) =>{
 	let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;
-	// let url = 'https://api.myjson.com/bins/1bn52t';
+	/*let url = 'https://api.myjson.com/bins/v8qix';*/
 	return getData(url);
 }
 
-export const fetchPackageReadMe = () =>{
-	let url = '/artifactory/npm-local/elevator/-/elevator-1.0.0.tgz%21/package/README.md';
-	return getData(url);
+export const fetchPackageReadMe = (readMePath) =>{
+	let url = '/artifactory/'+readMePath;
+	return getData(readMePath);
 }
 
 export const validateActiveSession = () =>{

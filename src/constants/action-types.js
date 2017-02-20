@@ -21,3 +21,4 @@ export const VALID_PASSWORD = 'VALID_PASSWORD';
 export const RESET = 'RESET';
 export const Set_KEY = 'Set_KEY';
 export const Set_MODULE = 'Set_MODULE';
+export const Set_README = 'Set_README';
