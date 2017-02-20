@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 //components
 import PopularKeywords from '../components/PopularKeywords';
-import {setKeyword} from '../actions/search-result-action.js';
+import {setKeyword} from '../actions/search-result-actions';
 
 const mapStateToProps = (state)=> {
 	return {

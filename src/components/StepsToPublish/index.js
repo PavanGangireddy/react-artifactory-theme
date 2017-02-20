@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Accordion from './../../containers/accordion';
+import Accordion from './../Accordion';
 
 const StepsToPublish = ()=>(
 	<div className='col-md-6'>

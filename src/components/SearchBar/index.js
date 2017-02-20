@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import debounce from 'lodash.debounce';
 
-import SearchDropDown from './../../containers/search-drop-down';
-
 import './styles/index.scss';
 
 export default class SearchBar extends Component {

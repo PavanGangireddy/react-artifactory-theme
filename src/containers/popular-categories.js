@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PopularCategories from './../components/PopularCategories';
-import {setKeyword} from '../actions/search-result-action.js';
+import {setKeyword} from '../actions/search-result-actions';
 const mapStateToProps = (state)=> {
     return{
        popularCategories:state.popularKeywords.details.popularCategories,

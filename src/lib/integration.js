@@ -16,11 +16,6 @@ export const getData = (url) =>{
     	});
 }
 
-export const fetchStepsToPublish = () =>{
-	let url = 'https://api.myjson.com/bins/pywyl';
-	return getData(url);
-};
-
 export const fetchCardsData = () =>{
 	let url = '/artifactory/content/data/featured.json';
 	return getData(url);

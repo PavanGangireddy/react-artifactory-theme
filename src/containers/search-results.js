@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 //components
 import SearchResult from '../components/SearchResult';
 //actions
-import {fetchSearchResults, changeView} from '../actions/search-result-action.js';
-import { setModuleName } from '../actions/link-action.js'
+import {fetchSearchResults, changeView} from '../actions/search-result-actions';
+import { setModuleName } from '../actions/link-actions.js'
 const mapStateToProps = (state,ownprops)=> {
 	return {
 		searchResult:state.searchResults.results,

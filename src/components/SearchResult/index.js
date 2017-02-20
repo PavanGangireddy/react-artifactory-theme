@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import PopularCategories from './../../containers/popular-categories';
 import PopularKeywords from './../../containers/popular-keywords';
 import PackageCards from './../../containers/package-cards';
-import SearchResultList from './../../containers/search-results-list';
 
 import './styles/index.scss';
 

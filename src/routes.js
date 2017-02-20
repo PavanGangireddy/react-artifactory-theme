@@ -7,7 +7,6 @@ import StepsPageBody from './components/StepsPageBody';
 
 import SearchResultContainer from './containers/search-results';
 import LandingPageContainer from './containers/landing-page';
-import MostInstalledContainer from './containers/most-installed';
 import LandingPageBodyContainer from './containers/landing-page-body';
 import LoginContainer from './containers/login';
 

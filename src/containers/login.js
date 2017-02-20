@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 /*  Importing actions */
-import * as FormActions from '../actions/login-action';
+import * as FormActions from '../actions/login-actions';
 /* Importing reducers */
 import rootReducer from '../reducers';
 /* Importing Login component. */

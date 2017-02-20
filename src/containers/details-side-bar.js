@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 //components
 import DetailsSideBar from './../components/DetailsSideBar';
-import {fetchPackageDetails} from './../actions/search-result-action';
+import {fetchPackageDetails} from './../actions/search-result-actions';
 
 const mapStateToProps = (state)=> {
 	return {

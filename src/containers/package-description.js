@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 //actions
-import {fetchReadMe} from '../actions/search-result-action.js'
+import {fetchReadMe} from '../actions/search-result-actions'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
 const mapStateToProps = (state,ownprops)=> {

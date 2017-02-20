@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import SearchBar from './../components/SearchBar';
 
 import { searchSuggestion,selectedSearch,updateSearchValue,handleDownArrow } from './../actions/search-suggestion-actions';
-import {fetchSearchSuggestions} from './../actions/search-result-action'
-import {fetchSearchResults, setKeyword} from '../actions/search-result-action.js';
+import {fetchSearchSuggestions} from './../actions/search-result-actions'
+import {fetchSearchResults, setKeyword} from '../actions/search-result-actions';
 const mapStateToProps = (state)=>  {
     return{
        enable:state.popularKeywords.enable,
