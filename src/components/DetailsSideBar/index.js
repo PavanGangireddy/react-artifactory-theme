@@ -17,7 +17,9 @@ export default class DetailsSideBar extends Component{
 		
 	}
 	componentWillReceiveProps (nextProps) {
-		this.props.setReadme(nextProps.packageDetails.readme);
+		if(this.props.packageDetails.readme !== nextProps.packageDetails.readme){
+			this.props.setReadme(nextProps.packageDetails.readme);
+		}
 	}
 	render(){
 		 

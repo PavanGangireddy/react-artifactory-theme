@@ -8,19 +8,15 @@ let md = new MarkdownIt();
 /*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
 	componentWillReceiveProps(nextProps){
-		console.log(nextProps);
-		if(nextProps.readMePath !== ""){
+		if(nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath){
 			nextProps.fetchReadMe(nextProps.readMePath);
 		}
-	}
-	shouldComponentUpdate(nextProps, nextState){
-		return this.props.readMePath !== nextProps.readMePath
 	}
 	render(){
 		let result ="<div class='loader'>Loading...</div>";
 		if(!this.props.inprogress){
 			if(this.props.data!=null){
-				result = md.render(this.props.data);
+				result = md.render(this.props.data.data);
 			}
 			else{
 				result ="<div class='loader'>No Data</div>";
