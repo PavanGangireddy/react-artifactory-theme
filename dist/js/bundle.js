@@ -30333,7 +30333,7 @@
 	
 	    function artifactory(options) {
 	        var domain = (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' ? options.domain : options;
-	        this.domain = domain ? domain : 'http://delvmpwappexch.sapient.com/artifactory/api';
+	        this.domain = domain ? domain : '/artifactory/api';
 	        if (this.domain.length === 0) {
 	            throw new Error('Domain parameter must be specified as a string.');
 	        }
@@ -53066,7 +53066,7 @@
 	            var buttonContext = this;
 	            e.preventDefault();
 	            (0, _integration.login)(this.props.userIdData, this.props.passwordData).then(function (response) {
-	                if (typeof response.body.error === "undefined") {
+	                if (typeof response.body === "undefined") {
 	                    _reactRouter.browserHistory.goBack();
 	                } else {
 	                    buttonContext.setState({ showError: true });

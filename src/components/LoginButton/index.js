@@ -24,7 +24,7 @@ export default class LoginButton extends React.Component {
         e.preventDefault();
         login(this.props.userIdData, this.props.passwordData)
         .then(function (response) {
-            if(typeof(response.body.error) === "undefined") {
+            if(typeof(response.body) === "undefined") {
               browserHistory.goBack();
            }
            else {

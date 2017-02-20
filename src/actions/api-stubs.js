@@ -13,7 +13,7 @@ var artifactory = (function() {
 
     function artifactory(options) {
         var domain = (typeof options === 'object') ? options.domain : options;
-        this.domain = domain ? domain : 'http://delvmpwappexch.sapient.com/artifactory/api';
+        this.domain = domain ? domain : '/artifactory/api';
         if (this.domain.length === 0) {
             throw new Error('Domain parameter must be specified as a string.');
         }
