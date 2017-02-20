@@ -27,15 +27,15 @@ export default class LoginButton extends Component {
         e.preventDefault();
         login(this.props.userIdData, this.props.passwordData)
         .then(function (response) {
-            if(typeof(response.body) === "undefined") {
-              browserHistory.goBack();
+            if(response && response.body && response.body.error) {
+              buttonContext.setState({showError : true});
            }
            else {
-              buttonContext.setState({showError : true});
+              browserHistory.goBack();
            }
        })
        .catch(function (error) {
-	        console.log("Call to login failed");
+	        console.log(error, "Call to login failed");
 	    });
      
     }
