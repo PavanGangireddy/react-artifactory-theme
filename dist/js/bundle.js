@@ -29007,14 +29007,15 @@
 	};
 	
 	var fetchPackageDetailsData = exports.fetchPackageDetailsData = function fetchPackageDetailsData(moduleName) {
-		var url = '/artifactory/api/plugins/execute/moduledetails?params=module=' + moduleName;
-		/*let url = 'https://api.myjson.com/bins/v8qix';*/
+		/*let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;*/
+		var url = 'https://api.myjson.com/bins/sikkp';
 		return getData(url);
 	};
 	
 	var fetchPackageReadMe = exports.fetchPackageReadMe = function fetchPackageReadMe(readMePath) {
-		var url = '/artifactory/' + readMePath;
-		return getData(url);
+		/*let url = '/artifactory/'+readMePath;
+	 return getData(url);*/
+		return getData(readMePath);
 	};
 	
 	var validateActiveSession = exports.validateActiveSession = function validateActiveSession() {
@@ -37749,7 +37750,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToProps = function mapStateToProps(state, ownprops) {
-		console.log(ownprops);
 		return {
 			module: ownprops.params.query
 		};
@@ -37848,8 +37848,8 @@
 			inprogress: state.packageDetails.descInprogress,
 			data: state.packageDetails.descriptionData,
 			moduleName: state.linkReducer.moduleName,
-			readMePath: state.detailsSideBar.readMePath
-	
+			readMePath: state.detailsSideBar.readMePath,
+			packageDetails: state.packageDetails.details
 		};
 	};
 	//component
@@ -37908,10 +37908,10 @@
 		}
 	
 		_createClass(PackageDesctiption, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {
-				if (this.props.readMePath) {
-					this.props.fetchReadMe(this.props.readMePath);
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				if (nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath) {
+					nextProps.fetchReadMe(nextProps.readMePath);
 				}
 			}
 		}, {
@@ -37920,7 +37920,7 @@
 				var result = "<div class='loader'>Loading...</div>";
 				if (!this.props.inprogress) {
 					if (this.props.data != null) {
-						result = md.render(this.props.data);
+						result = md.render(this.props.data.data);
 					} else {
 						result = "<div class='loader'>No Data</div>";
 					}
@@ -48256,7 +48256,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//components
-	var mapStateToProps = function mapStateToProps(state, ownprops) {
+	var mapStateToProps = function mapStateToProps(state) {
 		return {
 			inprogress: state.packageDetails.detailsInprogress,
 			packageDetails: state.packageDetails.details,
@@ -48325,17 +48325,17 @@
 			key: 'componentWillMount',
 			value: function componentWillMount() {
 				if (this.props.moduleName) {
-					this.props.fetchPackageDetails(this.props.moduleName).then(function (response) {
-						this.setReadmePath(this.props.packageDetails.readme);
-					});
+					this.props.fetchPackageDetails(this.props.moduleName);
 				} else {
 					this.props.fetchPackageDetails(this.props.query);
 				}
 			}
 		}, {
-			key: 'setReadmePath',
-			value: function setReadmePath(readmePath) {
-				this.props.setReadme(readmePath);
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				if (this.props.packageDetails.readme !== nextProps.packageDetails.readme) {
+					this.props.setReadme(nextProps.packageDetails.readme);
+				}
 			}
 		}, {
 			key: 'render',
@@ -48346,7 +48346,6 @@
 				var lastModifiedOn = (0, _moment2.default)(this.props.packageDetails.lastModifiedOn).format('DD-MMM-YYYY');
 				var version = this.props.packageDetails.version;
 				var repoLink = this.props.packageDetails.scm;
-	
 				/*check for the data availability*/
 	
 				if (this.props.inprogress) {
