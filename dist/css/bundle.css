@@ -68,20 +68,19 @@
   padding: 15px;
   display: inline-block;
   margin: 10px 20px 0 10px;
-  height: 210px;
+  height: 215px;
   text-align: center; }
   .card:hover {
     box-shadow: 0 0 15px #666; }
   .card .card-image img {
     text-align: center; }
   .card .card-content {
-    padding: 24px 5px;
-    width: 127px;
-    overflow: hidden;
-    text-overflow: ellipsis; }
+    padding: 24px 5px; }
     .card .card-content .card-title {
       font-size: 16px;
-      line-height: 0; }
+      line-height: 1;
+      height: 14px;
+      overflow-y: hidden; }
 
 .card .card-image img {
   min-height: 130px; }
@@ -240,11 +239,11 @@ footer.page-footer {
   width: 100%; }
 
 .slick-prev {
-  left: 0px;
+  left: 50px;
   z-index: 1; }
 
 .slick-next {
-  right: 0px;
+  right: 50px;
   z-index: 1; }
 
 .slick-slide img {

@@ -10,11 +10,10 @@ export default class PageFooter extends Component {
   links={
     <ul>
       <li><h4>You Need Help</h4></li>
-      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Documentation Support / Contact Us</a></li>
-      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Registry Status</a></li>
-      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Website Issues</a></li>
-      <li><a className="grey-text text-lighten-4 text-styling" href="#!">CLI Issues</a></li>
-      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Security</a></li>
+      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Documentation Support</a></li>
+      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Registry List/Status</a></li>
+      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Code Of Conduct</a></li>
+      <li><a className="grey-text text-lighten-4 text-styling" href="#!">Contact Us</a></li>
     </ul>
   }
   className='col-md-12'

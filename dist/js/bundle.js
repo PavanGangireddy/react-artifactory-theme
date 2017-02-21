@@ -63916,7 +63916,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Documentation Support / Contact Us'
+	                'Documentation Support'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -63925,7 +63925,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Registry Status'
+	                'Registry List/Status'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -63934,7 +63934,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Website Issues'
+	                'Code Of Conduct'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -63943,16 +63943,7 @@
 	              _react2.default.createElement(
 	                'a',
 	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'CLI Issues'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Security'
+	                'Contact Us'
 	              )
 	            )
 	          ),
