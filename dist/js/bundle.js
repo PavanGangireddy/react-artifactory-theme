@@ -48361,65 +48361,72 @@
 						'Loading...'
 					);
 				} else {
-	
-					var contributors = this.props.packageDetails.collaborators;
-					contributors = (typeof contributors === 'undefined' ? 'undefined' : _typeof(contributors)) === "object" ? contributors : [contributors];
-					return _react2.default.createElement(
-						'aside',
-						{ className: 'col-md-4 package-details-side' },
-						_react2.default.createElement(
-							'ul',
-							{ className: 'details-list' },
+					if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
+						var contributors = this.props.packageDetails.collaborators;
+						contributors = (typeof contributors === 'undefined' ? 'undefined' : _typeof(contributors)) === "object" ? contributors : [contributors];
+						return _react2.default.createElement(
+							'aside',
+							{ className: 'col-md-4 package-details-side' },
 							_react2.default.createElement(
-								'li',
-								null,
-								'Publisher : ',
-								publisher
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								'Current Version : ',
-								version
-							),
-							_react2.default.createElement(
-								'li',
-								null,
-								'Last Modified On : ',
-								lastModifiedOn
-							),
-							_react2.default.createElement(
-								'li',
-								{ className: 'github-repo-link' },
+								'ul',
+								{ className: 'details-list' },
 								_react2.default.createElement(
-									'a',
-									{ target: '_blank', href: repoLink },
-									repoLink
+									'li',
+									null,
+									'Publisher : ',
+									publisher
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									'Current Version : ',
+									version
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									'Last Modified On : ',
+									lastModifiedOn
+								),
+								_react2.default.createElement(
+									'li',
+									{ className: 'github-repo-link' },
+									_react2.default.createElement(
+										'a',
+										{ target: '_blank', href: repoLink },
+										repoLink
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									this.props.packageDetails.license
 								)
 							),
 							_react2.default.createElement(
-								'li',
-								null,
-								this.props.packageDetails.license
+								'div',
+								{ className: 'details' },
+								_react2.default.createElement(
+									'h4',
+									null,
+									'Collaborators:'
+								),
+								contributors.map(function (src, index) {
+									return _react2.default.createElement(
+										'figure',
+										{ key: index, className: 'details-logo-container' },
+										_react2.default.createElement('img', { className: 'publisher-logo', src: src, alt: _this2.props.packageDetails.publisher })
+									);
+								})
 							)
-						),
-						_react2.default.createElement(
+						);
+					} else {
+						return _react2.default.createElement(
 							'div',
-							{ className: 'details' },
-							_react2.default.createElement(
-								'h4',
-								null,
-								'Collaborators:'
-							),
-							contributors.map(function (src, index) {
-								return _react2.default.createElement(
-									'figure',
-									{ key: index, className: 'details-logo-container' },
-									_react2.default.createElement('img', { className: 'publisher-logo', src: src, alt: _this2.props.packageDetails.publisher })
-								);
-							})
-						)
-					);
+							{ className: 'loader' },
+							'No Data'
+						);
+					}
 				}
 			}
 		}]);
@@ -66665,7 +66672,7 @@
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
 					inprogress: false,
-					details: {}
+					details: action.payload
 				});
 			default:
 				return state;

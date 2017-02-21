@@ -37,31 +37,36 @@ export default class DetailsSideBar extends Component{
 			return <div className='loader'>Loading...</div>
 		}
 		else{
+			if(Object.getOwnPropertyNames(this.props.packageDetails).length>0){
+				let contributors = this.props.packageDetails.collaborators;
+				contributors = typeof(contributors)  === "object" ? contributors : [contributors]; 
+				return(
+					<aside className='col-md-4 package-details-side'>
+						<ul className='details-list'>
+							<li>Publisher : {publisher}</li>
+							<li>Current Version : {version}</li>
+							<li>Last Modified On : {lastModifiedOn}</li>
+							<li className='github-repo-link'><a target="_blank" href={repoLink}>{repoLink}</a></li>
+							<li>{this.props.packageDetails.license}</li>
+						</ul>
+						<div className='details'>
+							<h4>Collaborators:</h4>
 
-			let contributors = this.props.packageDetails.collaborators;
-			contributors = typeof(contributors)  === "object" ? contributors : [contributors]; 
-			return(
-			<aside className='col-md-4 package-details-side'>
-				<ul className='details-list'>
-					<li>Publisher : {publisher}</li>
-					<li>Current Version : {version}</li>
-					<li>Last Modified On : {lastModifiedOn}</li>
-					<li className='github-repo-link'><a target="_blank" href={repoLink}>{repoLink}</a></li>
-					<li>{this.props.packageDetails.license}</li>
-				</ul>
-				<div className='details'>
-					<h4>Collaborators:</h4>
-
-					{contributors.map((src,index)=>{
-						return(
-						<figure key={index} className = 'details-logo-container'>
-							<img className = 'publisher-logo' src={src} alt ={this.props.packageDetails.publisher}/>
-						</figure>
-						)
-					})}
-				</div>
-			</aside>
-		)
+							{contributors.map((src,index)=>{
+								return(
+								<figure key={index} className = 'details-logo-container'>
+									<img className = 'publisher-logo' src={src} alt ={this.props.packageDetails.publisher}/>
+								</figure>
+								)
+							})}
+						</div>
+					</aside>
+				)
+			}
+			else{
+				return <div className='loader'>No Data</div>
+			}
+			
 		}
 		
 	}
