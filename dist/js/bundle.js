@@ -66664,10 +66664,8 @@
 				});
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
-					details: {},
-					detailsInprogress: false,
-					descInprogress: false,
-					descriptionData: {}
+					inprogress: false,
+					details: {}
 				});
 			default:
 				return state;
