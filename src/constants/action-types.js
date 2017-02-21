@@ -22,3 +22,4 @@ export const RESET = 'RESET';
 export const Set_KEY = 'Set_KEY';
 export const Set_MODULE = 'Set_MODULE';
 export const Set_README = 'Set_README';
+export const Reset_DATA = 'Reset_DATA';

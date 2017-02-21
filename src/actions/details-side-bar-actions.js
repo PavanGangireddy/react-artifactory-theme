@@ -1,4 +1,4 @@
-import {Details_SUCCESS, Details_FAIL, Set_README} from '../constants/action-types';
+import {Details_SUCCESS, Details_FAIL, Set_README, Reset_DATA} from '../constants/action-types';
 
 import { fetchPackageDetailsData } from './../lib/integration'
 
@@ -28,5 +28,12 @@ export const setReadme = (readmePath) =>{
 	return({
 		type: Set_README,
 		payload:readmePath
+	})
+}
+
+export const resetData = () =>{
+	return({
+		type: Reset_DATA,
+		payload:{}
 	})
 }

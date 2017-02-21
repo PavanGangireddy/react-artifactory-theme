@@ -1,4 +1,4 @@
-import {Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS} from '../constants/action-types';
+import {Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Reset_DATA} from '../constants/action-types';
 
 export default function packageDetailsReducer(state = {
 	details:{},
@@ -28,6 +28,11 @@ export default function packageDetailsReducer(state = {
 	    	descInprogress:false,
 	    	dataError:true,
 	    	error:action.error
+	    });
+	    case Reset_DATA:
+	    return Object.assign({},state,{
+	    	inprogress:false,
+	    	details:{}
 	    });
 	    default:
 	    return state;

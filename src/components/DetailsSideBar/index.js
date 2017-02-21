@@ -21,6 +21,10 @@ export default class DetailsSideBar extends Component{
 			this.props.setReadme(nextProps.packageDetails.readme);
 		}
 	}
+
+	componentWillUnmount(){
+		this.props.resetData()
+	}
 	render(){
 		 
 		let publisher = this.props.packageDetails.publisher;
