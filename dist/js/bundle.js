@@ -33175,7 +33175,6 @@
 			key: 'setModule',
 			value: function setModule(moduleName) {
 				this.props.setModuleName(moduleName);
-				_reactRouter.browserHistory.push('module/' + moduleName);
 			}
 			/*
 	  *	Function to generate the Card using the Card from react-materialize
@@ -33193,8 +33192,8 @@
 					}
 					moduleName = detail.name;
 					return _react2.default.createElement(
-						'a',
-						{ key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
+						_reactRouter.Link,
+						{ to: 'module/' + moduleName, key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
 						_react2.default.createElement(
 							_reactMaterialize.Card,
 							{ className: _this2.props.className, header: _react2.default.createElement(_reactMaterialize.CardTitle, { image: detail.image, waves: 'light' }),
@@ -37751,7 +37750,7 @@
 	
 	var mapStateToProps = function mapStateToProps(state, ownprops) {
 		return {
-			module: ownprops.params.query
+			module: ownprops.params.moduleName
 		};
 	};
 	
