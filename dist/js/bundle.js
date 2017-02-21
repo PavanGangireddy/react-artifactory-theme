@@ -64199,7 +64199,9 @@
 	/* Importing styles */
 	
 	var settings = {
-	  slidesToShow: 2
+	  autoplay: true,
+	  slidesToShow: 2,
+	  pauseOnHover: true
 	};
 	/*Carousel component*/
 	var Carousel = function Carousel() {
@@ -66662,8 +66664,10 @@
 				});
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
-					inprogress: false,
-					details: {}
+					details: {},
+					detailsInprogress: false,
+					descInprogress: false,
+					descriptionData: {}
 				});
 			default:
 				return state;

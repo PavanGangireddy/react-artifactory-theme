@@ -31,8 +31,10 @@ export default function packageDetailsReducer(state = {
 	    });
 	    case Reset_DATA:
 	    return Object.assign({},state,{
-	    	inprogress:false,
-	    	details:{}
+	    	details:{},
+			detailsInprogress:false,
+			descInprogress:false,
+			descriptionData:{}
 	    });
 	    default:
 	    return state;

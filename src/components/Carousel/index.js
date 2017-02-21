@@ -10,7 +10,9 @@ const carousel_img_1 = require('./assets/img1.jpg'),
       carousel_img_2 = require('./assets/img2.jpg'),
       carousel_img_3 = require('./assets/img3.jpg')
 const settings = {
-      slidesToShow: 2,
+        autoplay:true,
+        slidesToShow:2,
+        pauseOnHover:true
     }
 /*Carousel component*/
 const Carousel=()=>(
