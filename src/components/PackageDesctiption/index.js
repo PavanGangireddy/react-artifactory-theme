@@ -16,7 +16,7 @@ export default class PackageDesctiption extends Component{
 		let result ="<div class='loader'>Loading...</div>";
 		if(!this.props.inprogress){
 			if(this.props.data!=null){
-				result = md.render(this.props.data.data);
+				result = md.render(this.props.data);
 			}
 			else{
 				result ="<div class='loader'>No Data</div>";

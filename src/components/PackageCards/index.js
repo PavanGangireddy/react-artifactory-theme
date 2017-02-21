@@ -23,7 +23,7 @@ export default class PackageCards extends Component{
 						detail.image = logo;
 					}
 					moduleName = detail.name;
-					return (<Link to={'module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
+					return (<Link to={'/module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
 				    <p>{detail.version}</p>
 				</Card></Link>);
