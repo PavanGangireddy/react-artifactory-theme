@@ -37919,8 +37919,10 @@
 			value: function render() {
 				var result = "<div class='loader'>Loading...</div>";
 				if (!this.props.inprogress) {
-					if (this.props.data != null) {
-						result = md.render(this.props.data);
+					if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
+						if (this.props.data != null) {
+							result = md.render(this.props.data);
+						}
 					} else {
 						result = "<div class='loader'>No Data</div>";
 					}
