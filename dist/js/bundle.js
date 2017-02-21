@@ -29007,15 +29007,15 @@
 	};
 	
 	var fetchPackageDetailsData = exports.fetchPackageDetailsData = function fetchPackageDetailsData(moduleName) {
-		/*let url = '/artifactory/api/plugins/execute/moduledetails?params=module='+moduleName;*/
-		var url = 'https://api.myjson.com/bins/sikkp';
+		var url = '/artifactory/api/plugins/execute/moduledetails?params=module=' + moduleName;
+		/*let url = 'https://api.myjson.com/bins/sikkp';*/
 		return getData(url);
 	};
 	
 	var fetchPackageReadMe = exports.fetchPackageReadMe = function fetchPackageReadMe(readMePath) {
-		/*let url = '/artifactory/'+readMePath;
-	 return getData(url);*/
-		return getData(readMePath);
+		var url = '/artifactory/' + readMePath;
+		return getData(url);
+		/*return getData(readMePath)*/
 	};
 	
 	var validateActiveSession = exports.validateActiveSession = function validateActiveSession() {
