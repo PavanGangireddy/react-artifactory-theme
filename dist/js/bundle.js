@@ -48397,7 +48397,7 @@
 									{ className: 'github-repo-link' },
 									_react2.default.createElement(
 										'a',
-										{ target: '_blank', href: repoLink },
+										{ target: '_blank', href: "https://" + repoLink },
 										repoLink
 									)
 								),
