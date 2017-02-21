@@ -48268,7 +48268,8 @@
 	
 		return (0, _redux.bindActionCreators)({
 			fetchPackageDetails: _detailsSideBarActions.fetchPackageDetails,
-			setReadme: _detailsSideBarActions.setReadme
+			setReadme: _detailsSideBarActions.setReadme,
+			resetData: _detailsSideBarActions.resetData
 		}, dispatch);
 	};
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_DetailsSideBar2.default);
