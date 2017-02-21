@@ -13,14 +13,20 @@ export default class PackageDesctiption extends Component{
 		}
 	}
 	render(){
-		let result ="<div class='loader'>Loading...</div>";
+		let result = '';
 		if(Object.getOwnPropertyNames(this.props.packageDetails).length>0){
 			if(this.props.data!=null){
 				result = md.render(this.props.data);
 			}
 		}
 		else{
-			result ="<div class='loader'>No Data</div>";
+			if(!this.props.inprogress){
+				result ="<div class='loader'>No Data</div>";
+			}
+			else{
+				result ="<div class='loader'>Loading...</div>";
+			}
+			
 		}
 
 		return(

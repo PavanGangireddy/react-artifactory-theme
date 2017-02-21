@@ -37917,13 +37917,17 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var result = "<div class='loader'>Loading...</div>";
+				var result = '';
 				if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
 					if (this.props.data != null) {
 						result = md.render(this.props.data);
 					}
 				} else {
-					result = "<div class='loader'>No Data</div>";
+					if (!this.props.inprogress) {
+						result = "<div class='loader'>No Data</div>";
+					} else {
+						result = "<div class='loader'>Loading...</div>";
+					}
 				}
 	
 				return _react2.default.createElement('section', { className: 'col-md-6 package-description', dangerouslySetInnerHTML: { __html: result } });
