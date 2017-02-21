@@ -11,11 +11,12 @@ import LoginContainer from './containers/login';
 
 import { authTransition } from './utility';
 
-const allRoutes = () => {
+const allRoutes = (appLevelConfig) => {
+	let config = appLevelConfig || {};
   return (
   	<Router history={browserHistory} >
       <Route path="/login" component={LoginContainer}></Route>
-  	   <Route path="/" component={LandingPageContainer} onEnter={authTransition}>
+  	   <Route path="/" appLevelConfig={config} component={LandingPageContainer} onEnter={authTransition}>
 	         <IndexRoute component={LandingPageBodyContainer}/>
 	         <Route path='/results/keyword=:query' component={SearchResultContainer} />
 	         <Route path= '/module/:moduleName' component= {DescriptionPageBody}  />

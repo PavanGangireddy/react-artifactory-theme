@@ -13,8 +13,14 @@ import './styles/main.scss';
 
 const store = configureStore();
 
+let config = {};
+
+export default function(appLevelConfig){
+	config = Object.assign(config, appLevelConfig);
+}
+
 ReactDOM.render(
 	<Provider store={store}>
-		{routes()}
+		{routes(config)}
 	</Provider>,document.getElementById('root')
 );

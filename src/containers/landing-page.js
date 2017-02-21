@@ -5,9 +5,10 @@ import LandingPage from '../components/LandingPage';
 //actions
 import {fetchLandingPopularData} from '../actions/landing-page-body-actions';
 
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state, ownProps)=> {
 	return {
-		inprogress:state.popularKeywords.inprogress
+		inprogress:state.popularKeywords.inprogress,
+		appLevelConfig: ownProps.routes[0].appLevelConfig
 	};
  }
 const mapDispatchToProps = (dispatch) =>{
