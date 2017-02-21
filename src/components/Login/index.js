@@ -1,16 +1,15 @@
-import React, { PropTypes } from 'react';
-/* Importing styles */
-import './styles.scss';
+import React, { PropTypes, Component } from 'react';
 
 /*  Importing components */
 import Logo from '../Logo';
 import Input from '../Input';
 import LoginButton from '../LoginButton';
 
-const logo = require('./logo.png');
+/* Importing styles */
+import './styles/index.scss';
 
 /* Container for login form */
-export default class LoginContainer extends React.Component {
+export default class Login extends Component {
 
     render() {
         const {
@@ -25,12 +24,12 @@ export default class LoginContainer extends React.Component {
         const propData = {
             text: 'text',
             password: 'password',
-            phn: 'Sapient NT ID',
+            phn: 'Login ID',
             phpw: 'Password',
             title1: 'project ',
             title2: 'Tracker',
-            icon1: 'ion-person',
-            icon2: 'ion-locked',
+            icon1: 'fa fa-user',
+            icon2: 'fa fa-lock',
             nid: 'nt-id',
             npassword: 'nt-password',
             inputClass: 'user-id',
@@ -75,7 +74,7 @@ export default class LoginContainer extends React.Component {
     }
 }
 
-LoginContainer.propTypes = {
+Login.propTypes = {
     validUserData: PropTypes.bool,
     validPassData: PropTypes.bool,
     passwordData: PropTypes.string,

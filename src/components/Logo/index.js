@@ -1,11 +1,9 @@
 import React from 'react';
-import './logo.scss';
-
-const logo = require('./logo.png');
+import {Link} from 'react-router';
+/*Import Styles*/
+import './styles/index.scss';
 
 const Logo=()=>(
-	<div className = 'logo'>
-			<img src={logo} alt='' className='logo-img'/>
-		</div>
+	<Link to='/'><div className = 'logo'></div></Link>
 )
 export default Logo;

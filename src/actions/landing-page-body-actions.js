@@ -1,7 +1,8 @@
-import axios from 'axios';
 import {Card_SUCCESS, Card_FAIL, Request_FULFILLED_FREQ, Request_REJECTED_FREQ} from './../constants/action-types';
-import { fetchCardsData, fetchPopularData } from './integration';
-export function fetchPackageCards(){
+
+import { fetchCardsData, fetchPopularData } from './../lib/integration';
+
+export const fetchPackageCards = () =>{
 	return function(dispatch){
 		fetchCardsData()
 		.then(function (response) {	
@@ -21,8 +22,7 @@ export function fetchPackageCards(){
 	};
 }
 
-export function fetchLandingPopularData(){
-		//AJAX call to fetch project list data
+export const fetchLandingPopularData = () =>{
 	return function(dispatch){
 		fetchPopularData()
 		.then(function (response) {	

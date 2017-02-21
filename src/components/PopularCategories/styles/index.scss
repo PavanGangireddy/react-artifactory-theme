@@ -1,0 +1,18 @@
+@import './../../../styles/_variables.scss';
+.popular-categories-container{
+	font-family:'SapientSansMedium';
+	margin:15px 0 0 0;
+	padding: 0;
+	.popular-categories{
+	    list-style: none;
+	    padding: 0px;
+	    margin: 0;
+	    cursor: pointer;
+	    padding: 5px 0 55px 1%;
+		.popular-list{
+			padding: 12px 10%;
+		    border-left: 10px solid $red-pale;
+		    border-bottom: 1px solid $gray-medium;
+		}
+	}
+}

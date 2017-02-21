@@ -1,12 +1,17 @@
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import PopularCategories from './../components/PopularCategories'
-function mapStateToProps(state) {
+import PopularCategories from './../components/PopularCategories';
+import {setKeyword} from '../actions/search-result-actions';
+const mapStateToProps = (state)=> {
     return{
-       popularCategories:state.frqPackages.details.popularCategories,
+       popularCategories:state.popularKeywords.details.popularCategories,
     };
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+      setKeyword
+    },dispatch);
+}
 
-
-export default connect(mapStateToProps)(PopularCategories);
+export default connect(mapStateToProps,mapDispatchToProps)(PopularCategories);

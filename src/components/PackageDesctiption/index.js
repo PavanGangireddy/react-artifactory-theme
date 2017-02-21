@@ -1,18 +1,34 @@
 import React,{Component} from 'react';
-import './package-description.scss';
-var MarkdownIt  = require('markdown-it'),
-md = new MarkdownIt();
+import MarkdownIt  from 'markdown-it';
+/*Import Styles*/
+import './styles/index.scss';
 
+/*Create an instance of Markdown*/
+let md = new MarkdownIt();
+/*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
-	componentWillMount(){
-		this.props.fetchReadMe();
+	componentWillReceiveProps(nextProps){
+		if(nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath){
+			nextProps.fetchReadMe(nextProps.readMePath);
+		}
 	}
 	render(){
-		let result ="<div class='loader'>Loading...</div>";
-		if(this.props.data!=null){
-			result = md.render(this.props.data);
+		let result = '';
+		if(Object.getOwnPropertyNames(this.props.packageDetails).length>0){
+			if(this.props.data!=null){
+				result = md.render(this.props.data);
+			}
 		}
-		
+		else{
+			if(!this.props.inprogress){
+				result ="<div class='loader'>No Data</div>";
+			}
+			else{
+				result ="<div class='loader'>Loading...</div>";
+			}
+			
+		}
+
 		return(
 			<section className='col-md-6 package-description' dangerouslySetInnerHTML={{ __html: result }}>
 			</section>)

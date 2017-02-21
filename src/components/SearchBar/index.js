@@ -1,83 +1,45 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import './search-bar.scss';
-import debounce from 'lodash.debounce';
-import SearchDropDown from './../../containers/search-drop-down-container';
+
+/*Import Styles*/
+import './styles/index.scss';
+
+/*Search Bar Component*/
 export default class SearchBar extends Component {
     constructor(props) {
         super(props)
         this.searchInputTitle = null;
-        this.searchFunction = debounce(this.searchFunction.bind(this), 500);
     }
+    /*
+    * Function to trigger search action
+    * @param {value} - the keyword eneterd by the user 
+    */
     searchFunction(value) {
         let input = this.searchInputTitle.value;
-        /*if(value){
-        	this.props.searchSuggestion(true);
-        	this.props.updateSearchValue(value);
-        	
-        }*/
-        /*var username = "shafeeq",
-			password = "password",
-			auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
-		  // config object is used by the Request class
-		  aql.config({
-		        uri: "http://10.207.16.108:8081/artifactory/api/search/aql",
-		        headers: {
-		           Authorization: auth
-		        }
-		     });
-
-		  var aqlQuery = aql.items.find({"name":{"$eq":input}});
-    		aql.query(aqlQuery).then((data) => {
-        	console.log(data);
-    		});*/
-
-
+        if(input== null ||input==''){
+              input = ' ';  
+        }
+        this.props.setKeyword(input)
+        browserHistory.push('/results/keyword='+input);
+        
     }
-    onClickOut() {
-        this.props.searchSuggestion(false);
-    }
+    /*
+    * Function to handle enter key on the search bar
+    */
     handleKeyDown(e, value) {
         let numOptions = this.props.searchResults.length;
 
-        switch (e.keyCode) {
-
-            case 38: // up arrow
-                if (this.props.activeIndex > 0) {
-                    this.props.handleDownArrow(this.props.activeIndex - 1, this.props.searchResults[this.props.activeIndex].value);
-                } else {
-                    this.props.handleDownArrow(numOptions - 1, this.props.searchResults[this.props.activeIndex].value);
-                }
-                break;
-
-            case 40: // down arrow
-                let activeIndex = (this.props.activeIndex + 1) % numOptions;
-                this.props.handleDownArrow(activeIndex, this.props.searchResults[activeIndex].value);
-                break;
-            case 13:
-                this.searchFunction(false);
-                browserHistory.push('/details')
-                break;
+        if(e.keyCode === 13) {
+            this.searchFunction();
         }
     }
     render() {
-        return ( <
-            div className = 'search-bar' >
-            <
-            input className = 'search-input'
-            placeholder = 'Search'
-            ref = {
-                (el) => { this.searchInputTitle = el; } }
-            onClick = { this.searchFunction.bind(this) }
-            onKeyDown = { this.handleKeyDown.bind(this) }
-            /> <
-            Link to = '/results'
-            className = 'search-router' >
-            <
-            span className = 'search-icon fa fa-search' > < /span> <
-            /Link>	 <
-            /div>
+        return ( 
+            <div className = 'search-bar'>
+                <input className = 'search-input' placeholder = 'Search' ref = { (el) => { this.searchInputTitle = el; } } defaultValue={this.props.query} onKeyDown = { this.handleKeyDown.bind(this) } /> 
+                <span className = 'search-icon fa fa-search' onClick = { this.searchFunction.bind(this) }> < /span> 
+            </div>
         )
     }
 }

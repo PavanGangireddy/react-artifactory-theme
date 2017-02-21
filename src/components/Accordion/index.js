@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import './accordion.scss';
+
+/* Importing styles */
+import './styles/index.scss';
+
+/*Accordion Component for the Steps to Publish*/
 export default class Accordion extends Component{
 	constructor(props){
 		super(props)
@@ -7,10 +11,10 @@ export default class Accordion extends Component{
 			active : [false,false]
 		}
 	}
-	componentWillMount(){
-		this.props.fetchSteps();
-	}
-
+	/**
+	*Function to toggle the display of the accordion
+	*@param {x} - a, boolean to represent the panel whose display is to be toggled
+	*/
 	toggle(x){
 		if(x===1){
 			this.setState({
@@ -21,27 +25,97 @@ export default class Accordion extends Component{
 			this.setState({
 				active:[false,!this.state.active[1]]
 			})
-		}
-		
+		}	
 	}
-
+	
 	render(){
-		let codeItem = JSON.stringify(this.props.steps.codeItem, null, 4)
-
+		/*Data to be rendered as a part of accordion*/
+		let mvnDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
+		let npmDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper. Curabitur iaculis sem vel magna faucibus, at consequat erat dignissim.In porta orci nibh, eget laoreet lacus ultrices vitae.Integer et euismod ex.Vestibulum at consequat nibh,non pretium est.Integer dignissim risus quis tellus fringilla tincidunt.Suspendisse ut sapien sed massa scelerisque dictum.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Donec venenatis nunc sit amet ante ornare, in porttitor ante porttitor.Maecenas vitae libero eros.Aliquam erat volutpat.Vestibulum quis dignissim turpis, vitae porta sapien.In consequat sit amet dui sed venenatis.Duis ut pharetra elit.";
+		let mvnCodeItem = JSON.stringify({
+				"name": "artifact-connect",
+				"version": "1.0.0",
+				"description": "Connects multiple module repositories for a onestop platfom.",
+				"scripts": {
+				"clean": "rimraf dist",
+				"build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+				"build": "npm run clean && npm run build:webpack",
+				"dev": "cross-env NODE_ENV=development npm start",
+				"start": "node devServer.js",
+				"lint": "eslint src"
+				},
+				"devDependencies": {
+				"autoprefixer": "^6.3.1",
+				"axios": "^0.15.3",
+				"babel-core": "^6.3.15",
+				"babel-eslint": "^5.0.0-beta4",
+				"babel-loader": "^6.2.0",
+				"babel-preset-es2015": "^6.3.13",
+				"babel-preset-react": "^6.3.13",
+				"babel-preset-react-hmre": "^1.0.0",
+				"classnames": "^2.2.5",
+				"webpack-dev-middleware": "^1.4.0",
+				"webpack-hot-middleware": "^2.6.0"
+				},
+				"dependencies": {
+				"react": "^0.14.3",
+				"react-dom": "^0.14.3",
+				"react-redux": "^4.1.1",
+				"react-router": "^3.0.0",
+				"redux": "^3.6.0",
+				"redux-thunk": "^1.0.3",
+				"webpack-dashboard": "^0.2.0"
+				}
+			}, null, 4);
+		let npmCodeItem = JSON.stringify({
+				"name": "artifact-connect",
+				"version": "1.0.0",
+				"description": "Connects multiple module repositories for a onestop platfom.",
+				"scripts": {
+				"clean": "rimraf dist",
+				"build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+				"build": "npm run clean && npm run build:webpack",
+				"dev": "cross-env NODE_ENV=development npm start",
+				"start": "node devServer.js",
+				"lint": "eslint src"
+				},
+				"devDependencies": {
+				"autoprefixer": "^6.3.1",
+				"axios": "^0.15.3",
+				"babel-core": "^6.3.15",
+				"babel-eslint": "^5.0.0-beta4",
+				"babel-loader": "^6.2.0",
+				"babel-preset-es2015": "^6.3.13",
+				"babel-preset-react": "^6.3.13",
+				"babel-preset-react-hmre": "^1.0.0",
+				"classnames": "^2.2.5",
+				"webpack-dev-middleware": "^1.4.0",
+				"webpack-hot-middleware": "^2.6.0"
+				},
+				"dependencies": {
+				"react": "^0.14.3",
+				"react-dom": "^0.14.3",
+				"react-redux": "^4.1.1",
+				"react-router": "^3.0.0",
+				"redux": "^3.6.0",
+				"redux-thunk": "^1.0.3",
+				"webpack-dashboard": "^0.2.0"
+				}
+			}, null, 4);
 		return(
 			<div className='accordion'>
 			<section>
 				<h3 className='accordion-header' onClick={this.toggle.bind(this,1)}>MVN</h3>
 				<div className={'accordion-content '+(this.state.active[0]?'display':'hide')}>
-				<p>{this.props.steps.description}</p>
-				<pre><code>{codeItem}</code></pre>
+				<p>{mvnDescription}</p>
+				<pre><code>{mvnCodeItem}</code></pre>
 				</div>
 			</section>
 			<section>
 				<h3 className='accordion-header' onClick={this.toggle.bind(this,2)}>NPM</h3>
 				<div className={'accordion-content '+(this.state.active[1]?'display':'hide')}>
-				<p>{this.props.steps.description}</p>
-				<pre><code>{codeItem}</code></pre>
+				<p>{npmDescription}</p>
+				<pre><code>{npmCodeItem}</code></pre>
 				</div>
 			</section>
 			</div>

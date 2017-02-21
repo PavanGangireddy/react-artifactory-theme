@@ -1,10 +1,12 @@
-import React from 'react';
-import './login-button.scss';
+import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
-import {login} from '../../actions/integration';
-import axios from 'axios';
 
-export default class LoginButton extends React.Component {
+
+import {login} from '../../lib/integration';
+
+import './styles/index.scss';
+
+export default class LoginButton extends Component {
 	constructor(props){
 		super(props);
         // Handle Function
@@ -15,26 +17,27 @@ export default class LoginButton extends React.Component {
     resetStates(){
         this.props.actions.resetState();
     }
-/*
-  *  Authentication of user on login Button, setting x-access-token and rerouting to Dashboard.
-  *  @params {Object} e - Event triggered on click of Login button.
-*/
+
+    /*
+    *  Authentication of user on login Button, setting x-access-token and rerouting to Dashboard.
+    *  @params {Object} e - Event triggered on click of Login button.
+    */
     submitForm(e) {
         let buttonContext = this;
         e.preventDefault();
         login(this.props.userIdData, this.props.passwordData)
         .then(function (response) {
-            if(response.body.error) {
-               buttonContext.setState({showError : true});
+            if(response && response.body && response.body.error) {
+              buttonContext.setState({showError : true});
            }
            else {
-            browserHistory.goBack();
+              browserHistory.goBack();
            }
-
        })
        .catch(function (error) {
-	        console.log("Call to login failed");
+	        console.log(error, "Call to login failed");
 	    });
+     
     }
     componentDidMount(){
       this.resetStates();

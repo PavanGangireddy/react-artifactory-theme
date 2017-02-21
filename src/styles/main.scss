@@ -1,6 +1,7 @@
 @import './bootstrap.scss';
 @import '../fonts/font-face.scss';
 @import './skin.scss';
+@import './_variables.scss';
 
 *{
 	margin: 0;
@@ -20,6 +21,7 @@ body{
 	margin: 100px auto;
 	text-align:center;
 	font-size:32px;
-	color:#9C9C9C;
+	color:$gray-light;
 	font-weight:bold;
 }
+

@@ -1,56 +1,72 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import { Table } from 'react-materialize';
-import './details-side-bar.scss';
+import moment from 'moment';
+/* Importing styles */
+import './styles/index.scss';
+
+/*Details Side Bar Components of the Description Page*/
 export default class DetailsSideBar extends Component{
+	
 	componentWillMount(){
-		this.props.fetchPackageDetails();
+		if(this.props.moduleName){
+			this.props.fetchPackageDetails(this.props.moduleName)
+		}else{
+			this.props.fetchPackageDetails(this.props.query);
+		}
+		
+	}
+	componentWillReceiveProps (nextProps) {
+		if(this.props.packageDetails.readme !== nextProps.packageDetails.readme){
+			this.props.setReadme(nextProps.packageDetails.readme);
+		}
+	}
+
+	componentWillUnmount(){
+		this.props.resetData()
 	}
 	render(){
+		 
 		let publisher = this.props.packageDetails.publisher;
-		let published = this.props.packageDetails.published;
+		let lastModifiedOn = moment(this.props.packageDetails.lastModifiedOn).format('DD-MMM-YYYY');
 		let version = this.props.packageDetails.version
-		let repoLink = 'https://'+this.props.packageDetails.github;
+		let repoLink = this.props.packageDetails.scm;
+		/*check for the data availability*/
+
 		if(this.props.inprogress){
 			return <div className='loader'>Loading...</div>
 		}
 		else{
-			
-			return(
-			<aside className='col-md-4 package-details-side'>
-				<ul className='details-list'>
-					<li>Current Version : {version}</li>
-					<li className='github-repo-link'><a target="_blank" href={repoLink}>{this.props.packageDetails.github}</a></li>
-					<li>{this.props.packageDetails.license}</li>
-				</ul>
-				<div className='details'>
-					<h4>Collaborators:</h4>
+			if(Object.getOwnPropertyNames(this.props.packageDetails).length>0){
+				let contributors = this.props.packageDetails.collaborators;
+				contributors = typeof(contributors)  === "object" ? contributors : [contributors]; 
+				return(
+					<aside className='col-md-4 package-details-side'>
+						<ul className='details-list'>
+							<li>Publisher : {publisher}</li>
+							<li>Current Version : {version}</li>
+							<li>Last Modified On : {lastModifiedOn}</li>
+							<li className='github-repo-link'><a target="_blank" href={repoLink}>{repoLink}</a></li>
+							<li>{this.props.packageDetails.license}</li>
+						</ul>
+						<div className='details'>
+							<h4>Collaborators:</h4>
 
-					{this.props.packageDetails.collaborators.map((src,index)=>{
-						return(
-						<figure key={index} className = 'details-logo-container'>
-							<img className = 'publisher-logo' src={src} alt ={this.props.packageDetails.publisher}/>
-						</figure>
-						)
-					})}
-				</div>
-				<div className='details'>
-					<h4>Version History</h4>
-					<Table stripped centered className='version-history'>
-					<thead>
-						<tr><th>Version</th><th>Date</th></tr>
-					</thead>
-					<tbody>
-						{this.props.packageDetails.versionHistory.reverse().map((verObj,index)=>{
-							return(
-								<tr key={index}><td>{verObj.version}</td><td>{verObj.release}</td></tr>
-							)
-						})}
-					</tbody>
-					</Table>
-				</div>
-			</aside>
-		)
+							{contributors.map((src,index)=>{
+								return(
+								<figure key={index} className = 'details-logo-container'>
+									<img className = 'publisher-logo' src={src} alt ={this.props.packageDetails.publisher}/>
+								</figure>
+								)
+							})}
+						</div>
+					</aside>
+				)
+			}
+			else{
+				return <div className='loader'>No Data</div>
+			}
+			
 		}
 		
 	}

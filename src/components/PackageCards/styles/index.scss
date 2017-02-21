@@ -1,0 +1,70 @@
+@import './../../../styles/_variables.scss';
+.package-cards{
+    padding: 0 0 15px 0;
+}
+.card{
+	width: 14%;
+	border-radius: 10px;
+	padding: 15px;
+    display: inline-block;
+    margin: 10px 20px 0 10px;
+    height: 215px;
+    text-align: center;
+    &:hover{
+		box-shadow:0 0 15px $gray-dark;
+	}
+	.card-image img{
+		text-align: center;
+	}
+	.card-content{
+		padding: 24px 5px;
+		.card-title{
+			font-size: 16px;
+		    line-height: 1;
+		    height: 14px;
+		    overflow-y: hidden;
+		}
+	}
+}
+
+.card .card-image img {
+	min-height: 130px;
+}
+
+.card .card-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.list{
+	display: -webkit-box;
+    border-bottom: 1px solid $gray-light;
+    width: 90%;
+    padding: 15px;
+    margin: 10px 20px 0 10px;
+    transition: box-shadow .25s;
+    height: 100px;
+    background:transparent;
+    box-shadow:none;
+    border-radius: 0px;
+    text-align:left;
+    .card-image{
+	    width: 60px;
+	    height: 60px;
+	    border-radius: 10px;
+	    img {
+    		min-height: 0px;
+		}
+	}
+	.card-content{
+		padding:15px 20px;
+		width: 100%;
+	}
+	&:hover{
+		box-shadow:none;
+	}
+	.card-content .card-title{
+		padding:0 0 5px 0;
+	}
+}
+

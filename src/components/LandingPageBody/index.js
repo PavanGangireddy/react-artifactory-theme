@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import PopularCategories from './../../containers/popular-categories';
+/*Import Components*/
 import Carousel from './../Carousel';
-import PackageCards from './../PackageCards';
-import FrequentPackagesContainer from './../../containers/frequent-packages-container';
-import './landing-page-body.scss';
+/*Import Containers*/
+import PopularCategories from './../../containers/popular-categories';
+import PackageCards from './../../containers/package-cards';
+import PopularKeywords from './../../containers/popular-keywords';
+/*Import Styles*/
+import './styles/index.scss';
+
+/*Landing Page Body Component*/
 export default class LandingPageBody extends Component{
 	componentWillMount(){
 		this.props.fetchPackageCards();
@@ -17,12 +22,12 @@ export default class LandingPageBody extends Component{
 				<div className="clearfix">
 					<div className='col-md-2'>
 						<PopularCategories />
-						<FrequentPackagesContainer />
+						<PopularKeywords />
 					</div>
 					<div className='col-md-10 landing-page-content'>
 						<Carousel />
 						<div className='col-md-12'>
-							<h3 className='most-installed-header'>Most Featured Packages</h3>
+							<h3 className='most-installed-header'>Featured Packages</h3>
 						</div>
 						<PackageCards data={this.props.cardData}/>
 					</div>
