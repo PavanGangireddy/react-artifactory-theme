@@ -28958,6 +28958,7 @@
 	var Set_KEY = exports.Set_KEY = 'Set_KEY';
 	var Set_MODULE = exports.Set_MODULE = 'Set_MODULE';
 	var Set_README = exports.Set_README = 'Set_README';
+	var Reset_DATA = exports.Reset_DATA = 'Reset_DATA';
 
 /***/ },
 /* 278 */
@@ -48337,6 +48338,11 @@
 				}
 			}
 		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.props.resetData();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
@@ -63322,7 +63328,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.setReadme = exports.fetchPackageDetails = undefined;
+	exports.resetData = exports.setReadme = exports.fetchPackageDetails = undefined;
 	
 	var _actionTypes = __webpack_require__(277);
 	
@@ -63350,6 +63356,13 @@
 		return {
 			type: _actionTypes.Set_README,
 			payload: readmePath
+		};
+	};
+	
+	var resetData = exports.resetData = function resetData() {
+		return {
+			type: _actionTypes.Reset_DATA,
+			payload: {}
 		};
 	};
 
@@ -66645,6 +66658,11 @@
 					descInprogress: false,
 					dataError: true,
 					error: action.error
+				});
+			case _actionTypes.Reset_DATA:
+				return Object.assign({}, state, {
+					inprogress: false,
+					details: {}
 				});
 			default:
 				return state;

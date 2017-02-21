@@ -75,7 +75,10 @@
   .card .card-image img {
     text-align: center; }
   .card .card-content {
-    padding: 24px 5px; }
+    padding: 24px 5px;
+    width: 127px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
     .card .card-content .card-title {
       font-size: 16px;
       line-height: 0; }
@@ -106,7 +109,8 @@
     .list .card-image img {
       min-height: 0px; }
   .list .card-content {
-    padding: 15px 20px; }
+    padding: 15px 20px;
+    width: 100%; }
   .list:hover {
     box-shadow: none; }
   .list .card-content .card-title {
