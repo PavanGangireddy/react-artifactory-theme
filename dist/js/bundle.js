@@ -37919,7 +37919,7 @@
 			value: function render() {
 				var result = '';
 				if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
-					if (this.props.data != null) {
+					if (this.props.data != null && Object.getOwnPropertyNames(this.props.data).length > 0) {
 						result = md.render(this.props.data);
 					}
 				} else {
@@ -48397,7 +48397,7 @@
 									{ className: 'github-repo-link' },
 									_react2.default.createElement(
 										'a',
-										{ target: '_blank', href: repoLink },
+										{ target: '_blank', href: "https://" + repoLink },
 										repoLink
 									)
 								),
@@ -63895,71 +63895,58 @@
 	  _createClass(PageFooter, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        _reactMaterialize.Footer,
-	        { copyrights: '\xA9 2017 App Exchange, All rights reserved',
-	          links: _react2.default.createElement(
-	            'ul',
+	      return _react2.default.createElement(_reactMaterialize.Footer, { copyrights: '\xA9 2017 App Exchange, All rights reserved',
+	        links: _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
 	            null,
 	            _react2.default.createElement(
-	              'li',
+	              'h4',
 	              null,
-	              _react2.default.createElement(
-	                'h4',
-	                null,
-	                'You Need Help'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Documentation Support'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Registry List/Status'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Code Of Conduct'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
-	                'Contact Us'
-	              )
+	              'You Need Help'
 	            )
 	          ),
-	          className: 'col-md-12'
-	        },
-	        _react2.default.createElement(
-	          'h5',
-	          { className: 'white-text' },
-	          'Lorem Ipsum'
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
+	              'Documentation Support'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
+	              'Registry List/Status'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
+	              'Code Of Conduct'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'grey-text text-lighten-4 text-styling', href: '#!' },
+	              'Contact Us'
+	            )
+	          )
 	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'grey-text text-lighten-4' },
-	          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla ligula non dictum mattis. Cras porttitor porttitor tortor, a consectetur ipsum sollicitudin nec. Etiam sollicitudin eros ac enim mattis, sed laoreet turpis pulvinar. Curabitur elementum dolor sit amet lacus varius tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla eget ex venenatis, suscipit velit ut, efficitur urna. Fusce in sagittis enim, non pellentesque leo. Praesent non mauris nec nulla lobortis semper.'
-	        )
-	      );
+	        className: 'col-md-12'
+	      });
 	    }
 	  }]);
 	
