@@ -33193,7 +33193,7 @@
 					moduleName = detail.name;
 					return _react2.default.createElement(
 						_reactRouter.Link,
-						{ to: 'module/' + moduleName, key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
+						{ to: '/module/' + moduleName, key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
 						_react2.default.createElement(
 							_reactMaterialize.Card,
 							{ className: _this2.props.className, header: _react2.default.createElement(_reactMaterialize.CardTitle, { image: detail.image, waves: 'light' }),
@@ -37919,7 +37919,7 @@
 				var result = "<div class='loader'>Loading...</div>";
 				if (!this.props.inprogress) {
 					if (this.props.data != null) {
-						result = md.render(this.props.data.data);
+						result = md.render(this.props.data);
 					} else {
 						result = "<div class='loader'>No Data</div>";
 					}
