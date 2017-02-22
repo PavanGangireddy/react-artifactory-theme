@@ -37919,7 +37919,7 @@
 			value: function render() {
 				var result = '';
 				if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
-					if (this.props.data != null && Object.getOwnPropertyNames(this.props.data).length > 0) {
+					if (Object.getOwnPropertyNames(this.props.data).length > 0) {
 						result = md.render(this.props.data);
 					}
 				} else {
