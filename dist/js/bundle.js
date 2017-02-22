@@ -63373,8 +63373,7 @@
 	
 	var resetData = exports.resetData = function resetData() {
 		return {
-			type: _actionTypes.Reset_DATA,
-			payload: {}
+			type: _actionTypes.Reset_DATA
 		};
 	};
 

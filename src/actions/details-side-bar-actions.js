@@ -33,7 +33,6 @@ export const setReadme = (readmePath) =>{
 
 export const resetData = () =>{
 	return({
-		type: Reset_DATA,
-		payload:{}
+		type: Reset_DATA
 	})
 }
