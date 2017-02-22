@@ -66673,8 +66673,8 @@
 				});
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
-					inprogress: false,
-					details: action.payload
+					details: action.payload,
+					descriptionData: action.payload
 				});
 			default:
 				return state;
