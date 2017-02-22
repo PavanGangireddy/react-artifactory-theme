@@ -53,6 +53,14 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	exports.default = function (appLevelConfig) {
+		config = Object.assign(config, appLevelConfig);
+	};
+	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -81,10 +89,12 @@
 	
 	var store = (0, _configureStore.configureStore)();
 	
+	var config = {};
+	
 	_reactDom2.default.render(_react2.default.createElement(
 		_reactRedux.Provider,
 		{ store: store },
-		(0, _routes2.default)()
+		(0, _routes2.default)(config)
 	), document.getElementById('root'));
 
 /***/ },
@@ -28230,14 +28240,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var allRoutes = function allRoutes() {
+	var allRoutes = function allRoutes(appLevelConfig) {
+	  var config = appLevelConfig || {};
 	  return _react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.browserHistory },
 	    _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/', component: _landingPage2.default, onEnter: _utility.authTransition },
+	      { path: '/', appLevelConfig: config, component: _landingPage2.default, onEnter: _utility.authTransition },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _landingPageBody2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/results/keyword=:query', component: _searchResults2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/module/:moduleName', component: _descriptionPage2.default }),
@@ -63401,9 +63412,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//components
-	var mapStateToProps = function mapStateToProps(state) {
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
 		return {
-			inprogress: state.popularKeywords.inprogress
+			inprogress: state.popularKeywords.inprogress,
+			appLevelConfig: ownProps.routes[0].appLevelConfig
 		};
 	};
 	//actions
@@ -63895,6 +63907,14 @@
 	  _createClass(PageFooter, [{
 	    key: 'render',
 	    value: function render() {
+	      /*let footerLinks
+	      if(this.props.appLevelConfig){
+	              footerLinks = <ul>
+	                                  {this.props.appLevelConfig.map((data,index) =>{
+	                                      return <li><a className="grey-text text-lighten-4 text-styling" href={data.link}>{data.name}</a></li>
+	                                  })}
+	                            </ul>
+	      }*/
 	      return _react2.default.createElement(_reactMaterialize.Footer, { copyrights: '\xA9 2017 App Exchange, All rights reserved',
 	        links: _react2.default.createElement(
 	          'ul',
