@@ -5,6 +5,14 @@ import './styles/index.scss'
 /*Footer Component*/
 export default class PageFooter extends Component {
   render() {
+    /*let footerLinks
+    if(this.props.appLevelConfig){
+            footerLinks = <ul>
+                                {this.props.appLevelConfig.map((data,index) =>{
+                                    return <li><a className="grey-text text-lighten-4 text-styling" href={data.link}>{data.name}</a></li>
+                                })}
+                          </ul>
+    }*/
     return (
       <Footer copyrights="&copy; 2017 App Exchange, All rights reserved"
   links={

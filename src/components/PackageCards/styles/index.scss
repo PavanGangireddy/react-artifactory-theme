@@ -21,8 +21,9 @@
 		.card-title{
 			font-size: 16px;
 		    line-height: 1;
-		    height: 14px;
-		    overflow-y: hidden;
+		    height: 16px;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
 		}
 	}
 }
