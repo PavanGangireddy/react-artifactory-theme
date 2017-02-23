@@ -63478,6 +63478,8 @@
 	
 	var _popularCategories2 = _interopRequireDefault(_popularCategories);
 	
+	var _integration = __webpack_require__(278);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63503,7 +63505,11 @@
 		_createClass(LandingPage, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.fetchLandingPopularData();
+				var result = (0, _integration.validateActiveSession)().then(function (result) {
+					if (result) {
+						this.props.fetchLandingPopularData();
+					}
+				});
 			}
 		}, {
 			key: 'render',

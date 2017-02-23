@@ -5,10 +5,16 @@ import PageFooter from './../PageFooter';
 /*Import Containers*/
 import PopularCategories from './../../containers/popular-categories';
 
+import {validateActiveSession} from './../../lib/integration'
+
 /*Landing Page Container*/
 export default class LandingPage extends Component{
 	componentWillMount(){
-		this.props.fetchLandingPopularData();
+		const result = validateActiveSession().then(function(result){
+   			if(result){
+        		this.props.fetchLandingPopularData();
+    		}
+  		})
 	}
 	render(){
 		if(this.props.inprogress){
