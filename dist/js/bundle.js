@@ -63496,7 +63496,7 @@
 		_createClass(LandingPage, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				/*this.props.fetchLandingPopularData();*/
+				this.props.fetchLandingPopularData();
 			}
 		}, {
 			key: 'render',
@@ -64146,7 +64146,6 @@
 		_createClass(LandingPageBody, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.fetchLandingPopularData();
 				this.props.fetchPackageCards();
 			}
 		}, {

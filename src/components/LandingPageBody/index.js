@@ -11,7 +11,6 @@ import './styles/index.scss';
 /*Landing Page Body Component*/
 export default class LandingPageBody extends Component{
 	componentWillMount(){
-		this.props.fetchLandingPopularData();
 		this.props.fetchPackageCards();
 	}
 	render(){
