@@ -28843,25 +28843,33 @@
 			value: function render() {
 				var _this2 = this;
 	
-				return _react2.default.createElement(
-					'section',
-					{ className: 'col-md-12 popular-categories-container' },
-					_react2.default.createElement(
-						'ul',
-						{ className: 'popular-categories' },
-						this.props.popularCategories.map(function (data, index) {
-							return _react2.default.createElement(
-								'li',
-								{ className: 'popular-list', key: index, onClick: _this2.selectCategory.bind(_this2) },
-								_react2.default.createElement(
-									'a',
-									null,
-									data
-								)
-							);
-						})
-					)
-				);
+				if (this.props.popularCategories > 0) {
+					return _react2.default.createElement(
+						'section',
+						{ className: 'col-md-12 popular-categories-container' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'popular-categories' },
+							this.props.popularCategories.map(function (data, index) {
+								return _react2.default.createElement(
+									'li',
+									{ className: 'popular-list', key: index, onClick: _this2.selectCategory.bind(_this2) },
+									_react2.default.createElement(
+										'a',
+										null,
+										data
+									)
+								);
+							})
+						)
+					);
+				} else {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'loader' },
+						'No Data'
+					);
+				}
 			}
 		}]);
 	
@@ -63488,7 +63496,7 @@
 		_createClass(LandingPage, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.fetchLandingPopularData();
+				/*this.props.fetchLandingPopularData();*/
 			}
 		}, {
 			key: 'render',
@@ -64071,7 +64079,8 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	
 		return (0, _redux.bindActionCreators)({
-			fetchPackageCards: _landingPageBodyActions.fetchPackageCards
+			fetchPackageCards: _landingPageBodyActions.fetchPackageCards,
+			fetchLandingPopularData: _landingPageBodyActions.fetchLandingPopularData
 		}, dispatch);
 	};
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LandingPageBody2.default);
@@ -64137,6 +64146,7 @@
 		_createClass(LandingPageBody, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
+				this.props.fetchLandingPopularData();
 				this.props.fetchPackageCards();
 			}
 		}, {
@@ -66679,9 +66689,7 @@
 				});
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
-					details: {},
-					descInprogress: true,
-					descriptionData: {}
+					details: {}
 				});
 			default:
 				return state;
