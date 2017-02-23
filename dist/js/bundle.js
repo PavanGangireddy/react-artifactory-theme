@@ -28245,10 +28245,10 @@
 	  return _react2.default.createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.browserHistory },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _login2.default }),
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/', appLevelConfig: config, component: _landingPage2.default, onEnter: _utility.authTransition },
+	      { path: '/landing', appLevelConfig: config, component: _landingPage2.default, onEnter: _utility.authTransition },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _landingPageBody2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/results/keyword=:query', component: _searchResults2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/module/:moduleName', component: _descriptionPage2.default }),
@@ -67109,7 +67109,7 @@
 	
 	  var result = (0, _integration.validateActiveSession)().then(function (result) {
 	    if (!result) {
-	      _reactRouter.browserHistory.push('/login');
+	      _reactRouter.browserHistory.push('/');
 	    }
 	  });
 	};

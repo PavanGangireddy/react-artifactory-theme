@@ -4,7 +4,7 @@ export const authTransition = () =>{
 
   const result = validateActiveSession().then(function(result){
     if(!result){
-        browserHistory.push('/login');
+        browserHistory.push('/');
     }
   })
 };
