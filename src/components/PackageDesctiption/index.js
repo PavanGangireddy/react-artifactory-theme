@@ -14,7 +14,7 @@ export default class PackageDesctiption extends Component{
 	}
 	render(){
 		let result = '';
-		if(Object.getOwnPropertyNames(this.props.packageDetails).length>0){
+		if(Object.getOwnPropertyNames(this.props.packageDetails).length>0 || this.props.readMePath !== "N/A"){
 			if(this.props.data!=null && Object.getOwnPropertyNames(this.props.data).length>0){
 				result = md.render(this.props.data);
 			}

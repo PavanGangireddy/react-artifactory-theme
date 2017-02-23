@@ -1,4 +1,4 @@
-import {Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Reset_DATA} from '../constants/action-types';
+import {Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Reset_DATA, Readme_ERROR} from '../constants/action-types';
 
 export default function packageDetailsReducer(state = {
 	details:{},

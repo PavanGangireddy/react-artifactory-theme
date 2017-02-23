@@ -1,4 +1,4 @@
-import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY} from '../constants/action-types';
+import { Result_SUCCESS, Result_FAIL, Search_SUCCESS, Search_FAIL, Description_SUCCESS, Description_FAIL, Change_VIEW, Set_KEY, Readme_ERROR} from '../constants/action-types';
 
 import { fetchSearchResultsData , fetchPackageDetailsData, fetchPackageReadMe} from './../lib/integration'
 

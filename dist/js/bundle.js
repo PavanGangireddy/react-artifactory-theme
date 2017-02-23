@@ -28976,6 +28976,7 @@
 	var Set_MODULE = exports.Set_MODULE = 'Set_MODULE';
 	var Set_README = exports.Set_README = 'Set_README';
 	var Reset_DATA = exports.Reset_DATA = 'Reset_DATA';
+	var Readme_ERROR = exports.Readme_ERROR = 'Readme_ERROR';
 
 /***/ },
 /* 278 */
@@ -37935,7 +37936,7 @@
 			key: 'render',
 			value: function render() {
 				var result = '';
-				if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0) {
+				if (Object.getOwnPropertyNames(this.props.packageDetails).length > 0 || this.props.readMePath !== "N/A") {
 					if (this.props.data != null && Object.getOwnPropertyNames(this.props.data).length > 0) {
 						result = md.render(this.props.data);
 					}
