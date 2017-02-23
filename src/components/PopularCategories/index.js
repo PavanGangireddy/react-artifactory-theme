@@ -4,6 +4,9 @@ import { browserHistory } from 'react-router';
 import './styles/index.scss'
 /*Popular Categories component*/
 export default class PopularCategories extends Component{
+	componentWillMount(){
+		this.props.fetchLandingPopularData();
+	}
 	/*
 	* Function to handle click event and trigger an action
 	*/
