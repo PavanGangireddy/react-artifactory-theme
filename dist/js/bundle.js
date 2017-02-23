@@ -63505,10 +63505,12 @@
 		_createClass(LandingPage, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				var result = (0, _integration.validateActiveSession)();
-				if (result) {
-					this.props.fetchLandingPopularData();
-				}
+				var self = this;
+				var result = (0, _integration.validateActiveSession)().then(function (result) {
+					if (result) {
+						self.props.fetchLandingPopularData();
+					}
+				});
 			}
 		}, {
 			key: 'render',

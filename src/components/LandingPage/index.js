@@ -10,10 +10,12 @@ import {validateActiveSession} from './../../lib/integration'
 /*Landing Page Container*/
 export default class LandingPage extends Component{
 	componentWillMount(){
-		const result = validateActiveSession();
-   		if(result){
-        	this.props.fetchLandingPopularData();
-    	}
+		let self = this;
+		const result = validateActiveSession().then(function(result){
+   			if(result){
+        		self.props.fetchLandingPopularData();
+    		}
+  		})
 	}
 	render(){
 		if(this.props.inprogress){
