@@ -63501,6 +63501,11 @@
 		}
 	
 		_createClass(LandingPage, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				this.props.fetchLandingPopularData();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				if (this.props.inprogress) {
@@ -64081,8 +64086,7 @@
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	
 		return (0, _redux.bindActionCreators)({
-			fetchPackageCards: _landingPageBodyActions.fetchPackageCards,
-			fetchLandingPopularData: _landingPageBodyActions.fetchLandingPopularData
+			fetchPackageCards: _landingPageBodyActions.fetchPackageCards
 		}, dispatch);
 	};
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_LandingPageBody2.default);
@@ -64148,7 +64152,6 @@
 		_createClass(LandingPageBody, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.fetchLandingPopularData();
 				this.props.fetchPackageCards();
 			}
 		}, {
