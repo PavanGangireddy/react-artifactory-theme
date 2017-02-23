@@ -28843,7 +28843,7 @@
 			value: function render() {
 				var _this2 = this;
 	
-				if (this.props.popularCategories > 0) {
+				if (this.props.popularCategories.length > 0) {
 					return _react2.default.createElement(
 						'section',
 						{ className: 'col-md-12 popular-categories-container' },

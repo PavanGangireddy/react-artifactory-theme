@@ -13,7 +13,7 @@ export default class PopularCategories extends Component{
 		browserHistory.push('/results/keyword='+keyword);
 	}
 	render(){
-		if(this.props.popularCategories > 0){
+		if(this.props.popularCategories.length > 0){
 			return(
 				<section className='col-md-12 popular-categories-container'>
 					<ul className='popular-categories'>
