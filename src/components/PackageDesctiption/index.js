@@ -8,7 +8,7 @@ let md = new MarkdownIt();
 /*Package Description Component for the readme of the package*/
 export default class PackageDesctiption extends Component{
 	componentWillReceiveProps(nextProps){
-		if(nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath){
+		if(nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath && this.props.readMePath !== "N/A"){
 			nextProps.fetchReadMe(nextProps.readMePath);
 		}
 	}

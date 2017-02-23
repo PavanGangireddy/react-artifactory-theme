@@ -37927,7 +37927,7 @@
 		_createClass(PackageDesctiption, [{
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				if (nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath) {
+				if (nextProps.readMePath !== "" && this.props.readMePath !== nextProps.readMePath && this.props.readMePath !== "N/A") {
 					nextProps.fetchReadMe(nextProps.readMePath);
 				}
 			}
@@ -66678,8 +66678,9 @@
 				});
 			case _actionTypes.Reset_DATA:
 				return Object.assign({}, state, {
-					details: action.payload,
-					descriptionData: action.payload
+					details: {},
+					descInprogress: true,
+					descriptionData: {}
 				});
 			default:
 				return state;
