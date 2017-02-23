@@ -15,8 +15,8 @@ const allRoutes = (appLevelConfig) => {
 	let config = appLevelConfig || {};
   return (
   	<Router history={browserHistory} >
-      <Route path="/" component={LoginContainer}></Route>
-  	  <Route path="/landing" appLevelConfig={config} component={LandingPageContainer} onEnter={authTransition}>
+      <Route path="/login" component={LoginContainer}></Route>
+  	   <Route path="/" appLevelConfig={config} component={LandingPageContainer} onEnter={authTransition}>
 	         <IndexRoute component={LandingPageBodyContainer}/>
 	         <Route path='/results/keyword=:query' component={SearchResultContainer} />
 	         <Route path= '/module/:moduleName' component= {DescriptionPageBody}  />
