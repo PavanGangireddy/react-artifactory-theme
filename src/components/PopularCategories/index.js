@@ -4,9 +4,6 @@ import { browserHistory } from 'react-router';
 import './styles/index.scss'
 /*Popular Categories component*/
 export default class PopularCategories extends Component{
-	componentWillMount(){
-		this.props.fetchLandingPopularData();
-	}
 	/*
 	* Function to handle click event and trigger an action
 	*/
@@ -16,24 +13,18 @@ export default class PopularCategories extends Component{
 		browserHistory.push('/results/keyword='+keyword);
 	}
 	render(){
-		if(this.props.popularCategories > 0){
-			return(
-				<section className='col-md-12 popular-categories-container'>
-					<ul className='popular-categories'>
-						{
-							this.props.popularCategories.map((data,index) => {
-								return(
-									<li className='popular-list' key={ index } onClick = {this.selectCategory.bind(this)}><a>{ data }</a></li>
-								);
-							})
-						}
-					</ul>
-				</section>
-			)
-		}
-		else{
-			return <div className='loader'>No Data</div>
-		}
-		
+		return(
+			<section className='col-md-12 popular-categories-container'>
+				<ul className='popular-categories'>
+					{
+						this.props.popularCategories.map((data,index) => {
+							return(
+								<li className='popular-list' key={ index } onClick = {this.selectCategory.bind(this)}><a>{ data }</a></li>
+							);
+						})
+					}
+				</ul>
+			</section>
+		)
 	}
 }

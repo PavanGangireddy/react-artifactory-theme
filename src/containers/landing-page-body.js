@@ -13,7 +13,7 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
-								fetchPackageCards,
+								fetchPackageCards
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(LandingPageBody);

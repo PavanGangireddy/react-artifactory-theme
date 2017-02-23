@@ -7,6 +7,9 @@ import PopularCategories from './../../containers/popular-categories';
 
 /*Landing Page Container*/
 export default class LandingPage extends Component{
+	componentWillMount(){
+		this.props.fetchLandingPopularData();
+	}
 	render(){
 		if(this.props.inprogress){
 			return <div className='loader'>Loading...</div>
