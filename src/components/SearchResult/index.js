@@ -44,6 +44,9 @@ export default class SearchResult extends Component{
 		if(this.props.inprogress){
 			return <div className='loader'>Loading...</div>
 		}
+		else if(this.props.searchResult === undefined){
+			return <div className='loader'>No Data</div>
+		}
 		else{
 			
 				return(

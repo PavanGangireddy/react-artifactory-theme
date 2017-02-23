@@ -28685,6 +28685,12 @@
 						{ className: 'loader' },
 						'Loading...'
 					);
+				} else if (this.props.searchResult === undefined) {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'loader' },
+						'No Data'
+					);
 				} else {
 	
 					return _react2.default.createElement(
@@ -48273,7 +48279,7 @@
 	//components
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
-			inprogress: state.packageDetails.detailsInprogress,
+			inprogress: state.packageDetails.descInprogress,
 			packageDetails: state.packageDetails.details,
 			moduleName: state.linkReducer.moduleName
 		};
@@ -66642,7 +66648,6 @@
 	function packageDetailsReducer() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			details: {},
-			detailsInprogress: true,
 			descInprogress: true,
 			descriptionData: {}
 		};
@@ -66651,12 +66656,12 @@
 		switch (action.type) {
 			case _actionTypes.Details_SUCCESS:
 				return Object.assign({}, state, {
-					detailsInprogress: false,
+					descInprogress: false,
 					details: action.payload
 				});
 			case _actionTypes.Details_FAIL:
 				return Object.assign({}, state, {
-					detailsInprogress: false,
+					descInprogress: false,
 					dataError: true,
 					error: action.error
 				});

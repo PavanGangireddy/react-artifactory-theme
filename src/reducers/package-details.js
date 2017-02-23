@@ -2,19 +2,18 @@ import {Details_SUCCESS,Details_FAIL,Description_FAIL,Description_SUCCESS, Reset
 
 export default function packageDetailsReducer(state = {
 	details:{},
-	detailsInprogress:true,
 	descInprogress:true,
 	descriptionData:{}
 }, action) {
   switch (action.type) {
 		case Details_SUCCESS:
 	    return Object.assign({},state,{
-	    	detailsInprogress:false,
+	    	descInprogress:false,
 	    	details:action.payload
 	    });
 	    case Details_FAIL:
 	    return Object.assign({},state,{
-	    	detailsInprogress:false,
+	    	descInprogress:false,
 	    	dataError:true,
 	    	error:action.error
 	    });

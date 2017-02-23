@@ -6,7 +6,7 @@ import {fetchPackageDetails, setReadme, resetData} from './../actions/details-si
 
 const mapStateToProps = (state)=> {
 	return {
-		inprogress:state.packageDetails.detailsInprogress,
+		inprogress:state.packageDetails.descInprogress,
 		packageDetails:state.packageDetails.details,
 		moduleName:state.linkReducer.moduleName
 	};
