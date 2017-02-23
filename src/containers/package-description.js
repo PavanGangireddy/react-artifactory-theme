@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 //actions
-import {fetchReadMe} from '../actions/search-result-actions';
-import {resetData} from '../actions/details-side-bar-actions';
+import {fetchReadMe} from '../actions/search-result-actions'
 //component
 import PackageDesctiption from './../components/PackageDesctiption';
 const mapStateToProps = (state)=> {
@@ -17,8 +16,7 @@ const mapStateToProps = (state)=> {
 const mapDispatchToProps = (dispatch) =>{
 
 	return bindActionCreators({
-								fetchReadMe,
-								resetData
+								fetchReadMe
 						 	 },dispatch);
 }
 export default connect(mapStateToProps,mapDispatchToProps)(PackageDesctiption);

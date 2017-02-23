@@ -12,9 +12,6 @@ export default class PackageDesctiption extends Component{
 			nextProps.fetchReadMe(nextProps.readMePath);
 		}
 	}
-	componentWillUnmount(){
-		this.props.resetData()
-	}
 	render(){
 		let result = '';
 		if(Object.getOwnPropertyNames(this.props.packageDetails).length>0 && this.props.readMePath !== "N/A"){
