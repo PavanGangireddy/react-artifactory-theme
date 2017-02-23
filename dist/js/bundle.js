@@ -28843,25 +28843,33 @@
 			value: function render() {
 				var _this2 = this;
 	
-				return _react2.default.createElement(
-					'section',
-					{ className: 'col-md-12 popular-categories-container' },
-					_react2.default.createElement(
-						'ul',
-						{ className: 'popular-categories' },
-						this.props.popularCategories.map(function (data, index) {
-							return _react2.default.createElement(
-								'li',
-								{ className: 'popular-list', key: index, onClick: _this2.selectCategory.bind(_this2) },
-								_react2.default.createElement(
-									'a',
-									null,
-									data
-								)
-							);
-						})
-					)
-				);
+				if (this.props.popularCategories > 0) {
+					return _react2.default.createElement(
+						'section',
+						{ className: 'col-md-12 popular-categories-container' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'popular-categories' },
+							this.props.popularCategories.map(function (data, index) {
+								return _react2.default.createElement(
+									'li',
+									{ className: 'popular-list', key: index, onClick: _this2.selectCategory.bind(_this2) },
+									_react2.default.createElement(
+										'a',
+										null,
+										data
+									)
+								);
+							})
+						)
+					);
+				} else {
+					return _react2.default.createElement(
+						'div',
+						{ className: 'loader' },
+						'No Data'
+					);
+				}
 			}
 		}]);
 	
@@ -33082,22 +33090,29 @@
 		}, {
 			key: 'render',
 			value: function render() {
-	
-				var packages = this.packageComponent();
-				return _react2.default.createElement(
-					'section',
-					{ className: 'popular-tag-container col-md-12' },
-					_react2.default.createElement(
-						'h4',
-						{ className: 'popular-tags-header' },
-						'Popular Keywords'
-					),
-					_react2.default.createElement(
+				if (this.props.popularKeywords.length > 0) {
+					var packages = this.packageComponent();
+					return _react2.default.createElement(
+						'section',
+						{ className: 'popular-tag-container col-md-12' },
+						_react2.default.createElement(
+							'h4',
+							{ className: 'popular-tags-header' },
+							'Popular Keywords'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'popular-tags' },
+							packages
+						)
+					);
+				} else {
+					return _react2.default.createElement(
 						'div',
-						{ className: 'popular-tags' },
-						packages
-					)
-				);
+						{ className: 'loader' },
+						'No Data'
+					);
+				}
 			}
 		}]);
 	

@@ -24,7 +24,7 @@ export default class PopularKeywords extends Component{
 		);
 	}
 	render(){
-		
+		if(this.props.popularKeywords.length > 0){
 			let packages= this.packageComponent();
 			return (
 				<section className='popular-tag-container col-md-12'>
@@ -32,7 +32,12 @@ export default class PopularKeywords extends Component{
 						<div className='popular-tags'>
 						{packages}
 						</div>	
-				</section>);
+				</section>
+			);
+		}
+		else{
+			return <div className='loader'>No Data</div>
+		}
 	}
 }
 
