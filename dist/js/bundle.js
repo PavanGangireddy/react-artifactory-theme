@@ -30594,7 +30594,7 @@
 	
 	    /**
 	     * Gets current `UserProfile` object.
-	       * @method
+	      * @method
 	     * @name artifactory#getAuthCurrent
 	     *
 	     */
@@ -38502,6 +38502,10 @@
 	 * and then pass updated object to renderer.
 	 **/
 	MarkdownIt.prototype.parse = function (src, env) {
+	  if (typeof src !== 'string') {
+	    throw new Error('Input data should be a String');
+	  }
+	
 	  var state = new this.core.State(src, this, env);
 	
 	  this.core.process(state);
@@ -43551,12 +43555,15 @@
 	  var ch, lineText, pos, i, nextLine, columns, columnCount, token,
 	      aligns, t, tableLines, tbodyLines;
 	
-	  // should have at least three lines
+	  // should have at least two lines
 	  if (startLine + 2 > endLine) { return false; }
 	
 	  nextLine = startLine + 1;
 	
 	  if (state.sCount[nextLine] < state.blkIndent) { return false; }
+	
+	  // if it's indented more than 3 spaces, it should be a code block
+	  if (state.sCount[nextLine] - state.blkIndent >= 4) { return false; }
 	
 	  // first character of the second line should be '|', '-', ':',
 	  // and no other characters are allowed but spaces;
@@ -43604,6 +43611,7 @@
 	
 	  lineText = getLine(state, startLine).trim();
 	  if (lineText.indexOf('|') === -1) { return false; }
+	  if (state.sCount[startLine] - state.blkIndent >= 4) { return false; }
 	  columns = escapedSplit(lineText.replace(/^\||\|$/g, ''));
 	
 	  // header row will define an amount of columns in the entire table,
@@ -43646,12 +43654,10 @@
 	  for (nextLine = startLine + 2; nextLine < endLine; nextLine++) {
 	    if (state.sCount[nextLine] < state.blkIndent) { break; }
 	
-	    lineText = getLine(state, nextLine);
+	    lineText = getLine(state, nextLine).trim();
 	    if (lineText.indexOf('|') === -1) { break; }
-	
-	    // keep spaces at beginning of line to indicate an empty first cell, but
-	    // strip trailing whitespace
-	    columns = escapedSplit(lineText.replace(/^\||\|\s*$/g, ''));
+	    if (state.sCount[nextLine] - state.blkIndent >= 4) { break; }
+	    columns = escapedSplit(lineText.replace(/^\||\|$/g, ''));
 	
 	    token = state.push('tr_open', 'tr', 1);
 	    for (i = 0; i < columnCount; i++) {
@@ -44032,7 +44038,21 @@
 	        break;
 	      }
 	    }
-	    if (terminate) { break; }
+	
+	    if (terminate) {
+	      if (oldIndent !== 0) {
+	        // state.blkIndent was non-zero, we now set it to zero,
+	        // so we need to re-calculate all offsets to appear as
+	        // if indent wasn't changed
+	        oldBMarks.push(state.bMarks[nextLine]);
+	        oldBSCount.push(state.bsCount[nextLine]);
+	        oldTShift.push(state.tShift[nextLine]);
+	        oldSCount.push(state.sCount[nextLine]);
+	        state.sCount[nextLine] -= oldIndent;
+	      }
+	
+	      break;
+	    }
 	
 	    oldBMarks.push(state.bMarks[nextLine]);
 	    oldBSCount.push(state.bsCount[nextLine]);
@@ -45568,11 +45588,14 @@
 
 /***/ },
 /* 420 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	// Proceess '\n'
 	
 	'use strict';
+	
+	var isSpace = __webpack_require__(374).isSpace;
+	
 	
 	module.exports = function newline(state, silent) {
 	  var pmax, max, pos = state.pos;
@@ -45604,7 +45627,7 @@
 	  pos++;
 	
 	  // skip heading spaces for next line
-	  while (pos < max && state.src.charCodeAt(pos) === 0x20) { pos++; }
+	  while (pos < max && isSpace(state.src.charCodeAt(pos))) { pos++; }
 	
 	  state.pos = pos;
 	  return true;
@@ -75784,6 +75807,30 @@
 	var identity = function identity(value) {
 	  return value;
 	};
+	var expandRootNode = function expandRootNode(keyName, data, level) {
+	  return level === 0;
+	};
+	var defaultItemString = function defaultItemString(type, data, itemType, itemString) {
+	  return _react2['default'].createElement(
+	    'span',
+	    null,
+	    itemType,
+	    ' ',
+	    itemString
+	  );
+	};
+	var defaultLabelRenderer = function defaultLabelRenderer(_ref) {
+	  var label = _ref[0];
+	  return _react2['default'].createElement(
+	    'span',
+	    null,
+	    label,
+	    ':'
+	  );
+	};
+	var noCustomNode = function noCustomNode() {
+	  return false;
+	};
 	
 	function checkLegacyTheming(theme, props) {
 	  var deprecatedStylingMethodsMap = {
@@ -75811,12 +75858,12 @@
 	      console.error( // eslint-disable-line no-console
 	      'Styling method "' + name + '" is deprecated, use "theme" property instead');
 	
-	      theme[deprecatedStylingMethodsMap[name]] = function (_ref) {
+	      theme[deprecatedStylingMethodsMap[name]] = function (_ref2) {
 	        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
 	          args[_key - 1] = arguments[_key];
 	        }
 	
-	        var style = _ref.style;
+	        var style = _ref2.style;
 	        return {
 	          style: (0, _extends3['default'])({}, style, props[name].apply(props, args))
 	        };
@@ -75827,13 +75874,41 @@
 	  return theme;
 	}
 	
+	function getStateFromProps(props) {
+	  return {
+	    styling: (0, _createStylingFromTheme2['default'])(checkLegacyTheming(props.theme, props), props.invertTheme)
+	  };
+	}
+	
 	var JSONTree = (_temp = _class = function (_React$Component) {
 	  (0, _inherits3['default'])(JSONTree, _React$Component);
 	
-	  function JSONTree() {
+	  function JSONTree(props) {
 	    (0, _classCallCheck3['default'])(this, JSONTree);
-	    return (0, _possibleConstructorReturn3['default'])(this, _React$Component.apply(this, arguments));
+	
+	    var _this = (0, _possibleConstructorReturn3['default'])(this, _React$Component.call(this, props));
+	
+	    _this.state = getStateFromProps(props);
+	    return _this;
 	  }
+	
+	  JSONTree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    var _this2 = this;
+	
+	    if (['theme', 'invertTheme'].find(function (k) {
+	      return nextProps[k] !== _this2.props[k];
+	    })) {
+	      this.setState(getStateFromProps(nextProps));
+	    }
+	  };
+	
+	  JSONTree.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+	    var _this3 = this;
+	
+	    return !!(0, _keys2['default'])(nextProps).find(function (k) {
+	      return k === 'keyPath' ? nextProps[k].join('/') !== _this3.props[k].join('/') : nextProps[k] !== _this3.props[k];
+	    });
+	  };
 	
 	  JSONTree.prototype.render = function render() {
 	    var _props = this.props;
@@ -75842,11 +75917,11 @@
 	    var postprocessValue = _props.postprocessValue;
 	    var hideRoot = _props.hideRoot;
 	    var theme = _props.theme;
-	    var invertTheme = _props.invertTheme;
+	    var // eslint-disable-line no-unused-vars
+	    invertTheme = _props.invertTheme;
 	    var rest = (0, _objectWithoutProperties3['default'])(_props, ['data', 'keyPath', 'postprocessValue', 'hideRoot', 'theme', 'invertTheme']);
+	    var styling = this.state.styling;
 	
-	
-	    var styling = (0, _createStylingFromTheme2['default'])(checkLegacyTheming(theme, rest), invertTheme);
 	
 	    return _react2['default'].createElement(
 	      'ul',
@@ -75868,34 +75943,14 @@
 	  postprocessValue: _react.PropTypes.func,
 	  sortObjectKeys: _react.PropTypes.oneOfType([_react.PropTypes.func, _react.PropTypes.bool])
 	}, _class.defaultProps = {
-	  shouldExpandNode: function shouldExpandNode(keyName, data, level) {
-	    return level === 0;
-	  }, // expands root by default,
+	  shouldExpandNode: expandRootNode,
 	  hideRoot: false,
 	  keyPath: ['root'],
-	  getItemString: function getItemString(type, data, itemType, itemString) {
-	    return _react2['default'].createElement(
-	      'span',
-	      null,
-	      itemType,
-	      ' ',
-	      itemString
-	    );
-	  },
-	  labelRenderer: function labelRenderer(_ref2) {
-	    var label = _ref2[0];
-	    return _react2['default'].createElement(
-	      'span',
-	      null,
-	      label,
-	      ':'
-	    );
-	  },
+	  getItemString: defaultItemString,
+	  labelRenderer: defaultLabelRenderer,
 	  valueRenderer: identity,
 	  postprocessValue: identity,
-	  isCustomNode: function isCustomNode() {
-	    return false;
-	  },
+	  isCustomNode: noCustomNode,
 	  collectionLimit: 50,
 	  invertTheme: true
 	}, _temp);
@@ -77724,6 +77779,10 @@
 	exports.__esModule = true;
 	exports['default'] = undefined;
 	
+	var _keys = __webpack_require__(909);
+	
+	var _keys2 = _interopRequireDefault(_keys);
+	
 	var _classCallCheck2 = __webpack_require__(826);
 	
 	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -77761,10 +77820,6 @@
 	var _ItemRange = __webpack_require__(927);
 	
 	var _ItemRange2 = _interopRequireDefault(_ItemRange);
-	
-	var _function = __webpack_require__(775);
-	
-	var _function2 = _interopRequireDefault(_function);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
@@ -77831,8 +77886,6 @@
 	
 	    var _this = (0, _possibleConstructorReturn3['default'])(this, _React$Component.call(this, props));
 	
-	    _this.shouldComponentUpdate = _function2['default'];
-	
 	    _this.handleClick = function () {
 	      return _this.setState({ expanded: !_this.state.expanded });
 	    };
@@ -77842,13 +77895,18 @@
 	  }
 	
 	  JSONNestedNode.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    var nextState = getStateFromProps(nextProps);
+	    if (getStateFromProps(this.props).expanded !== nextState.expanded) {
+	      this.setState(nextState);
+	    }
+	  };
+	
+	  JSONNestedNode.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
 	    var _this2 = this;
 	
-	    if (['shouldExpandNode', 'isCircular', 'keyPath', 'data', 'level'].find(function (k) {
-	      return nextProps[k] !== _this2.props[k];
-	    })) {
-	      this.setState(getStateFromProps(nextProps));
-	    }
+	    return !!(0, _keys2['default'])(nextProps).find(function (key) {
+	      return key !== 'circularCache' && (key === 'keyPath' ? nextProps[key].join('/') !== _this2.props[key].join('/') : nextProps[key] !== _this2.props[key]);
+	    }) || nextState.expanded !== this.state.expanded;
 	  };
 	
 	  JSONNestedNode.prototype.render = function render() {
