@@ -16,14 +16,15 @@ export default class PackageCards extends Component{
 	*	Function to generate the Card using the Card from react-materialize
 	*/
 	generateCards(){
-		let moduleName = '';
+		let moduleName = '',urlParam = '';
 		return(
 			this.props.data.map((detail,index)=>{
 					if(detail.image === ''|| detail.image === undefined){
 						detail.image = logo;
 					}
 					moduleName = detail.name;
-					return (<Link to={'/module/'+moduleName} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
+					urlParam = detail.name+','+detail.version;
+					return (<Link to={'/module/'+urlParam} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
 				    <p>{detail.version}</p>
 				</Card></Link>);

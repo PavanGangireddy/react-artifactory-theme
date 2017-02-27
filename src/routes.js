@@ -19,7 +19,7 @@ const allRoutes = (appLevelConfig) => {
   	   <Route path="/" appLevelConfig={config} component={LandingPageContainer} onEnter={authTransition}>
 	         <IndexRoute component={LandingPageBodyContainer}/>
 	         <Route path='/results/keyword=:query' component={SearchResultContainer} />
-	         <Route path= '/module/:moduleName' component= {DescriptionPageBody}  />
+	         <Route path= '/module/:urlParam' component= {DescriptionPageBody}  />
 	        <Route path= '/steps-to-publish' component= {StepsPageBody} />
 	     </Route>
     </Router>
