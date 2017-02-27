@@ -24,7 +24,7 @@ export default class PackageCards extends Component{
 					}
 					moduleName = detail.name;
 					urlParam = detail.name+','+detail.version;
-					return (<Link to={'/module/'+urlParam} key={index} onClick={this.setModule.bind(this,moduleName)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
+					return (<Link to={'/module/'+urlParam} key={index} onClick={this.setModule.bind(this,urlParam)}><Card className={this.props.className}header={<CardTitle image={detail.image} waves='light'/>}
 				    title={detail.name}>
 				    <p>{detail.version}</p>
 				</Card></Link>);
