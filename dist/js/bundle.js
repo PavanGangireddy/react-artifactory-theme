@@ -33234,7 +33234,7 @@
 					urlParam = detail.name + ',' + detail.version;
 					return _react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/module/' + urlParam, key: index, onClick: _this2.setModule.bind(_this2, moduleName) },
+						{ to: '/module/' + urlParam, key: index, onClick: _this2.setModule.bind(_this2, urlParam) },
 						_react2.default.createElement(
 							_reactMaterialize.Card,
 							{ className: _this2.props.className, header: _react2.default.createElement(_reactMaterialize.CardTitle, { image: detail.image, waves: 'light' }),
@@ -37790,8 +37790,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToProps = function mapStateToProps(state, ownprops) {
+		console.log(ownprops);
 		return {
-			module: ownprops.params.moduleName
+			module: ownprops.params.urlParam
 		};
 	};
 	
